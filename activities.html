@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style"
+        href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+        onload="this.rel='stylesheet'" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <!-- Font Awesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <title>Stitch Design</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+        --primary-color: #1193d4;
+      }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-[#0d171b]" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7eff3] px-10 py-4">
+                <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-hotel h-8 w-8 text-[var(--primary-color)]"></i>
+                    <h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Sukute Resort</h2>
+                </div>
+                <div class="flex flex-1 justify-end items-center gap-6">
+                    <nav class="flex items-center gap-6">
+                        <a class="text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors"
+                            href="#">Home</a>
+                        <a class="text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors"
+                            href="#">Rooms</a>
+                        <a class="text-[var(--primary-color)] text-sm font-bold leading-normal" href="#">Activities</a>
+                        <a class="text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors"
+                            href="#">Dining</a>
+                        <a class="text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors"
+                            href="#">Contact</a>
+                    </nav>
+                    <button
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[var(--primary-color)] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-all">
+                        <span class="truncate">Book Now</span>
+                    </button>
+                </div>
+            </header>
+            <main class="flex-1">
+                <section class="py-20 px-4">
+                    <div class="max-w-6xl mx-auto">
+                        <div class="text-center mb-16">
+                            <h1 class="text-5xl font-bold tracking-tighter mb-4">Activities at Sukute Resort</h1>
+                            <p class="text-[#4c809a] text-lg max-w-3xl mx-auto">Experience a blend of adventure and
+                                relaxation with our diverse range of activities, perfect for families and corporate
+                                groups.</p>
+                        </div>
+                        <div class="space-y-16">
+                            <div>
+                                <h2 class="text-3xl font-bold tracking-tight mb-8">Adventure Activities</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5W1xN5iRY-6C9UnF0x5HC8g4Msv-ogoLm38bQxb1e4OvfI1q0wDo8Nr8-Bc3Cf7E8AQyKhPAffHLdAtqEWnnT0pQFoM0bn9OdkOLLuwn0agtdNO5fJ39p0z4aetva679_Jjae753wy1yX3uTHTgz7EshY6TRZEBPKlgINsOYP1Wp3EdC6ucTu7CihbdWcNRMcF8v4lakJeNFt-gWb7FDeC6cPKFN3lup2XwpPO3qGSUkKo7hpbtl-LplnZ7CeI2EYtGErsNv-7W8F");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-xl font-bold mb-2">Rafting</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Navigate the thrilling
+                                                rapids of the Bhotekoshi River with our guided rafting tours.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtJfJwVzCWhfeNFBe2PrbhRxdC3EPzmx2Us-su1xQ5J8arRZx0MjxvtzJ9bIpxyJ77mxxdP3SmdiyAO6gMq59dm3gb8Itb15fmV_7hbW94EIUy4aZkivEIakNcEmg1DjWmWiQNynSnLhZYQHnBHkIsPgJ8o6sYRFJakt80YR7T-wrqixOGftCPc8v4WDnjgPEE9IndVN9sJjVoUcYmkT6UxkXpD9n-f_XDmVdFygUnY1h1Vsx9HKuvLQjpfRlXiSY4V3tAEKzJzseG");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-xl font-bold mb-2">Kayaking</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Explore the serene waters
+                                                with our kayaking sessions, suitable for all skill levels.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxVeqo0yMZbS-hKzpggxoZGsl15qdmdf-VADySYHv4VrZrQabBXY5A3z-OTuJ0eQ0QsYMSWapwhr57oWjcKAdmL9spW8b0BxhZlGKQjj5mkDi3hhpr39Hyt1PrkXMLhdzCSc-AujvoST4rXtsAJU5XjhSxlh1YWY2eJDJwJVgYX68UeIN-DdK9THyOzcyZEL94Sj-lkauzweQufOM2LbBIphFH3C4JPGAJP3MaibmE1V116zFkww8-NJS-o420yTnwMYmQyrmaazMK");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-xl font-bold mb-2">Canyoning</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Descend through waterfalls
+                                                and natural rock formations with our expert-led canyoning adventures.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h2 class="text-3xl font-bold tracking-tight mb-8">Recreational Activities</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBx9V_KPEUQbIL7RDfRtvDirKgisNSUFo6R1NIRVsi3O7IoYq5qpavEFZlnuJulePxGtXBg9Hc7jcQxC-hxI4AnmnBPdCygmJsBAALOxRCLiTNQuqgSxg_GeIiOCKzkbUu-Ur2RbmgQLeMLLzyC83pWqhAEpBA-CETlAukpzwJggKLJupR6jVo1kaFTJufbvJD7kZe_A5b0TFHlyOFD5FMHyRF04RLTUTOsIwnsoRjCVR6SyExRU8pDWg45JyuLf0vhW_EEF3UL6ZbF");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-lg font-bold mb-2">Beach Volleyball</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Enjoy a friendly game on
+                                                our sandy court.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHkq63JNmFYenfGRUm2XAUToZNkRFqGRzegvkNxeB55qa8J5gKgwq_j98s48fZA23Qx_kcnDd_Nr9AaEokqELJPnG0igYkuMzc4cVbZgasQ4D_VnNet-JatA-ISHSophbgAUB72IJjOq10PkMPmTmyrZXr_JjSXxDaJdO0zc7v5D5SLPU1m3bh4v-skPBbvTvKv9lHF_FvppUJTlepQ-8Xvlibzvq6X1Oquz--w57QQM4JW_IN7h0hKSVnp9KswCAVspAp-Io7nMO7");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-lg font-bold mb-2">Table Tennis</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Challenge your friends to
+                                                a tournament.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuASmPzoVpxE3JknCXPs5AN1tlAsnTWUdLoPypisUYawoBu6PG_YxuikYVAaU7lOe7vlzuDlW6WF3KARmLLlk6hsvwz9mx0ZzSd6AboRvDzA2VK96ocsi1-K-xTnZdEObhBqjT6pELqFQGncql12KiOiOCv71WTwL8Tu27Md56SeCF6-gEOqDxVXyJftVrckir5MHw-LVE3sVumOgUIa3T9QUNQ1OEh9nwd07laW2vh1KZDfvdYqvrHqzLGUCL7noODiiPAwCTlHDkZI");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-lg font-bold mb-2">Swimming Pool</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Relax and unwind in our
+                                                refreshing pool.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEABKFwEh7CoC4MxHYRiCuGTnYuttrpNziFqPkFWs0qdS_Ar92CSeswpZ0NHqXxi8oAKHiZ42CXygYuGSBqarOmYs7__OdFKpK39VfpRhCqsdLYk1qsSaYx7FZXuhpIntOH6-14F-CxrySrgqLfTPUg7jdCfqTSCjqlex0HJY3tdw65X7hgiuu_651DVxCANvCztSmCb9iuCAAkKPw21x9soc5Xi3tGF1Z-jxCILbGdyMtCdaeX7zsOFofgsRKVUqJTrTjkJRXXEK0");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-lg font-bold mb-2">Campfire</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Storytelling and
+                                                marshmallow roasting under the stars.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h2 class="text-3xl font-bold tracking-tight mb-8">Unique Experiences</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAScmrNleoScEiB_v7CspXnyx6VnraGtcUf9ug1mp8XnvfYtCfN0dpIxg6HywE5EnDz83g-XPjNZrSvWrR6UxYv54ge-blcfzDvXdVzKZ3Q2qi7kkOzid8eYzcB54baOeX7AMsWql0Y8fzqD9fk_sG6K4bPO0meX-P1bc8DZvzZIUKvddjgYh5FebBpBFySmh4t7c9tSbFG-3PYn3NQywrrS7K9bM088vVTFA4LhUEhMappGLk7ITFMOqu5G73gC-k8-xIysVNMKSSX");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-xl font-bold mb-2">Cultural Performances</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Immerse yourself in the
+                                                local culture with traditional dance and music performances.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="group flex flex-col gap-4 bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                                        <div class="relative">
+                                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkZaDQIzeNWwgRFA-yGwGB4eUtT312LRlIar9EoCdMhXx0j1RxHLZ7hmW7FobqBVzoXQCkDH6wOTtlL5SUiUGt9qcHGBqhitxO-N_ZbeX5x7u29l-lZCunwye3P7bRAHafzHuWy-d7KPpluuO9NSIlCogPzRg7p4OPyfLm3UQckKtWeARdfjyI0DylxyQtnmO9NNf8OfapFLcXLs9gQNnIGpQ41EjpOwRo1pJain0mNjZr77CcPMY_zR99X9pJnYBjATtp0YjR5Eg1");'>
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all">
+                                            </div>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <h3 class="text-xl font-bold mb-2">Nature Walks</h3>
+                                            <p class="text-[#4c809a] text-sm leading-relaxed">Discover the natural
+                                                beauty of the surrounding area with guided nature walks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-20">
+                            <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-8 bg-[var(--primary-color)] text-slate-50 text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-all mx-auto">
+                                <span class="truncate">Book Your Adventure</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

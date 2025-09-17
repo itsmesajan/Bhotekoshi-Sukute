@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhotekoshi Heli Resort - React App</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- Font Awesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Navigation Component
+        const Navigation = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [isScrolled, setIsScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setIsScrolled(window.scrollY > 100);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const scrollToSection = (sectionId) => {
+                document.getElementById(sectionId)?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                setIsMenuOpen(false);
+            };
+
+            return (
+                <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-white shadow-lg'}`}>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-center h-16">
+                            <div className="flex items-center">
+                                <span className="text-2xl font-bold text-emerald-600"><i className="fa-solid fa-hotel mr-2"></i> Bhotekoshi Heli Resort</span>
+                            </div>
+                            <div className="hidden md:block">
+                                <div className="ml-10 flex items-baseline space-x-8">
+                                    <button onClick={() => scrollToSection('home')} className="text-gray-900 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors">Home</button>
+                                    <button onClick={() => scrollToSection('activities')} className="text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors">Activities</button>
+                                    <button onClick={() => scrollToSection('accommodations')} className="text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors">Stay</button>
+                                    <button onClick={() => scrollToSection('corporate')} className="text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors">Corporate</button>
+                                    <button onClick={() => scrollToSection('contact')} className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors">Book Now</button>
+                                </div>
+                            </div>
+                            <div className="md:hidden">
+                                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 hover:text-emerald-600">
+                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Mobile menu */}
+                    {isMenuOpen && (
+                        <div className="md:hidden bg-white border-t">
+                            <div className="px-2 pt-2 pb-3 space-y-1">
+                                <button onClick={() => scrollToSection('home')} className="block px-3 py-2 text-gray-900 hover:text-emerald-600 w-full text-left">Home</button>
+                                <button onClick={() => scrollToSection('activities')} className="block px-3 py-2 text-gray-700 hover:text-emerald-600 w-full text-left">Activities</button>
+                                <button onClick={() => scrollToSection('accommodations')} className="block px-3 py-2 text-gray-700 hover:text-emerald-600 w-full text-left">Stay</button>
+                                <button onClick={() => scrollToSection('corporate')} className="block px-3 py-2 text-gray-700 hover:text-emerald-600 w-full text-left">Corporate</button>
+                                <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 bg-emerald-600 text-white rounded-lg mx-3">Book Now</button>
+                            </div>
+                        </div>
+                    )}
+                </nav>
+            );
+        };
+
+        // Hero Section Component
+        const HeroSection = () => {
+            return (
+                <section id="home" className="pt-16 bg-gradient-to-br from-emerald-50 to-blue-50 min-h-screen flex items-center">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                                    Adventure Meets 
+                                    <span className="text-emerald-600"> Family Comfort</span>
+                                </h1>
+                                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                                    Experience Nepal's premier activity-based resort just 1 hour from Sukute. Professional management, family environment, and unforgettable adventures await.
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    <button className="bg-emerald-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-emerald-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                                        Book Your Adventure
+                                    </button>
+                                    <button onClick={() => document.getElementById('activities')?.scrollIntoView({ behavior: 'smooth' })} className="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-emerald-600 hover:text-white transition-all duration-200">
+                                        View Activities
+                                    </button>
+                                </div>
+                                <div className="mt-8 flex items-center space-x-6 text-sm text-gray-600">
+                                    <div className="flex items-center">
+                                        <span className="text-emerald-600 mr-2">🏆</span>
+                                        Professional Management
+                                    </div>
+                                    <div className="flex items-center">
+                                        <span className="text-emerald-600 mr-2">👨‍👩‍👧‍👦</span>
+                                        Family Friendly
+                                    </div>
+                                    <div className="flex items-center">
+                                        <span className="text-emerald-600 mr-2">🎯</span>
+                                        Activity Based
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="relative">
+                                <div className="bg-gradient-to-br from-emerald-400 to-blue-500 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                                    <div className="bg-white rounded-2xl p-6 text-center">
+                                        <div className="text-6xl mb-4">🏔️</div>
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Scenic Location</h3>
+                                        <p className="text-gray-600">Nestled in the beautiful hills near Bhotekoshi River</p>
+                                    </div>
+                                </div>
+                                <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl">
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-2xl">⭐</span>
+                                        <div>
+                                            <div className="font-bold text-gray-900">4.8/5</div>
+                                            <div className="text-sm text-gray-600">Guest Rating</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Activity Card Component
+        const ActivityCard = ({ icon, title, activities, color, bgColor }) => {
+            const [isHovered, setIsHovered] = useState(false);
+
+            const handleLearnMore = () => {
+                alert(`${title} includes professional instruction and all necessary equipment. Would you like to book this activity as part of your stay?`);
+            };
+
+            return (
+                <div 
+                    className={`${bgColor} rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group cursor-pointer transform ${isHovered ? '-translate-y-2' : ''}`}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
+                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{icon}</div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{title}</h3>
+                    <ul className="space-y-2 text-gray-600 mb-6">
+                        {activities.map((activity, index) => (
+                            <li key={index} className="flex items-center">
+                                <span className={`${color} mr-2`}>•</span>
+                                {activity}
+                            </li>
+                        ))}
+                    </ul>
+                    <button 
+                        onClick={handleLearnMore}
+                        className={`${color.replace('text-', 'text-')} font-semibold hover:opacity-80 transition-colors`}
+                    >
+                        Learn More →
+                    </button>
+                </div>
+            );
+        };
+
+        // Activities Section Component
+        const ActivitiesSection = () => {
+            const activities = [
+                {
+                    icon: "🚣",
+                    title: "Water Adventures",
+                    activities: ["White Water Rafting", "Swimming Pool", "River Side Activities", "Water Sports"],
+                    color: "text-blue-500",
+                    bgColor: "bg-gradient-to-br from-blue-50 to-cyan-50"
+                },
+                {
+                    icon: "🏐",
+                    title: "Sports & Recreation",
+                    activities: ["Beach Volleyball", "Table Tennis", "Badminton Court", "Outdoor Games"],
+                    color: "text-emerald-500",
+                    bgColor: "bg-gradient-to-br from-emerald-50 to-green-50"
+                },
+                {
+                    icon: "🔥",
+                    title: "Evening Experiences",
+                    activities: ["Campfire Nights", "Cultural Programs", "Stargazing", "Live Music"],
+                    color: "text-orange-500",
+                    bgColor: "bg-gradient-to-br from-orange-50 to-red-50"
+                },
+                {
+                    icon: "🧗",
+                    title: "Adventure Sports",
+                    activities: ["Rock Climbing", "Zip Lining", "Hiking Trails", "Nature Walks"],
+                    color: "text-purple-500",
+                    bgColor: "bg-gradient-to-br from-purple-50 to-pink-50"
+                },
+                {
+                    icon: "🤝",
+                    title: "Team Building",
+                    activities: ["Corporate Challenges", "Leadership Activities", "Problem Solving", "Group Dynamics"],
+                    color: "text-indigo-500",
+                    bgColor: "bg-gradient-to-br from-indigo-50 to-blue-50"
+                },
+                {
+                    icon: "👨‍👩‍👧‍👦",
+                    title: "Family Activities",
+                    activities: ["Kids Play Area", "Family Games", "Picnic Spots", "Photography Tours"],
+                    color: "text-yellow-500",
+                    bgColor: "bg-gradient-to-br from-yellow-50 to-orange-50"
+                }
+            ];
+
+            return (
+                <section id="activities" className="py-20 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl font-bold text-gray-900 mb-4">Unique Adventures Await</h2>
+                            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                Stand out from typical local properties with our professionally managed activities designed for families, corporates, and adventure seekers.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {activities.map((activity, index) => (
+                                <ActivityCard key={index} {...activity} />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Corporate Section Component
+        const CorporateSection = () => {
+            return (
+                <section id="corporate" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-4xl font-bold text-gray-900 mb-6">Corporate Retreats & Conferences</h2>
+                                <p className="text-lg text-gray-600 mb-8">
+                                    Professional management meets natural beauty. Perfect for corporate events, residential conferences, and team building activities that inspire and motivate.
+                                </p>
+                                
+                                <div className="space-y-6">
+                                    <div className="flex items-start space-x-4">
+                                        <div className="bg-emerald-100 p-3 rounded-lg">
+                                            <span className="text-2xl">🏢</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-semibold text-gray-900 mb-2">Conference Facilities</h3>
+                                            <p className="text-gray-600">Modern meeting rooms with AV equipment, high-speed internet, and professional setup for productive sessions.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="flex items-start space-x-4">
+                                        <div className="bg-blue-100 p-3 rounded-lg">
+                                            <span className="text-2xl">🎯</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-semibold text-gray-900 mb-2">Team Building Programs</h3>
+                                            <p className="text-gray-600">Customized activities designed to strengthen team bonds and improve workplace collaboration.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="flex items-start space-x-4">
+                                        <div className="bg-purple-100 p-3 rounded-lg">
+                                            <span className="text-2xl">🏨</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-semibold text-gray-900 mb-2">Residential Packages</h3>
+                                            <p className="text-gray-600">Multi-day packages including accommodation, meals, and structured activities for comprehensive corporate retreats.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button className="mt-8 bg-emerald-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-emerald-700 transition-colors">
+                                    Plan Corporate Event
+                                </button>
+                            </div>
+                            
+                            <div className="relative">
+                                <div className="bg-white rounded-3xl p-8 shadow-2xl">
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Corporate Packages</h3>
+                                    
+                                    <div className="space-y-4">
+                                        <div className="border-l-4 border-emerald-500 pl-4">
+                                            <h4 className="font-semibold text-gray-900">Day Package</h4>
+                                            <p className="text-gray-600 text-sm">Meeting facilities + lunch + 2 activities</p>
+                                            <p className="text-emerald-600 font-bold">Starting NPR 2,500/person</p>
+                                        </div>
+                                        
+                                        <div className="border-l-4 border-blue-500 pl-4">
+                                            <h4 className="font-semibold text-gray-900">Overnight Package</h4>
+                                            <p className="text-gray-600 text-sm">1 night stay + all meals + full activities</p>
+                                            <p className="text-blue-600 font-bold">Starting NPR 4,500/person</p>
+                                        </div>
+                                        
+                                        <div className="border-l-4 border-purple-500 pl-4">
+                                            <h4 className="font-semibold text-gray-900">Weekend Retreat</h4>
+                                            <p className="text-gray-600 text-sm">2 nights + comprehensive program</p>
+                                            <p className="text-purple-600 font-bold">Starting NPR 7,500/person</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                                        <p className="text-sm text-gray-600 text-center">
+                                            <span className="font-semibold">Group Discounts Available</span><br />
+                                            20+ people: 10% off | 50+ people: 15% off
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Accommodation Card Component
+        const AccommodationCard = ({ icon, title, description, features, price, bgColor }) => {
+            return (
+                <div className={`${bgColor} rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow`}>
+                    <div className="p-8">
+                        <div className="text-4xl mb-4">{icon}</div>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">{title}</h3>
+                        <p className="text-gray-600 mb-4">{description}</p>
+                        <ul className="space-y-2 text-sm text-gray-600 mb-6">
+                            {features.map((feature, index) => (
+                                <li key={index} className="flex items-center">
+                                    <span className="text-emerald-500 mr-2">✓</span>
+                                    {feature}
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="text-2xl font-bold text-emerald-600">{price}</div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Accommodations Section Component
+        const AccommodationsSection = () => {
+            const accommodations = [
+                {
+                    icon: "🏡",
+                    title: "Family Rooms",
+                    description: "Spacious rooms perfect for families with children. Clean, comfortable, and well-maintained.",
+                    features: ["AC/Heating", "Private Bathroom", "Mountain View", "Free WiFi"],
+                    price: "NPR 3,500/night",
+                    bgColor: "bg-gradient-to-br from-emerald-50 to-green-50"
+                },
+                {
+                    icon: "🏢",
+                    title: "Corporate Suites",
+                    description: "Executive accommodations with work desk and meeting space for business travelers.",
+                    features: ["Work Desk", "Mini Meeting Area", "Premium Amenities", "24/7 Service"],
+                    price: "NPR 5,000/night",
+                    bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50"
+                },
+                {
+                    icon: "🏕️",
+                    title: "Adventure Camps",
+                    description: "Unique camping experience with modern facilities for adventure enthusiasts.",
+                    features: ["Luxury Tents", "Shared Facilities", "Campfire Access", "Adventure Gear"],
+                    price: "NPR 2,500/night",
+                    bgColor: "bg-gradient-to-br from-purple-50 to-pink-50"
+                }
+            ];
+
+            return (
+                <section id="accommodations" className="py-20 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl font-bold text-gray-900 mb-4">Comfortable Accommodations</h2>
+                            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                Unlike basic local properties, we provide professionally managed accommodations with modern amenities and family-friendly environment.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {accommodations.map((accommodation, index) => (
+                                <AccommodationCard key={index} {...accommodation} />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Why Choose Us Section Component
+        const WhyChooseUsSection = () => {
+            const features = [
+                {
+                    icon: "🎯",
+                    title: "Professional Management",
+                    description: "Experienced hospitality team ensuring quality service and memorable experiences."
+                },
+                {
+                    icon: "🏔️",
+                    title: "Prime Location",
+                    description: "Just 1 hour from Sukute, easily accessible yet surrounded by natural beauty."
+                },
+                {
+                    icon: "🎪",
+                    title: "Unique Activities",
+                    description: "Carefully curated experiences that you won't find at other local properties."
+                },
+                {
+                    icon: "👨‍👩‍👧‍👦",
+                    title: "Family Environment",
+                    description: "Safe, welcoming atmosphere perfect for families, corporates, and groups."
+                }
+            ];
+
+            return (
+                <section className="py-20 bg-gradient-to-br from-emerald-600 to-blue-600 text-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl font-bold mb-4">Why We Stand Out</h2>
+                            <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
+                                Unlike typical local properties, we bring professional management and unique experiences to the beautiful Bhotekoshi region.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {features.map((feature, index) => (
+                                <div key={index} className="text-center">
+                                    <div className="bg-white bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                                        <span className="text-3xl">{feature.icon}</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                                    <p className="text-emerald-100">{feature.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Booking Form Component
+        const BookingForm = () => {
+            const [formData, setFormData] = useState({
+                checkin: '',
+                checkout: '',
+                adults: '2 Adults',
+                children: '0 Children',
+                package: 'Family Package',
+                requests: ''
+            });
+
+            const handleInputChange = (e) => {
+                const { name, value } = e.target;
+                setFormData(prev => ({
+                    ...prev,
+                    [name]: value
+                }));
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                alert('Thank you for your booking request! We will contact you within 24 hours to confirm your reservation and discuss your preferred activities.');
+            };
+
+            const handlePackageChange = (e) => {
+                const packageType = e.target.value;
+                setFormData(prev => ({ ...prev, package: packageType }));
+                
+                let message = '';
+                switch(packageType) {
+                    case 'Family Package':
+                        message = 'Perfect for families! Includes kid-friendly activities and family rooms.';
+                        break;
+                    case 'Corporate Package':
+                        message = 'Great for team building! Includes meeting facilities and corporate activities.';
+                        break;
+                    case 'Adventure Package':
+                        message = 'For thrill seekers! Includes rafting, climbing, and adventure sports.';
+                        break;
+                    case 'Day Visit':
+                        message = 'Perfect for a day trip! Includes lunch and selected activities.';
+                        break;
+                }
+                console.log(message);
+            };
+
+            // Set minimum dates
+            const today = new Date().toISOString().split('T')[0];
+            const checkinDate = formData.checkin ? new Date(formData.checkin) : new Date();
+            const minCheckout = new Date(checkinDate);
+            minCheckout.setDate(minCheckout.getDate() + 1);
+            const minCheckoutStr = minCheckout.toISOString().split('T')[0];
+
+            return (
+                <div className="bg-gray-50 rounded-2xl p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Quick Booking</h3>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Check-in Date</label>
+                                <input 
+                                    type="date" 
+                                    name="checkin"
+                                    value={formData.checkin}
+                                    onChange={handleInputChange}
+                                    min={today}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Check-out Date</label>
+                                <input 
+                                    type="date" 
+                                    name="checkout"
+                                    value={formData.checkout}
+                                    onChange={handleInputChange}
+                                    min={formData.checkin || minCheckoutStr}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Adults</label>
+                                <select 
+                                    name="adults"
+                                    value={formData.adults}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                                >
+                                    <option>1 Adult</option>
+                                    <option>2 Adults</option>
+                                    <option>3 Adults</option>
+                                    <option>4+ Adults</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Children</label>
+                                <select 
+                                    name="children"
+                                    value={formData.children}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                                >
+                                    <option>0 Children</option>
+                                    <option>1 Child</option>
+                                    <option>2 Children</option>
+                                    <option>3+ Children</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Package Type</label>
+                            <select 
+                                name="package"
+                                value={formData.package}
+                                onChange={handlePackageChange}
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                            >
+                                <option>Family Package</option>
+                                <option>Corporate Package</option>
+                                <option>Adventure Package</option>
+                                <option>Day Visit</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Special Requests</label>
+                            <textarea 
+                                rows="3" 
+                                name="requests"
+                                value={formData.requests}
+                                onChange={handleInputChange}
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" 
+                                placeholder="Any special requirements or activities you're interested in..."
+                            />
+                        </div>
+
+                        <button 
+                            type="submit" 
+                            className="w-full bg-emerald-600 text-white py-4 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-colors"
+                        >
+                            Check Availability & Book
+                        </button>
+                    </form>
+
+                    <p className="text-sm text-gray-600 text-center mt-4">
+                        * This is a demo form. Actual booking confirmation will be sent via email.
+                    </p>
+                </div>
+            );
+        };
+
+        // Contact Section Component
+        const ContactSection = () => {
+            return (
+                <section id="contact" className="py-20 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid lg:grid-cols-2 gap-12">
+                            <div>
+                                <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready for Your Adventure?</h2>
+                                <p className="text-lg text-gray-600 mb-8">
+                                    Book your stay at Bhotekoshi Heli Resort and experience the perfect blend of adventure, comfort, and professional hospitality.
+                                </p>
+
+                                <div className="space-y-6">
+                                    <div className="flex items-center space-x-4">
+                                        <div className="bg-emerald-100 p-3 rounded-lg">
+                                            <span className="text-xl">📍</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-gray-900">Location</h3>
+                                            <p className="text-gray-600">Bhotekoshi, 1 hour from Sukute</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center space-x-4">
+                                        <div className="bg-emerald-100 p-3 rounded-lg">
+                                            <span className="text-xl">📞</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-gray-900">Phone</h3>
+                                            <p className="text-gray-600">+977-1-XXXXXXX</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center space-x-4">
+                                        <div className="bg-emerald-100 p-3 rounded-lg">
+                                            <span className="text-xl">✉️</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-gray-900">Email</h3>
+                                            <p className="text-gray-600">info@bhotekoshipheliresort.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-8 p-6 bg-emerald-50 rounded-xl">
+                                    <h3 className="font-bold text-emerald-800 mb-2">Special Offers</h3>
+                                    <ul className="space-y-1 text-emerald-700">
+                                        <li>• Early bird discount: 15% off bookings 30 days in advance</li>
+                                        <li>• Group packages: Special rates for 10+ people</li>
+                                        <li>• Corporate rates: Customized packages available</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <BookingForm />
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Footer Component
+        const Footer = () => {
+            const scrollToSection = (sectionId) => {
+                document.getElementById(sectionId)?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            };
+
+            return (
+                <footer className="bg-gray-900 text-white py-12">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid md:grid-cols-4 gap-8">
+                            <div>
+                                <div className="text-2xl font-bold text-emerald-400 mb-4">🚁 Bhotekoshi Heli Resort</div>
+                                <p className="text-gray-400 mb-4">
+                                    Professional adventure resort offering unique experiences in the heart of Nepal's beautiful landscape.
+                                </p>
+                                <div className="flex space-x-4">
+                                    <button className="bg-emerald-600 hover:bg-emerald-700 p-2 rounded-lg transition-colors">📘</button>
+                                    <button className="bg-emerald-600 hover:bg-emerald-700 p-2 rounded-lg transition-colors">📷</button>
+                                    <button className="bg-emerald-600 hover:bg-emerald-700 p-2 rounded-lg transition-colors">🐦</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li><button onClick={() => scrollToSection('activities')} className="hover:text-emerald-400 transition-colors">Activities</button></li>
+                                    <li><button onClick={() => scrollToSection('accommodations')} className="hover:text-emerald-400 transition-colors">Accommodations</button></li>
+                                    <li><button onClick={() => scrollToSection('corporate')} className="hover:text-emerald-400 transition-colors">Corporate Events</button></li>
+                                    <li><button onClick={() => scrollToSection('contact')} className="hover:text-emerald-400 transition-colors">Contact Us</button></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 className="text-lg font-semibold mb-4">Activities</h3>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li>White Water Rafting</li>
+                                    <li>Beach Volleyball</li>
+                                    <li>Team Building</li>
+                                    <li>Campfire Nights</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+                                <div className="space-y-2 text-gray-400">
+                                    <p>📍 Bhotekoshi, Nepal</p>
+                                    <p>📞 +977-1-XXXXXXX</p>
+                                    <p>✉️ info@bhotekoshipheliresort.com</p>
+                                    <p>🕒 24/7 Customer Service</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                            <p>&copy; 2024 Bhotekoshi Heli Resort. All rights reserved. | Professional Management | Family Environment | Unique Adventures</p>
+                        </div>
+                    </div>
+                </footer>
+            );
+        };
+
+        // Main App Component
+        const App = () => {
+            return (
+                <div className="font-sans bg-gray-50">
+                    <Navigation />
+                    <HeroSection />
+                    <ActivitiesSection />
+                    <CorporateSection />
+                    <AccommodationsSection />
+                    <WhyChooseUsSection />
+                    <ContactSection />
+                    <Footer />
+                </div>
+            );
+        };
+
+        // Render the App
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b47b67f39a7f58',t:'MTc1NzIzMDAzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

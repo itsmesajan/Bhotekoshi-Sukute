@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style"
+        href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+        onload="this.rel='stylesheet'" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.0/css/all.css" />
+
+    <title>Bhotekoshi Beach</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+        --primary-color: #ffcd00;
+        --secondary-color: #8a6b2d;
+        --green-color: #0f8301;
+        --water-color: #2288c2;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+
+      /* Swiper active slide zoom effect */
+        .accommodations-swiper .swiper-slide {
+            transform: scale(0.90);
+            opacity: 0.85;
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+            z-index: 1;
+        }
+        .accommodations-swiper .swiper-slide-active {
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(17, 147, 212, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+            opacity: 1;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-slate-200 py-3">
+                <div class="flex items-center gap-3 text-slate-800">
+                    <a href="/index.html">
+                        <img src="assets/logo.png" alt="Bhotekoshi Beach" class="h-16 w-auto">
+                    </a>
+                </div>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
+                        href="#">About</a>
+                    <a class="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
+                        href="#">Activities</a>
+                    <a class="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
+                        href="#">Accommodations</a>
+                    <a class="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
+                        href="#">Facilities</a>
+                    <a class="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
+                        href="#">Contact Us</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer hover:bg-blue-600 hover:text-white items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[var(--primary-color)] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-all">
+                        <span class="truncate text-[var(--secondary-color)] hover:text-white ">Book Now</span>
+                    </a>
+
+                    <button class="lg:hidden flex items-center justify-center">
+                        <span class="material-symbols-outlined text-3xl text-slate-700"> menu </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16">
+
+
+        <!-- Photo Gallery -->
+        <section class="py-16 sm:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight">Photo Gallery</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">A glimpse of unforgettable moments and scenic
+                    beauty at Bhotekoshi Beach.</p>
+            </div>
+            <div class="grid grid-cols-2 grid-rows-4 sm:grid-cols-4 sm:grid-rows-2 gap-4">
+                <!-- Large main image -->
+                <div class="col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 relative">
+                    <img class="w-full h-full object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr1B6fd2C6AVeVKnMaTSX3oez7QYExFq80TCbSCnzQbEGmmharKhTUgJljKB63BOMgp4eQALCwmvHg_yZ5cRlNCScAgggpB31GZyVf7biGxlbZrygL-O0RizimyRu2oxLOFn66-0jEwrCvgx2closNvEmu4M_PI493D-nph75AozyWe0JGDXN3aUIa_wp0WpEUxXP_dUsPo2h_l7iswgbbYWjlm7SRU5dHaLK9-Y0dsWEUq0pRs9vsMm0z2R2wdfQMK5BtX9gw9Bh7"
+                        alt="Gallery 1">
+                </div>
+                <!-- Top right images -->
+                <div class="col-span-1 row-span-1">
+                    <img class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmj-ipcm6jHKXyAqPm4qsWAG5hSq42_VDes3q4Ki0yT1nc-b26nNb_TVJzIENTJGDYkLh4ILVl9CWdZbEzLzKGSF1Iko5zv29rKKaL5NnPEEPN1lU5IB_Z5EkV12PI1C3wXoMV4NpONVKRh1_ezvquKexp5yRG8QXLJWsL6Nj3qVVll7bqHP8SED4GnejBYYg_npViuul0dA-Z55vkxKy0sFtEm-Vbm536h2zf0Q7Zq2SHNOlyVZOP6GFumM0neXvqDcMbt0bULFCv"
+                        alt="Gallery 2">
+                </div>
+                <div class="col-span-1 row-span-1">
+                    <img class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDPnh2FzR8PQdgJqhjgKB8DiQm1pyOOq5ZrTqBGQTOjf_N43snY_dz6Jzeo_rRxmr5agz8_MvSG5WsXMt-JkYmTX_EYdr1-YCW9nZYsZxoBfjBqr7cH8TP73KQv8-qxU34ajkF8oarhUyMkJlQhTX1XlqDRIdjsCCac_Xs8Pqi8aLs3yzLBRi-shXPK7tZz_bYKftaN46bOynFSs88-gbIo7V654DONUDMjK8McPnZJhls4lmesXxXCTkyvIcN5H3rhl-TN-x2CR_M"
+                        alt="Gallery 3">
+                </div>
+                <!-- Bottom right images -->
+                <div class="col-span-1 row-span-1">
+                    <img class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBGHq3_AKaO-kCLIdfrgGCJnyDztE9SoMFHEigVHI2wNiJmQAM6QTFv52m9CTUQJEsVyIyTyjoE-38JGKrAg5nqjAJQeYdYZfuQ9ya6d97ehN2_ImeBtzge6eBBFD1Ozc1y2bWXMmroVo5T3mAqFBRpAsbYriLxdXxyRYAtOVn42EE1x9JF_A46at0zqyx60wIVmRuB13okekJttkfh5CwbEOGaCR2yKEO1537oRh1Er-ILXQraN3pSFUwSLo4p1SIhwbvt7MdnIVL"
+                        alt="Gallery 4">
+                </div>
+                <div class="col-span-1 row-span-1">
+                    <img class="w-full h-full object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC78dDX-8ISHpcftoX4sZTQPfGVeCnbuHIszm7c6OR0YRztp2wa73GMPUIuZI_PrkXXSUH1p30KsEm16s3gdOuAHd4M1mSbm7xeGCwj9rR8iF1-dDfyOzHiV3ZGgWUw3cjSVFTeK2WBGaSFgC_lni5eR564OSxzj81IZxx5RFHfQPBTPYRzt9pnMfFGn5fZDS_0KRJN8bbv3oz9KoaZsy5PvtHqv-wToCNq-KQH6vR3Ei-2qJcUA6I0PaMUW6kBI9y-yMTITwaOa5mi"
+                        alt="Gallery 5">
+                </div>
+            </div>
+        </section>
+
+        </div>
+
+
+
+
+    </main>
+
+    <footer class="bg-[var(--water-color)] text-slate-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-wrap gap-8 justify-between items-start">
+                <div class="flex-1 min-w-[220px] max-w-[340px]">
+                    <a href="index.html">
+                        <img src="assets/logo_2.png" alt="Bhotekoshi Beach" class="h-20 mb-4">
+                    </a>
+                    <p class="text-sm mb-4">Your adventure in Nepal begins here. Experience comfort and thrills in one
+                        place.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a class="text-slate-300 hover:text-white transition-colors" href="#">
+                            <i class="fab fa-facebook-f h-6 w-6"></i>
+                        </a>
+                        <a class="text-slate-300 hover:text-white transition-colors" href="#">
+                            <i class="fab fa-instagram h-6 w-6"></i>
+                        </a>
+                        <a class="text-slate-300 hover:text-white transition-colors" href="#">
+                            <i class="fab fa-tiktok h-6 w-6"></i>
+                        </a>
+                        <a class="text-slate-300 hover:text-white transition-colors" href="#">
+                            <i class="fab fa-youtube h-6 w-6"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="flex-1 min-w-[160px] max-w-[220px]">
+                    <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a class="hover:text-white transition-colors" href="#">Virtual Tour</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Activities</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Accommodations</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Booking</a></li>
+                    </ul>
+                </div>
+                <div class="flex-1 min-w-[160px] max-w-[220px]">
+                    <h4 class="font-semibold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="flex-1 min-w-[160px] max-w-[220px]">
+                    <h4 class="font-semibold text-white mb-4">OTA Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a class="hover:text-white transition-colors" href="#">booking.com</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">expedia</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">agoda</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">makemytrip</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">ctrip</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-slate-300 pt-8 text-center text-sm text-slate-300">
+                <p>© 2025 Bhotekoshi Beach. All rights reserved by <a href="https://longtail.info/"
+                        class="hover:text-white">Longtail e-media</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Up Button -->
+    <button id="scrollUpBtn"
+        class="fixed bottom-24 right-6 z-50 bg-[var(--primary-color)] text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition-all hidden">
+        <span class="material-symbols-outlined text-2xl">arrow_upward</span>
+    </button>
+    <script>
+        // Show/hide scroll up button
+        window.addEventListener('scroll', function () {
+            const btn = document.getElementById('scrollUpBtn');
+            if (window.scrollY > 300) {
+                btn.classList.remove('hidden');
+            } else {
+                btn.classList.add('hidden');
+            }
+        });
+        // Scroll to top on click
+        document.getElementById('scrollUpBtn').onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+
+    <!-- Virtual Tour Floating Button -->
+    <a href="#"
+        class="fixed bottom-6 left-6 z-50 bg-white border border-[var(--primary-color)] text-[var(--secondary-color)] rounded-full px-5 py-3 shadow-lg flex items-center gap-2 hover:bg-[var(--primary-color)] hover:text-white transition-all">
+        <span class="material-symbols-outlined text-xl">travel_explore</span>
+        <span class="font-bold text-sm">Virtual Tour</span>
+    </a>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/9779800000000" target="_blank" rel="noopener"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 text-white rounded-full px-4 py-6 shadow-lg flex items-center justify-center hover:bg-green-600 transition-all">
+        <i class="fab fa-whatsapp fa-lg"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Remove Owl Carousel, add Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Swiper('.accommodations-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                loop: true,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.accommodations-swiper .swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.accommodations-swiper .swiper-button-next',
+                    prevEl: '.accommodations-swiper .swiper-button-prev',
+                },
+                loopedSlides: 4, // Set to number of slides for smooth loop
+                breakpoints: {
+                    640: { slidesPerView: 1, centeredSlides: false },
+                    768: { slidesPerView: 2, centeredSlides: true },
+                    1024: { slidesPerView: 3, centeredSlides: true }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Swiper('.hero-swiper', {
+                slidesPerView: 1,
+                loop: true,
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                effect: 'slide',
+            });
+        });
+    </script>
+</body>
+
+</html>
