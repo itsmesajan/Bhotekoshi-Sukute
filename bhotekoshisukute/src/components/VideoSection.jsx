@@ -3,7 +3,7 @@ import videoSource from '../assets/rafting.mp4';
 
 const VideoSection = () => {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="">
             <div className="flex justify-center">
                 <div className="w-full overflow-hidden shadow-lg">
                     <video className="w-full h-auto" autoPlay muted loop playsInline controls>

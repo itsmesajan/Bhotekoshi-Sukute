@@ -1,50 +1,101 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+
+const socialLinks = [
+    { icon: 'fa-facebook-f', href: '#' },
+    { icon: 'fa-instagram', href: '#' },
+    { icon: 'fa-tiktok', href: '#' },
+    { icon: 'fa-youtube', href: '#' },
+];
+
+const quickLinks = [
+    { label: 'Virtual Tour', href: '#' },
+    { label: 'Activities', href: '#' },
+    { label: 'Accommodations', href: '#' },
+    { label: 'Booking', href: '#' },
+];
+
+const legalLinks = [
+    { label: 'Privacy Policy', href: '#' },
+    { label: 'Terms of Service', href: '#' },
+    { label: 'Contact Us', href: '#' },
+];
+
+const otaLinks = [
+    { label: 'booking.com', href: '#' },
+    { label: 'expedia', href: '#' },
+    { label: 'agoda', href: '#' },
+    { label: 'makemytrip', href: '#' },
+    { label: 'ctrip', href: '#' },
+];
 
 const Footer = () => {
     return (
-        <footer className="bg-slate-800 text-slate-300">
+        <footer className="bg-[var(--water-color)] text-slate-200">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="flex flex-wrap gap-8 justify-between items-start">
                     <div className="flex-1 min-w-[220px] max-w-[340px]">
-                        <h3 className="text-lg font-bold text-white mb-2">Sukute Resort</h3>
-                        <p className="text-sm">Your adventure in Nepal begins here. Experience comfort and thrills in one place.</p>
+                        <a href="index.html">
+                            <img src="assets/logo_2.png" alt="Bhotekoshi Beach" className="h-20 mb-4" />
+                        </a>
+                        <p className="text-sm mb-4">
+                            Your adventure in Nepal begins here. Experience comfort and thrills in one place.
+                        </p>
+                        <div className="flex space-x-4">
+                            {socialLinks.map((link, index) => (
+                                <a key={index} className="text-slate-200 hover:text-white transition-colors" href={link.href}>
+                                    <i className={`fab ${link.icon} h-6 w-6`}></i>
+                                </a>
+                            ))}
+                        </div>
                     </div>
+
                     <div className="flex-1 min-w-[160px] max-w-[220px]">
                         <h4 className="font-semibold text-white mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><Link className="hover:text-white transition-colors" to="#">Virtual Tour</Link></li>
-                            <li><Link className="hover:text-white transition-colors" to="#">Activities</Link></li>
-                            <li><Link className="hover:text-white transition-colors" to="#">Accommodations</Link></li>
-                            <li><Link className="hover:text-white transition-colors" to="#">Booking</Link></li>
+                            {quickLinks.map((link, index) => (
+                                <li key={index}>
+                                    <a className="hover:text-white transition-colors" href={link.href}>
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
+
                     <div className="flex-1 min-w-[160px] max-w-[220px]">
                         <h4 className="font-semibold text-white mb-4">Legal</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><Link className="hover:text-white transition-colors" to="#">Privacy Policy</Link></li>
-                            <li><Link className="hover:text-white transition-colors" to="#">Terms of Service</Link></li>
-                            <li><Link className="hover:text-white transition-colors" to="#">Contact Us</Link></li>
+                            {legalLinks.map((link, index) => (
+                                <li key={index}>
+                                    <a className="hover:text-white transition-colors" href={link.href}>
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
+
                     <div className="flex-1 min-w-[160px] max-w-[220px]">
-                        <h4 className="font-semibold text-white mb-4">Follow Us</h4>
-                        <div className="flex space-x-4">
-                            <a className="text-slate-400 hover:text-white transition-colors" href="#" aria-label="Facebook">
-                                <FaFacebookF size={24} />
-                            </a>
-                            <a className="text-slate-400 hover:text-white transition-colors" href="#" aria-label="Twitter">
-                                <FaTwitter size={24} />
-                            </a>
-                            <a className="text-slate-400 hover:text-white transition-colors" href="#" aria-label="Instagram">
-                                <FaInstagram size={24} />
-                            </a>
-                        </div>
+                        <h4 className="font-semibold text-white mb-4">OTA Links</h4>
+                        <ul className="space-y-2 text-sm">
+                            {otaLinks.map((link, index) => (
+                                <li key={index}>
+                                    <a className="hover:text-white transition-colors" href={link.href}>
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
-                <div className="mt-8 border-t border-slate-700 pt-8 text-center text-sm text-slate-400">
-                    <p>© 2024 Sukute Resort. All rights reserved.</p>
+
+                <div className="mt-8 border-t border-slate-300 pt-8 text-center text-sm text-slate-300">
+                    <p>
+                        © 2025 Bhotekoshi Beach. All rights reserved by{' '}
+                        <a href="https://longtail.info/" className="hover:text-white">
+                            Longtail e-media
+                        </a>
+                    </p>
                 </div>
             </div>
         </footer>

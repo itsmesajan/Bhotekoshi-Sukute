@@ -1,97 +1,101 @@
-// src/components/Accommodations.jsx
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+
+// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Autoplay, Pagination } from 'swiper/modules';
 
-const accommodationsData = [
+const accommodations = [
     {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmj-ipcm6jHKXyAqPm4qsWAG5hSq42_VDes3q4Ki0yT1nc-b26nNb_TVJzIENTJGDYkLh4ILVl9CWdZbEzLzKGSF1Iko5zv29rKKaL5NnPEEPN1lU5IB_Z5EkV12PI1C3wXoMV4NpONVKRh1_ezvquKexp5yRG8QXLJWsL6Nj3qVVll7bqHP8SED4GnejBYYg_npViuul0dA-Z55vkxKy0sFtEm-Vbm536h2zf0Q7Zq2SHNOlyVZOP6GFumM0neXvqDcMbt0bULFCv',
-    alt: 'Family Cottage',
-    title: 'Family Cottage',
-    description: 'Ideal for families, featuring multiple beds and a private balcony.',
-    price: 'NPR 8,500/night',
-  },
-  {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAxVeqo0yMZbS-hKzpggxoZGsl15qdmdf-VADySYHv4VrZrQabBXY5A3z-OTuJ0eQ0QsYMSWapwhr57oWjcKAdmL9spW8b0BxhZlGKQjj5mkDi3hhpr39Hyt1PrkXMLhdzCSc-AujvoST4rXtsAJU5XjhSxlh1YWY2eJDJwJVgYX68UeIN-DdK9THyOzcyZEL94Sj-lkauzweQufOM2LbBIphFH3C4JPGAJP3MaibmE1V116zFkww8-NJS-o420yTnwMYmQyrmaazMK',
-    alt: 'Deluxe Room',
-    title: 'Deluxe Room',
-    description: 'Spacious room with river view, air conditioning, and modern amenities.',
-    price: 'NPR 6,000/night',
-  },
-  {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmj-ipcm6jHKXyAqPm4qsWAG5hSq42_VDes3q4Ki0yT1nc-b26nNb_TVJzIENTJGDYkLh4ILVl9CWdZbEzLzKGSF1Iko5zv29rKKaL5NnPEEPN1lU5IB_Z5EkV12PI1C3wXoMV4NpONVKRh1_ezvquKexp5yRG8QXLJWsL6Nj3qVVll7bqHP8SED4GnejBYYg_npViuul0dA-Z55vkxKy0sFtEm-Vbm536h2zf0Q7Zq2SHNOlyVZOP6GFumM0neXvqDcMbt0bULFCv',
-    alt: 'Family Cottage',
-    title: 'Family Cottage',
-    description: 'Ideal for families, featuring multiple beds and a private balcony.',
-    price: 'NPR 8,500/night',
-  },
- 
-  {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDDPnh2FzR8PQdgJqhjgKB8DiQm1pyOOq5ZrTqBGQTOjf_N43snY_dz6Jzeo_rRxmr5agz8_MvSG5WsXMt-JkYmTX_EYdr1-YCW9nZYsZxoBfjBqr7cH8TP73KQv8-qxU34ajkF8oarhUyMkJlQhTX1XlqDRIdjsCCac_Xs8Pqi8aLs3yzLBRi-shXPK7tZz_bYKftaN46bOynFSs88-gbIo7V654DONUDMjK8McPnZJhls4lmesXxXCTkyvIcN5H3rhl-TN-x2CR_M',
-    alt: 'Tent Stay',
-    title: 'Tent Stay',
-    description: 'Experience nature with our comfortable tent accommodations by the riverside.',
-    price: 'NPR 4,000/night',
-  },
-   {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmj-ipcm6jHKXyAqPm4qsWAG5hSq42_VDes3q4Ki0yT1nc-b26nNb_TVJzIENTJGDYkLh4ILVl9CWdZbEzLzKGSF1Iko5zv29rKKaL5NnPEEPN1lU5IB_Z5EkV12PI1C3wXoMV4NpONVKRh1_ezvquKexp5yRG8QXLJWsL6Nj3qVVll7bqHP8SED4GnejBYYg_npViuul0dA-Z55vkxKy0sFtEm-Vbm536h2zf0Q7Zq2SHNOlyVZOP6GFumM0neXvqDcMbt0bULFCv',
-    alt: 'Family Cottage',
-    title: 'Family Cottage',
-    description: 'Ideal for families, featuring multiple beds and a private balcony.',
-    price: 'NPR 8,500/night',
-  },
-  {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDDPnh2FzR8PQdgJqhjgKB8DiQm1pyOOq5ZrTqBGQTOjf_N43snY_dz6Jzeo_rRxmr5agz8_MvSG5WsXMt-JkYmTX_EYdr1-YCW9nZYsZxoBfjBqr7cH8TP73KQv8-qxU34ajkF8oarhUyMkJlQhTX1XlqDRIdjsCCac_Xs8Pqi8aLs3yzLBRi-shXPK7tZz_bYKftaN46bOynFSs88-gbIo7V654DONUDMjK8McPnZJhls4lmesXxXCTkyvIcN5H3rhl-TN-x2CR_M',
-    alt: 'Tent Stay',
-    title: 'Tent Stay',
-    description: 'Experience nature with our comfortable tent accommodations by the riverside.',
-    price: 'NPR 4,000/night',
-  },
-  // Add other accommodation items
+        title: 'Deluxe Room',
+        description: 'Spacious room with river view, air conditioning, and modern amenities.',
+        price: 'NPR 6,000/night',
+        imageUrl: 'https://images.unsplash.com/photo-1737527852155-9720a5e2254f?q=80&w=1169&auto=format&fit=crop',
+    },
+    {
+        title: 'Deluxe Room',
+        description: 'Spacious room with river view, air conditioning, and modern amenities.',
+        price: 'NPR 6,000/night',
+        imageUrl: 'https://images.unsplash.com/photo-1609602126247-4ab7188b4aa1?q=80&w=1170&auto=format&fit=crop',
+    },
+    {
+        title: 'Family Cottage',
+        description: 'Ideal for families, featuring multiple beds and a private balcony.',
+        price: 'NPR 8,500/night',
+        imageUrl: 'https://images.unsplash.com/photo-1689729771136-46e2ee831b83?q=80&w=1170&auto=format&fit=crop',
+    },
+    {
+        title: 'Tent Stay',
+        description: 'Experience nature with our comfortable tent accommodations by the riverside.',
+        price: 'NPR 4,000/night',
+        imageUrl: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrlDoOAJHQX0KAyF4t8z5KjHC-VmA3Y0WFW-PG9dmx9kNdZsqVZrW6VbV8n0AnvyrDYofpKHZ3wxt9nLXysAVahTaSqdVGuz2Cc6Vof4VsP5bKcogt8kHpBtJZbkSH5HLBgsXySuQ=s1360-w1360-h1020-rw',
+    },
+    {
+        title: 'Family Cottage',
+        description: 'Ideal for families, featuring multiple beds and a private balcony.',
+        price: 'NPR 8,500/night',
+        imageUrl: 'https://images.unsplash.com/photo-1533633310920-cc9bf1e7f9b0?q=80&w=1170&auto=format&fit=crop',
+    },
 ];
 
-const Accommodations = () => {
+const AccommodationsSection = () => {
+    
     return (
-        <section className="py-16 sm:py-24">
-            <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight">Accommodations</h2>
-                <p className="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
-                    Choose from our comfortable rooms designed for relaxation and convenience.
-                </p>
-            </div>
-            <Swiper
-                className="accommodations-swiper pb-16 px-4 sm:px-6 lg:px-8"
-                modules={[Autoplay, Pagination]}
-                slidesPerView={1}
-                spaceBetween={24}
-                loop={true}
-                centeredSlides={true}
-                autoplay={{ delay: 5000, disableOnInteraction: false }}
-                pagination={{ clickable: true }}
-                breakpoints={{
-                    640: { slidesPerView: 1, centeredSlides: false },
-                    768: { slidesPerView: 2, centeredSlides: true },
-                    1024: { slidesPerView: 3, centeredSlides: true },
-                }}
-            >
-                {accommodationsData.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <div className="flex flex-col items-center bg-white rounded-2xl shadow-md p-8 transition-transform duration-300">
-                            <img src={item.image} alt={item.alt} className="rounded-xl mb-6 w-full h-64 object-cover shadow-lg" />
-                            <h3 className="text-xl font-bold text-slate-800 mb-2">{item.title}</h3>
-                            <p className="text-slate-600 text-sm mb-4 text-center">{item.description}</p>
-                            <div className="text-lg font-extrabold text-[var(--primary-color)] mb-2">{item.price}</div>
+        <>
+            {/* Decorative images */}
+            <img src="assets/tree_2.png" alt="decorative tree" className="absolute left-0 w-32 sm:w-64 opacity-10 pointer-events-none select-none" />
+            <img src="assets/tree.png" alt="decorative tree" className="absolute right-0 w-32 sm:w-64 opacity-10 pointer-events-none select-none" />
+
+            <section className="py-16 sm:py-24 relative">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight">Accommodations</h2>
+                    <p className="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+                        Choose from our comfortable rooms designed for relaxation and convenience.
+                    </p>
+                </div>
+                <Swiper
+                    className="accommodations-swiper !pb-12"
+                    modules={[Pagination]}
+                    spaceBetween={30}
+                    slidesPerView={1.2}
+                    centeredSlides={true}
+                    loop={true}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 30,
+                        },
+                    }}
+                    pagination={{ clickable: true }}
+                >
+                    {accommodations.map((room, index) => (
+                        <SwiperSlide key={index} className="flex flex-col items-center bg-white rounded-2xl shadow-md p-8 transition-transform duration-300">
+                            <img src={room.imageUrl} alt={room.title} className="rounded-xl mb-6 w-full h-64 object-cover shadow-lg" />
+                            <h3 className="text-xl font-bold text-slate-800 mb-2">{room.title}</h3>
+                            <p className="text-slate-600 text-sm mb-4 text-center">{room.description}</p>
+                            <div className="text-lg font-extrabold text-[var(--secondary-color)] mb-2">{room.price}</div>
                             <button className="bg-[var(--primary-color)] hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition-all">
                                 Book Now
                             </button>
-                        </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </section>
+                        </SwiperSlide>
+                    ))}
+                    <div className="swiper-pagination"></div>
+                </Swiper>
+                <div className="text-center mt-8">
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-full shadow hover:bg-green-600 transition-all">
+                        <i className="fa-regular fa-paper-plane"></i>
+                        Explore More
+                    </a>
+                </div>
+            </section>
+        </>
     );
 };
-export default Accommodations;
+
+export default AccommodationsSection;
