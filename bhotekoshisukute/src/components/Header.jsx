@@ -24,7 +24,7 @@ const Header = () => {
                     </div>
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center gap-8">
-                        <a className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium" href="#">Resort</a>
+                        <a className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium" href="about">Resort</a>
                         <div className="relative">
                             <a
                                 onClick={handleServicesDropdownToggle}
@@ -69,7 +69,7 @@ const Header = () => {
                         <button className="self-end mb-4" onClick={handleMobileNavToggle}>
                             <span className="material-symbols-outlined text-3xl text-slate-700">close</span>
                         </button>
-                        <a href="#" className="text-slate-700 font-medium py-2 border-b">Resort</a>
+                        <a href="about" className="text-slate-700 font-medium py-2 border-b">Resort</a>
                         <div>
                             <button
                                 className="text-slate-700 font-medium py-2 w-full text-left flex items-center gap-1"

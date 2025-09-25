@@ -22,7 +22,7 @@ import PlacesToExploreSection from './PlacesToExploreSection';
 const HomePage = () => {
   return (
       <>
-    <Header />
+    
     <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <HeroSection />
       <AboutSection />
@@ -38,10 +38,6 @@ const HomePage = () => {
       <div className=" border-t border-slate-300 pt-8"></div>
       <InstagramWall />
     </main>
-      
-    <MobileFooterMenu />
-    <Footer />
-    <FloatingButtons />
   </>
   )
 }
