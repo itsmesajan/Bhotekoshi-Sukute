@@ -10,6 +10,7 @@ import MobileFooterMenu from './components/MobileFooterMenu';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import Header from './components/Header';
+import RoomList from './components/Rooms/RoomList';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUsPage />} />
+          <Route path="/roomList" element={<RoomList />} />
         </Routes>
       <MobileFooterMenu />
       <Footer />

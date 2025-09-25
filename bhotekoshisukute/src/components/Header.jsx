@@ -41,7 +41,7 @@ const Header = () => {
                                 role="menu"
                                 aria-labelledby="services-dropdown-toggle"
                             >
-                                <li><a href="#" role="menuitem" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Rooms</a></li>
+                                <li><a href="roomList" role="menuitem" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Rooms</a></li>
                                 <li><a href="#" role="menuitem" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Restaurant</a></li>
                                 <li><a href="#" role="menuitem" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Hall</a></li>
                             </ul>
@@ -79,7 +79,7 @@ const Header = () => {
                                 <span className={`material-symbols-outlined text-xs transform transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`}>expand_more</span>
                             </button>
                             <ul id="mobileRoomsMenu" className={`pl-4 mt-1 ${isServicesDropdownOpen ? '' : 'hidden'}`}>
-                                <li><a href="#" className="block py-1 text-slate-600">Rooms</a></li>
+                                <li><a href="roomList" className="block py-1 text-slate-600">Rooms</a></li>
                                 <li><a href="#" className="block py-1 text-slate-600">Restaurant</a></li>
                                 <li><a href="#" className="block py-1 text-slate-600">Hall</a></li>
                             </ul>
