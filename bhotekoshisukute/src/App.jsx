@@ -17,6 +17,7 @@ import Hall from './components/Hall/Hall';
 import Activities from './components/pages/Activities';
 import Packages from './components/pages/Packages';
 import Facilities from './components/pages/Facilities';
+import Gallery from './components/pages/Gallery';
 
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
            <Route path="/activities" element={<Activities />} />
            <Route path="/packages" element={<Packages />} />
            <Route path="/facilities" element={<Facilities />} />
+           <Route path="/gallery" element={<Gallery />} />
+           <Route path="/contact" element={<ContactUsPage />} />
 
         </Routes>
       <MobileFooterMenu />

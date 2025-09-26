@@ -1,37 +1,186 @@
-import React from 'react';
+
+import React, { useState } from "react";
+import { images } from "../../constants/data";
+
+const categories = [
+  { label: "All", value: "all" },
+  { label: "Lobby", value: "lobby" },
+  { label: "Room", value: "room" },
+  { label: "Swimming Pool", value: "swimming" },
+  { label: "Hall", value: "hall" },
+  { label: "Dine", value: "dine" },
+];
 
 const Gallery = () => {
-    // Data for the gallery images
-    const galleryImages = [
-        { src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCr1B6fd2C6AVeVKnMaTSX3oez7QYExFq80TCbSCnzQbEGmmharKhTUgJljKB63BOMgp4eQALCwmvHg_yZ5cRlNCScAgggpB31GZyVf7biGxlbZrygL-O0RizimyRu2oxLOFn66-0jEwrCvgx2closNvEmu4M_PI493D-nph75AozyWe0JGDXN3aUIa_wp0WpEUxXP_dUsPo2h_l7iswgbbYWjlm7SRU5dHaLK9-Y0dsWEUq0pRs9vsMm0z2R2wdfQMK5BtX9gw9Bh7", alt: "Gallery 1", className: "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2" },
-        { src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAmj-ipcm6jHKXyAqPm4qsWAG5hSq42_VDes3q4Ki0yT1nc-b26nNb_TVJzIENTJGDYkLh4ILVl9CWdZbEzLzKGSF1Iko5zv29rKKaL5NnPEEPN1lU5IB_Z5EkV12PI1C3wXoMV4NpONVKRh1_ezvquKexp5yRG8QXLJWsL6Nj3qVVll7bqHP8SED4GnejBYYg_npViuul0dA-Z55vkxKy0sFtEm-Vbm536h2zf0Q7Zq2SHNOlyVZOP6GFumM0neXvqDcMbt0bULFCv", alt: "Gallery 2", className: "col-span-1 row-span-1" },
-        { src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDDPnh2FzR8PQdgJqhjgKB8DiQm1pyOOq5ZrTqBGQTOjf_N43snY_dz6Jzeo_rRxmr5agz8_MvSG5WsXMt-JkYmTX_EYdr1-YCW9nZYsZxoBfjBqr7cH8TP73KQv8-qxU34ajkF8oarhUyMkJlQhTX1XlqDRIdjsCCac_Xs8Pqi8aLs3yzLBRi-shXPK7tZz_bYKftaN46bOynFSs88-gbIo7V654DONUDMjK8McPnZJhls4lmesXxXCTkyvIcN5H3rhl-TN-x2CR_M", alt: "Gallery 3", className: "col-span-1 row-span-1" },
-        { src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDBGHq3_AKaO-kCLIdfrgGCJnyDztE9SoMFHEigVHI2wNiJmQAM6QTFv52m9CTUQJEsVyIyTyjoE-38JGKrAg5nqjAJQeYdYZfuQ9ya6d97ehN2_ImeBtzge6eBBFD1Ozc1y2bWXMmroVo5T3mAqFBRpAsbYriLxdXxyRYAtOVn42EE1x9JF_A46at0zqyx60wIVmRuB13okekJttkfh5CwbEOGaCR2yKEO1537oRh1Er-ILXQraN3pSFUwSLo4p1SIhwbvt7MdnIVL", alt: "Gallery 4", className: "col-span-1 row-span-1" },
-        { src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC78dDX-8ISHpcftoX4sZTQPfGVeCnbuHIszm7c6OR0YRztp2wa73GMPUIuZI_PrkXXSUH1p30KsEm16s3gdOuAHd4M1mSbm7xeGCwj9rR8iF1-dDfyOzHiV3ZGgWUw3cjSVFTeK2WBGaSFgC_lni5eR564OSxzj81IZxx5RFHfQPBTPYRzt9pnMfFGn5fZDS_0KRJN8bbv3oz9KoaZsy5PvtHqv-wToCNq-KQH6vR3Ei-2qJcUA6I0PaMUW6kBI9y-yMTITwaOa5mi", alt: "Gallery 5", className: "col-span-1 row-span-1" },
-    ];
+  const [filter, setFilter] = useState("all");
+  const [lightbox, setLightbox] = useState({ open: false, index: 0 });
 
-    return (
-        <section className="py-16 sm:py-24">
-            <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight">Photo Gallery</h2>
-                <p className="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">A glimpse of unforgettable moments and scenic beauty at Sukute Resort.</p>
-            </div>
-            <div className="grid grid-cols-2 grid-rows-4 sm:grid-cols-4 sm:grid-rows-2 gap-4">
-                {galleryImages.map((image, index) => (
-                    <div
-                        key={index}
-                        className={`${image.className} ${image.className.includes('col-span-2') ? 'relative' : ''}`}
-                    >
-                        <img
-                            className={`w-full h-full object-cover ${image.className.includes('col-span-2') ? 'rounded-2xl shadow-lg' : 'rounded-xl shadow-md'} hover:scale-105 transition-transform duration-300`}
-                            src={image.src}
-                            alt={image.alt}
-                        />
-                    </div>
-                ))}
-            </div>
-        </section>
-    );
+  const filteredImages =
+    filter === "all"
+      ? images
+      : images.filter((img) => img.category === filter);
+
+  const openLightbox = (idx) => setLightbox({ open: true, index: idx });
+  const closeLightbox = () => setLightbox({ open: false, index: 0 });
+  const goto = (dir) => {
+    setLightbox((prev) => {
+      let newIdx = prev.index + dir;
+      if (newIdx < 0) newIdx = filteredImages.length - 1;
+      if (newIdx >= filteredImages.length) newIdx = 0;
+      return { ...prev, index: newIdx };
+    });
+  };
+
+  return (
+    <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">
+          Our Gallery
+        </h2>
+        <p className="mt-6 max-w-3xl mx-auto text-lg text-dark/70 dark:text-light/70 font-light">
+          Explore the beauty and excitement of Sukute Resort through our curated collection of images.
+        </p>
+      </div>
+
+      {/* Filter Buttons */}
+      <div className="flex flex-wrap justify-center gap-4 mb-10">
+        {categories.map((cat) => (
+          <button
+            key={cat.value}
+            className={`px-5 py-2 rounded-full border font-medium transition-all ${filter === cat.value ? "bg-[var(--primary-color)] text-white" : "bg-white text-[var(--secondary-color)] border-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white"}`}
+            onClick={() => setFilter(cat.value)}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="collage">
+        {filteredImages.map((img, i) => (
+          <div
+            key={i}
+            className={`collage-item ${img.className} cursor-pointer`}
+            onClick={() => openLightbox(i)}
+          >
+            <img src={img.src} alt={img.alt} />
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox Modal */}
+      {lightbox.open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+          <button className="absolute top-4 right-4 text-white text-3xl" onClick={closeLightbox}>&times;</button>
+          <button className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl" onClick={() => goto(-1)}>&#8592;</button>
+          <img
+            src={filteredImages[lightbox.index].src}
+            alt={filteredImages[lightbox.index].alt}
+            className="max-h-[80vh] max-w-[90vw] rounded-xl shadow-lg border-4 border-white"
+          />
+          <button className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl" onClick={() => goto(1)}>&#8594;</button>
+        </div>
+      )}
+
+      {/* Collage Styles */}
+      <style jsx>{`
+        .collage {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          grid-auto-rows: 250px;
+          gap: 1rem;
+        }
+        .collage-item {
+          overflow: hidden;
+          border-radius: 0.5rem;
+        }
+        .collage-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+        .collage-item:hover img {
+          transform: scale(1.05);
+        }
+        .item-1 {
+          grid-column: span 4;
+          grid-row: span 2;
+        }
+        .item-2 {
+          grid-column: span 3;
+          grid-row: span 1;
+        }
+        .item-3 {
+          grid-column: span 5;
+          grid-row: span 2;
+        }
+        .item-4 {
+          grid-column: span 3;
+          grid-row: span 1;
+        }
+        .item-5 {
+          grid-column: span 4;
+          grid-row: span 1;
+        }
+        .item-6 {
+          grid-column: span 5;
+          grid-row: span 1;
+        }
+        .item-7 {
+          grid-column: span 3;
+          grid-row: span 2;
+        }
+        .item-8 {
+          grid-column: span 4;
+          grid-row: span 1;
+        }
+        .item-9 {
+          grid-column: span 5;
+          grid-row: span 1;
+        }
+        .item-10 {
+          grid-column: span 4;
+          grid-row: span 1;
+        }
+        .item-11 {
+          grid-column: span 3;
+          grid-row: span 1;
+        }
+        .item-12 {
+          grid-column: span 5;
+          grid-row: span 2;
+        }
+        .item-13 {
+          grid-column: span 4;
+          grid-row: span 1;
+        }
+        .item-14 {
+          grid-column: span 3;
+          grid-row: span 1;
+        }
+        @media (max-width: 1024px) {
+          .collage {
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 200px;
+          }
+          .collage-item {
+            grid-column: span 3 !important;
+            grid-row: span 1 !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .collage {
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 150px;
+          }
+          .collage-item {
+            grid-column: span 4 !important;
+            grid-row: span 1 !important;
+          }
+        }
+      `}</style>
+    </main>
+  );
 };
 
 export default Gallery;

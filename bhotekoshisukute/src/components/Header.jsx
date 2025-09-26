@@ -119,18 +119,18 @@ const Header = () => {
               >
                 Facilities
               </Link>
-              <a
+              <Link
+              to="/gallery"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
-                href="#"
               >
                 Gallery
-              </a>
-              <a
+              </Link>
+              <Link
+              to="/contact"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
-                href="#"
               >
                 Contact Us
-              </a>
+              </Link>
             </nav>
             {/* Book Now Button & Mobile Menu */}
             <div className="flex items-center gap-2">

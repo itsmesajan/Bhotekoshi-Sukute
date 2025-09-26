@@ -254,3 +254,63 @@ export const packages = [
     image: "https://scontent.fktm21-2.fna.fbcdn.net/v/t39.30808-6/481359541_1033914635423733_8066791540872794098_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=7sK3340eANYQ7kNvwGDnpzE&_nc_oc=Adn8Hkbu50pNBSWShsigwGCm5dY2cpb9DSyWiwhyu-8MjMRTM3PT8m8b0xCaj9_ktZWMvF1RMqelXZupI0M2qzAa&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=_PjfQWhLpwe7OQzjaaGp2g&oh=00_AfYM6WUS6QvKqNt40-YYXI7f0D3u6RBA6aZza1ZFV9yD_A&oe=68DC2A7D",
   },
 ];
+
+
+
+export const images = [
+  {
+    src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrMKtbA-4OU1c_CvRNeqopIeUMAdYo59upRWudnneVVtA2-k2q_vWXc_io-mBgu2-qVBBq1A6BHp9jkvQ1cz2_kexXxJTyQ3wQOSA278mpIEWXyIJPo4X-x8SU1UbPPRU38L-I4nA=s1360-w1360-h1020-rw",
+    alt: "Gallery 1",
+    className:"item-1",
+    category: "room"
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBcmTCS-l4rMvidFRLRJP27nG5DA_YQtDuV_4ANeENLH-l6uolZKvt8OUGs2qIfEk1U-vrdZJFGK-zpVc2oypM8p-azqOe89cAAElEnFOsfcosTKUB3DXoAWcBJvsWINnZ1rC5zbFGI5OhIuUykOPb5KCMkuzlnDn3pTkpBMXC8TqeDA1l7Pd5sRHUPr-xLEs7OEaGIAjZh_3KFGRHj6W34__osMyAIFwoHtt2kk-oh5YEPuU2G-8m1tTudzr4vN30HX6phzGisMgbp",
+    alt: "Gallery 2",
+    className:"item-2",
+    category: "lobby"
+  },
+  {
+    src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr9BCJVxReJGw-XGxGHHt3s_2pjmbDemdP0tX-IOeiznv_2wh8JLEbW8o6ZwyiaGQ_bhci8vkCGwTrjXW-rwKn-qW7oQlIyfmuU5RzB4DU0iOvwq-7gA-RplNVQbG4CpVils__x=s1360-w1360-h1020-rw",
+    alt: "Gallery 3",
+    className:"item-3",
+    category: "room"
+  },
+  {
+    src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npqml8UhqgwnkoKXuspNDeO4vyu85q9meKVqihq9tZQyCvEDJebXdO-gh0JJomRGJ5PmTOsV1gSR2S5520s3YOKGtq9cmu79jDrbUsUvKMhe7mReqJn3lM8pz7p1EUVMu3X5EeH=s1360-w1360-h1020-rw",
+    alt: "Gallery 4",
+    className:"item-4",
+    category: "swimming"
+  },
+  {
+    src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqgOeueqqwZ_BZbtOANIN0q-wg54hO9aHxFj8ZPyFglvLhnSj1l398RwYlHOE7gaWQq_Ms0MFrZLAwqes2vdq_4VsdNmTodGda9TfNsa8nd4pk4L8bKNzOPLgVl8XlfetQ2FNhAGw=s1360-w1360-h1020-rw",
+    alt: "Gallery 5",
+    className:"item-5",
+    category: "hall"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1689729771136-46e2ee831b83?q=80&w=1170&auto=format&fit=crop",
+    alt: "Gallery 6",
+    className:"item-6",
+    category: "room"
+  },
+  {
+    src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr4CwrV43_nGYpcwQra89ZDsBYYkbQsQIRJPU_Tclj9QHOWdKyckPQZAgUW1MuKIt9_Dw9E3r0EpthTZpHxrXAUNRSMkeE71MBBLLgl-VJQ4ve-UUh2Dpp800KX1GKw7W96Dwo=s1360-w1360-h1020-rw",
+    alt: "Gallery 7",
+    className:"item-7",
+    category: "dine"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1533633310920-cc9bf1e7f9b0?q=80&w=1170&auto=format&fit=crop",
+    alt: "Gallery 8",
+    className:"item-8",
+    category: "room"
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBcmTCS-l4rMvidFRLRJP27nG5DA_YQtDuV_4ANeENLH-l6uolZKvt8OUGs2qIfEk1U-vrdZJFGK-zpVc2oypM8p-azqOe89cAAElEnFOsfcosTKUB3DXoAWcBJvsWINnZ1rC5zbFGI5OhIuUykOPb5KCMkuzlnDn3pTkpBMXC8TqeDA1l7Pd5sRHUPr-xLEs7OEaGIAjZh_3KFGRHj6W34__osMyAIFwoHtt2kk-oh5YEPuU2G-8m1tTudzr4vN30HX6phzGisMgbp",
+    alt: "Gallery 9",
+    className:"item-9",
+    category: "room"
+  },
+];
+
