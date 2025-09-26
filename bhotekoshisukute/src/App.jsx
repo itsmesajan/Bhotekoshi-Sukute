@@ -14,7 +14,9 @@ import RoomList from './components/Rooms/RoomList';
 import RoomDetail from './components/Rooms/RoomDetail';
 import Restaurant from './components/Restaurant/Restaurant';
 import Hall from './components/Hall/Hall';
-import Activities from './components/Activities';
+import Activities from './components/pages/Activities';
+import Packages from './components/pages/Packages';
+import Facilities from './components/pages/Facilities';
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
            <Route path="/restaurant" element={<Restaurant />} />
            <Route path="/hall" element={<Hall />} />
            <Route path="/activities" element={<Activities />} />
+           <Route path="/packages" element={<Packages />} />
+           <Route path="/facilities" element={<Facilities />} />
 
         </Routes>
       <MobileFooterMenu />

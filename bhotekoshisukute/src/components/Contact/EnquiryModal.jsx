@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 
-const EnquiryModal = () => {
+const EnquiryModal = ({ type = "hall" }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -29,81 +29,57 @@ const EnquiryModal = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium">Name*</label>
-                <input
-                  type="text"
-                  className="mt-1 w-full rounded border px-3 py-2"
-                  required
-                />
+                <input type="text" className="mt-1 w-full rounded border px-3 py-2" required />
               </div>
               <div>
                 <label className="block text-sm font-medium">Email*</label>
-                <input
-                  type="email"
-                  className="mt-1 w-full rounded border px-3 py-2"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">Country*</label>
-                <input
-                  type="text"
-                  className="mt-1 w-full rounded border px-3 py-2"
-                  required
-                />
+                <input type="email" className="mt-1 w-full rounded border px-3 py-2" required />
               </div>
               <div>
                 <label className="block text-sm font-medium">Phone*</label>
-                <input
-                  type="tel"
-                  className="mt-1 w-full rounded border px-3 py-2"
-                  required
-                />
+                <input type="tel" className="mt-1 w-full rounded border px-3 py-2" required />
               </div>
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium">Address*</label>
-                <input
-                  type="text"
-                  className="mt-1 w-full rounded border px-3 py-2"
-                  required
-                />
+                <input type="text" className="mt-1 w-full rounded border px-3 py-2" required />
               </div>
             </div>
 
-            {/* Event Information */}
-            <h3 className="font-semibold mt-4">Event Information</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Conditional Fields */}
+            {type === "hall" && (
+              <>
+                <h3 className="font-semibold mt-4">Event Information</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium">Nature of Event*</label>
+                    <input type="text" className="mt-1 w-full rounded border px-3 py-2" required />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium">Event Date*</label>
+                    <input type="date" className="mt-1 w-full rounded border px-3 py-2" required />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium">No. of Pax*</label>
+                    <input type="number" className="mt-1 w-full rounded border px-3 py-2" required />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium">Special Request</label>
+                    <textarea className="mt-1 w-full rounded border px-3 py-2" rows={3}></textarea>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {type === "package" && (
               <div>
-                <label className="block text-sm font-medium">Nature of Event*</label>
-                <input
-                  type="text"
-                  className="mt-1 w-full rounded border px-3 py-2"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">Event Date*</label>
-                <input
-                  type="date"
-                  className="mt-1 w-full rounded border px-3 py-2"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">No. of Pax*</label>
-                <input
-                  type="number"
-                  className="mt-1 w-full rounded border px-3 py-2"
-                  required
-                />
-              </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium">Special Request</label>
+                <label className="block text-sm font-medium">Specific Requirement*</label>
                 <textarea
                   className="mt-1 w-full rounded border px-3 py-2"
                   rows={3}
-                />
+                  required
+                ></textarea>
               </div>
-            </div>
+            )}
 
             {/* Buttons */}
             <div className="mt-6 flex justify-end gap-4">

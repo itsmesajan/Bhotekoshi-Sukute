@@ -106,18 +106,19 @@ const Header = () => {
               >
                 Activities
               </Link>
-              <a
+              <Link
+              to="/packages"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
-                href="#"
+                
               >
                 Package & Offers
-              </a>
-              <a
+              </Link>
+              <Link
+              to="/facilities"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
-                href="#"
               >
                 Facilities
-              </a>
+              </Link>
               <a
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
                 href="#"

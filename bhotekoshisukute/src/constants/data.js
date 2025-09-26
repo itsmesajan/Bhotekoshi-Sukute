@@ -225,3 +225,32 @@ export const activities = [
     ],
   },
 ];
+
+
+export const packages = [
+  {
+    id: 1,
+    title: "Festive Package",
+    description:
+      "Embrace the festive spirit with our all-inclusive package, perfect for creating lasting memories with family and friends.",
+    price: 3500,
+    image:
+      "https://scontent.fktm21-1.fna.fbcdn.net/v/t39.30808-6/550514192_1187137956768066_8721484647119015190_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=9svbnS1bQbAQ7kNvwFFhw_5&_nc_oc=AdkegaKkhE7ipafXA7xTnYlLlODLYGVrI9MSP6hoy-8zSX3O7KnExFCwIDx5bz6YPFbrylCyq8g8TDtqZc2007ue&_nc_zt=23&_nc_ht=scontent.fktm21-1.fna&_nc_gid=rBsoRTGVBATDtcaiQYbKlA&oh=00_AfYMxNMjs4uxyKfFf4-olv6bqBcVjUZT4fKWP4q98gIuaA&oe=68DC553F", // Replace with actual Facebook image link
+  },
+  {
+    id: 2,
+    title: "Family Adventure",
+    description:
+      "The perfect family getaway filled with fun activities for all ages, ensuring a memorable vacation for everyone.",
+    price: 3200,
+    image: "https://scontent.fktm21-1.fna.fbcdn.net/v/t39.30808-6/483527755_1033943795420817_3015723711074660188_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ftEDMeRXpG8Q7kNvwG7LyRp&_nc_oc=Adnnp9MD8MeTLU4yozCJbs6KKT6VwdB5RSIv-PO7UGNKtjgvj3I7LhdPYCy5rl7LCnSR4sNx3jyQZF0qf2eSRlh6&_nc_zt=23&_nc_ht=scontent.fktm21-1.fna&_nc_gid=ViDU81y0ruWqNx5AOZ5jyQ&oh=00_Afb2GENC3eeLvLqAX6T-cn5Ii_d1fZTuylhhpxUa3miVcw&oe=68DC599A",
+  },
+  {
+    id: 3,
+    title: "Corporate Team Builder",
+    description:
+      "Boost team morale and collaboration with our specially curated corporate retreat package, combining work and play.",
+    price: 4000,
+    image: "https://scontent.fktm21-2.fna.fbcdn.net/v/t39.30808-6/481359541_1033914635423733_8066791540872794098_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=7sK3340eANYQ7kNvwGDnpzE&_nc_oc=Adn8Hkbu50pNBSWShsigwGCm5dY2cpb9DSyWiwhyu-8MjMRTM3PT8m8b0xCaj9_ktZWMvF1RMqelXZupI0M2qzAa&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=_PjfQWhLpwe7OQzjaaGp2g&oh=00_AfYM6WUS6QvKqNt40-YYXI7f0D3u6RBA6aZza1ZFV9yD_A&oe=68DC2A7D",
+  },
+];

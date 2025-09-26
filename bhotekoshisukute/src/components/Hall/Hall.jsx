@@ -83,7 +83,7 @@ const Hall = () => {
               </div>
             </div>
             <div className="mt-8">
-              <EnquiryModal />
+              <EnquiryModal type="hall" />
             </div>
           </div>
         </div>
