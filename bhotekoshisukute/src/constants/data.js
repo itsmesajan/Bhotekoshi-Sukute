@@ -1,3 +1,10 @@
+import dine1 from "../assets/dine/1.webp";
+import dine2 from "../assets/dine/2.webp";
+import dine3 from "../assets/dine/3.webp";
+import dine4 from "../assets/dine/4.webp";
+import dine5 from "../assets/dine/5.webp";
+
+
 export const rooms = [
   {
     id: 'deluxe',
@@ -107,6 +114,37 @@ export const rooms = [
       { name: 'Private Balcony', icon: 'balcony' },
       { name: 'Complimentary Snacks', icon: 'local_cafe' },
       { name: 'Mini Fridge', icon: 'kitchen' },
+    ],
+  },
+];
+
+
+
+export const restaurants = [
+  {
+    id: 1,
+    title: "The Riverside Grill",
+    description:
+      "Experience fine dining by the tranquil river. Our menu features a fusion of continental and authentic Nepali cuisine, crafted from the freshest local ingredients. The elegant ambiance makes it perfect for a romantic dinner or a special family gathering.",
+    openTime: "6:00 PM - 10:30 PM",
+    cuisine: "Nepali, Continental",
+    images: [
+      dine5,
+      dine1,
+      dine2,
+    ],
+  },
+  {
+    id: 2,
+    title: "Garden Cafe",
+    description:
+      "Nestled amidst our lush gardens, the Garden Cafe offers a relaxed, alfresco dining experience. Enjoy a selection of light meals, freshly brewed coffee, and pastries throughout the day. It's the ideal spot for a casual lunch or a quiet afternoon tea.",
+    openTime: "9:00 AM - 6:00 PM",
+    cuisine: "Cafe, Light Meals",
+    images: [
+      dine3,
+      dine4,
+      dine2,
     ],
   },
 ];

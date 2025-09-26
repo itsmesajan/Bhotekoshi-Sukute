@@ -12,6 +12,7 @@ import FloatingButtons from './components/FloatingButtons';
 import Header from './components/Header';
 import RoomList from './components/Rooms/RoomList';
 import RoomDetail from './components/Rooms/RoomDetail';
+import Restaurant from './components/Restaurant/Restaurant';
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
           <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/roomList" element={<RoomList />} />
            <Route path="/rooms/:id" element={<RoomDetail />} />
+           <Route path="/restaurant" element={<Restaurant />} />
+
         </Routes>
       <MobileFooterMenu />
       <Footer />
