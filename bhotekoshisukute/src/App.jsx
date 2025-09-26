@@ -13,6 +13,8 @@ import Header from './components/Header';
 import RoomList from './components/Rooms/RoomList';
 import RoomDetail from './components/Rooms/RoomDetail';
 import Restaurant from './components/Restaurant/Restaurant';
+import Hall from './components/Hall/Hall';
+import Activities from './components/Activities';
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
           <Route path="/roomList" element={<RoomList />} />
            <Route path="/rooms/:id" element={<RoomDetail />} />
            <Route path="/restaurant" element={<Restaurant />} />
+           <Route path="/hall" element={<Hall />} />
+           <Route path="/activities" element={<Activities />} />
 
         </Routes>
       <MobileFooterMenu />

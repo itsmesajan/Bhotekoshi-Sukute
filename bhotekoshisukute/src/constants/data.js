@@ -4,6 +4,12 @@ import dine3 from "../assets/dine/3.webp";
 import dine4 from "../assets/dine/4.webp";
 import dine5 from "../assets/dine/5.webp";
 
+import activities1 from "../assets/activities/1.webp";
+import activities2 from "../assets/activities/2.webp";
+import activities3 from "../assets/activities/3.webp";
+import activities4 from "../assets/activities/4.webp";
+import activities5 from "../assets/activities/5.webp";
+
 
 export const rooms = [
   {
@@ -145,6 +151,77 @@ export const restaurants = [
       dine3,
       dine4,
       dine2,
+    ],
+  },
+];
+
+
+export const halls = [
+  {
+    id: "hall",
+    title: "Bhotekoshi Beach Hall",
+    description:
+      "Our Conference Hall is a versatile space designed for productivity and collaboration. With modern amenities and a professional ambiance, it's the perfect setting for your next business meeting, seminar, or workshop. The hall can be configured in various layouts to suit your specific needs, from theater-style for presentations to classroom-style for training sessions.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAlSj-CES0R3WeoTH1dboBGD7UOcC6wLhh3q2zv1vCLOyCoGH4hSk91Dr_Nw294uKvBCTkstAFVmMH_rIoSvgT3AFZbFxC7GlENbZSrHCnGsLGgf0CSuqXA-riXL49uJrOE25H0GmYO2UiQ8kpjp6t4BuXXDGaTPLmXoi_jpthfRcrGqeJWms84VLVp5SQRAE-ola72yBgbcxFlS-w6_TKpVz_ksRvsYEnGeGFUaVTX0UHvSpxAN6zrzONOq7-QjVe6GVXUsjLQ3Pb",
+    link: "/Halls/Bhotekoshi Beach Hall",
+    features: [
+      { name: "Hall Size", value: "1000 sq ft" },
+      { name: "U Shape", value: "50" },
+      { name: "Classroom", value: "80" },
+      { name: "Theater", value: "100" },
+      { name: "Round Table", value: "70" },
+    ],
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuC42fGgy8fF5ofGepL6-nc9iLHXdUzqGrqjYzYfNLgSsPjk7_gkRhA-HlE8X2GgN1GiZtEAP3DF3QXE6LDU_6U2dtN4EOxlnSHo5pz9k3D__dY9fo45lnzgr2ovrDYbwz1Jb8YyNFBOEF__HdcsYpHYp9S4-b_AIIutUBWLyfe0bK-MUsmdEf4LyOw8EbwcAVWU6r_hGG9JJYnpnbWLjj397GhFH8oK3j6CEop39Nnd5joOXR9ScDFiaiFnlG8bz3HT04FuijBGnnZR",
+      "https://images.unsplash.com/photo-1618773959953-b8c7b4f5351a?q=80&w=1470&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1594967389506-8d195663673f?q=80&w=1470&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618773959555-520e5414e0ae?q=80&w=1470&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618773959325-a131804b4c7f?q=80&w=1470&auto=format&fit=crop",
+    ],
+    amenities: [
+      { name: "Projector", icon: "display_external_input" },
+      { name: "PA System with Microphone", icon: "mic" },
+      { name: "LED TV", icon: "tv" },
+      { name: "Video Conferencing", icon: "video_call" },
+      { name: "Computer/Laptop", icon: "computer" },
+      { name: "Whiteboard", icon: "table_chart" },
+      { name: "Flip Chart", icon: "sticky_note_2" },
+      { name: "Soft (Pin) Board", icon: "dashboard" },
+      { name: "Printing Services", icon: "print" },
+      { name: "Photography", icon: "photo_camera" },
+      { name: "Videography", icon: "videocam" },
+    ],
+  },
+];
+
+
+export const activities = [
+  {
+    id: 1,
+    title: "Rafting",
+    description:
+      "Feel the thrill of white-water rafting on the Bhotekoshi River. Suitable for beginners and experienced adventurers alike, this activity promises adrenaline-pumping excitement with stunning river views.",
+    images: [
+      activities1,activities2,activities3
+    ],
+  },
+  {
+    id: 2,
+    title: "Hiking",
+    description:
+      "Explore scenic trails surrounded by lush forests and majestic mountains. Perfect for nature lovers, hiking provides fresh air, beautiful viewpoints, and a chance to reconnect with the outdoors.",
+    images: [
+      activities4,activities2,activities5
+    ],
+  },
+  {
+    id: 3,
+    title: "Swimming",
+    description:
+      "Relax and unwind in our crystal-clear swimming pool surrounded by lush greenery. Suitable for all ages, enjoy a refreshing swim, lounge by the poolside, or have fun with family and friends.",
+    images: [
+      activities1,activities5,activities3
     ],
   },
 ];

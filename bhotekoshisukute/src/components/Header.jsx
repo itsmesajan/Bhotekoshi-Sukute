@@ -99,12 +99,13 @@ const Header = () => {
               </div>
 
 
-              <a
+              <Link
+              to="/activities"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
-                href="#"
+                
               >
                 Activities
-              </a>
+              </Link>
               <a
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
                 href="#"
