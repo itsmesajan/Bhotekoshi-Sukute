@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const socialLinks = [
     { icon: 'fa-facebook-f', href: '#' },
@@ -34,9 +35,9 @@ const Footer = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="flex flex-wrap gap-8 justify-between items-start">
                     <div className="flex-1 min-w-[220px] max-w-[340px]">
-                        <a href="index.html">
+                        <Link to="/home">
                             <img src="assets/logo_2.png" alt="Bhotekoshi Beach" className="h-20 mb-4" />
-                        </a>
+                        </Link>
                         <p className="text-sm mb-4">
                             Your adventure in Nepal begins here. Experience comfort and thrills in one place.
                         </p>

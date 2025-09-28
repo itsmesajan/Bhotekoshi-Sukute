@@ -25,13 +25,13 @@ const Header = () => {
           <div className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-slate-200 py-3">
             {/* Logo */}
             <div className="flex items-center gap-3 text-slate-800">
-              <a href="/">
+              <Link to="/home">
                 <img
                   src="assets/logo.png"
                   alt="Bhotekoshi Beach"
                   className="h-20 w-auto sm:h-24"
                 />
-              </a>
+              </Link>
             </div>
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
@@ -98,35 +98,32 @@ const Header = () => {
                 </ul>
               </div>
 
-
               <Link
-              to="/activities"
+                to="/activities"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
-                
               >
                 Activities
               </Link>
               <Link
-              to="/packages"
+                to="/packages"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
-                
               >
                 Package & Offers
               </Link>
               <Link
-              to="/facilities"
+                to="/facilities"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
               >
                 Facilities
               </Link>
               <Link
-              to="/gallery"
+                to="/gallery"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
               >
                 Gallery
               </Link>
               <Link
-              to="/contact"
+                to="/contact"
                 className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
               >
                 Contact Us
@@ -163,12 +160,13 @@ const Header = () => {
                   close
                 </span>
               </button>
-              <a
-                href="about"
+              <Link
+                to="/about"
                 className="text-slate-700 font-medium py-2 border-b"
               >
                 Resort
-              </a>
+              </Link>
+
               <div>
                 <button
                   className="text-slate-700 font-medium py-2 w-full text-left flex items-center gap-1"
@@ -190,37 +188,56 @@ const Header = () => {
                   }`}
                 >
                   <li>
-                    <a href="roomList" className="block py-1 text-slate-600">
+                    <Link to="/roomList" className="block py-1 text-slate-600">
                       Rooms
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="block py-1 text-slate-600">
+                    <Link
+                      to="/restaurant"
+                      className="block py-1 text-slate-600"
+                    >
                       Restaurant
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="block py-1 text-slate-600">
+                    <Link to="/hall" className="block py-1 text-slate-600">
                       Hall
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
-              <a href="#" className="text-slate-700 font-medium py-2 border-b">
+
+              <Link
+                to="/activities"
+                className="text-slate-700 font-medium py-2 border-b"
+              >
                 Activities
-              </a>
-              <a href="#" className="text-slate-700 font-medium py-2 border-b">
+              </Link>
+              <Link
+                to="/packages"
+                className="text-slate-700 font-medium py-2 border-b"
+              >
                 Package & Offers
-              </a>
-              <a href="#" className="text-slate-700 font-medium py-2 border-b">
+              </Link>
+              <Link
+                to="/facilities"
+                className="text-slate-700 font-medium py-2 border-b"
+              >
                 Facilities
-              </a>
-              <a href="#" className="text-slate-700 font-medium py-2 border-b">
+              </Link>
+              <Link
+                to="/gallery"
+                className="text-slate-700 font-medium py-2 border-b"
+              >
                 Gallery
-              </a>
-              <a href="#" className="text-slate-700 font-medium py-2 border-b">
+              </Link>
+              <Link
+                to="/contact"
+                className="text-slate-700 font-medium py-2 border-b"
+              >
                 Contact Us
-              </a>
+              </Link>
               <a className="mt-4 flex min-w-[84px] max-w-[480px] cursor-pointer hover:bg-blue-600 hover:text-white items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[var(--primary-color)] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-all">
                 <span className="truncate text-[var(--secondary-color)] hover:text-white">
                   Book Now
