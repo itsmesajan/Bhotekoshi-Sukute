@@ -24,7 +24,7 @@ const RestaurantPage = () => {
         </div>
 
         {/* Restaurant Sections */}
-        <div className="space-y-16">
+        <div className="space-y-16 overflow-hidden">
           {restaurants.map((restaurant, index) => (
             <div
               key={restaurant.id}

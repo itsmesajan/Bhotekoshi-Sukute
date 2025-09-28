@@ -1,28 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const mobileMenuItems = [
     {
-        href: '#accommodations',
+        href: '/roomList',
         icon: 'hotel',
         label: 'Room',
     },
     {
-        href: '#restaurant',
+        href: '/restaurant',
         icon: 'restaurant',
         label: 'Dining',
     },
     {
-        href: '#hall',
+        href: '/hall',
         icon: 'meeting_room',
         label: 'Hall',
     },
     {
-        href: '#book',
+        href: '/book',
         icon: 'event_available',
         label: 'Book Now',
     },
     {
-        href: '#contact',
+        href: '/contact',
         icon: 'call',
         label: 'Contact',
     },
@@ -30,16 +31,16 @@ const mobileMenuItems = [
 
 const MobileFooterMenu = () => {
     return (
-        <div className="fixed bottom-0 left-0 w-full z-50 bg-white border-t border-slate-200 shadow-lg flex justify-between items-center px-2 py-2 lg:hidden">
+        <div className="fixed bottom-0 left-0 w-full z-100 bg-white border-t border-slate-200 shadow-lg flex justify-between items-center px-2 py-2 lg:hidden">
             {mobileMenuItems.map((item, index) => (
-                <a
+                <Link
                     key={index}
-                    href={item.href}
+                    to={item.href}
                     className="flex flex-col items-center text-xs text-slate-700 hover:text-[var(--secondary-color)] flex-1"
                 >
                     <span className="material-symbols-outlined text-2xl">{item.icon}</span>
                     {item.label}
-                </a>
+                </Link>
             ))}
         </div>
     );

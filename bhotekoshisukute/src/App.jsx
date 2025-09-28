@@ -38,11 +38,10 @@ function App() {
            <Route path="/facilities" element={<Facilities />} />
            <Route path="/gallery" element={<Gallery />} />
            <Route path="/contact" element={<ContactUsPage />} />
-
         </Routes>
+      <FloatingButtons />
       <MobileFooterMenu />
       <Footer />
-    <FloatingButtons />
     </>
 
     );
