@@ -18,6 +18,7 @@ import Activities from './components/pages/Activities';
 import Packages from './components/pages/Packages';
 import Facilities from './components/pages/Facilities';
 import Gallery from './components/pages/Gallery';
+import NotFound from './components/ui/NotFound';
 
 
 function App() {
@@ -31,14 +32,15 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/roomList" element={<RoomList />} />
-           <Route path="/rooms/:id" element={<RoomDetail />} />
-           <Route path="/restaurant" element={<Restaurant />} />
-           <Route path="/hall" element={<Hall />} />
-           <Route path="/activities" element={<Activities />} />
-           <Route path="/packages" element={<Packages />} />
-           <Route path="/facilities" element={<Facilities />} />
-           <Route path="/gallery" element={<Gallery />} />
-           <Route path="/contact" element={<ContactUsPage />} />
+          <Route path="/rooms/:id" element={<RoomDetail />} />
+          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/hall" element={<Hall />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/facilities" element={<Facilities />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<ContactUsPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       <FloatingButtons />
       <MobileFooterMenu />
