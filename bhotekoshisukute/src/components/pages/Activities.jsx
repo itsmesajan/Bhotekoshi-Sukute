@@ -31,8 +31,8 @@ const Activities = () => {
               }`}
             >
               {/* Image Swiper */}
-              <div className="relative overflow-hidden rounded-xl shadow-2xl md:w-1/2">
-                 <Swiper
+              <div className="relative overflow-hidden rounded-xl shadow-2xl w-full md:w-1/2 bg-transparent">
+                <Swiper
                   modules={[Autoplay, Pagination, Navigation]}
                   spaceBetween={10}
                   slidesPerView={1}
@@ -40,14 +40,17 @@ const Activities = () => {
                   autoplay={{ delay: 3000, disableOnInteraction: false }}
                   pagination={{ clickable: true }}
                   navigation
-                  className="h-96"
+                  className="h-48 sm:h-64 md:h-96 bg-transparent"
+                  style={{ background: "transparent" }}
                 >
                   {activities.images.map((img, i) => (
-                    <SwiperSlide key={i}>
-                      <div
-                        className="w-full h-96 bg-cover bg-center"
-                        style={{ backgroundImage: `url(${img})` }}
-                      ></div>
+                    <SwiperSlide key={i} className="flex items-center justify-center bg-transparent">
+                      <img
+                        src={img}
+                        alt={`Slide ${i}`}
+                        className="w-full h-full object-cover bg-transparent"
+                        style={{ background: "transparent" }}
+                      />
                     </SwiperSlide>
                   ))}
                 </Swiper>

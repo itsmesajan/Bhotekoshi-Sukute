@@ -31,7 +31,7 @@ const mobileMenuItems = [
 
 const MobileFooterMenu = () => {
     return (
-        <div className="fixed bottom-0 left-0 w-full z-100 bg-white border-t border-slate-200 shadow-lg flex justify-between items-center px-2 py-2 lg:hidden">
+        <div className="fixed bottom-0 left-0 w-full z-50 bg-white border-t border-slate-200 shadow-lg flex justify-between items-center px-2 py-2 lg:hidden">
             {mobileMenuItems.map((item, index) => (
                 <Link
                     key={index}
