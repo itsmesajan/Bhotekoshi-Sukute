@@ -7,6 +7,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+import tree2 from '../assets/tree_2.png';
+import tree1 from '../assets/tree.png';
+
 const accommodations = [
     {
         title: 'Deluxe Room',
@@ -45,8 +48,8 @@ const AccommodationsSection = () => {
     return (
         <>
             {/* Decorative images */}
-            <img src="assets/tree_2.png" alt="decorative tree" className="absolute left-0 w-32 sm:w-64 opacity-10 pointer-events-none select-none" />
-            <img src="assets/tree.png" alt="decorative tree" className="absolute right-0 w-32 sm:w-64 opacity-10 pointer-events-none select-none" />
+            <img src={tree2} alt="decorative tree" className="absolute left-0 w-32 sm:w-64 opacity-10 pointer-events-none select-none" />
+            <img src={tree1} alt="decorative tree" className="absolute right-0 w-32 sm:w-64 opacity-10 pointer-events-none select-none" />
 
             <section className="py-16 sm:py-24 relative">
                 <div className="text-center mb-12">
