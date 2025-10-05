@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import secondaryLogo from "../assets/logo_2.png";
 
 const socialLinks = [
     { icon: 'fa-facebook-f', href: '#' },
@@ -36,7 +37,7 @@ const Footer = () => {
                 <div className="flex flex-wrap gap-8 justify-between items-start">
                     <div className="flex-1 min-w-[220px] max-w-[340px]">
                         <Link to="/home">
-                            <img src="assets/logo_2.png" alt="Bhotekoshi Beach" className="h-20 mb-4" />
+                            <img src={secondaryLogo} alt="Bhotekoshi Beach" className="h-20 mb-4" />
                         </Link>
                         <p className="text-sm mb-4">
                             Your adventure in Nepal begins here. Experience comfort and thrills in one place.

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import mainLogo from "../assets/logo.png";
 
 const Header = () => {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -27,7 +28,7 @@ const Header = () => {
             <div className="flex items-center gap-3 text-slate-800">
               <Link to="/home">
                 <img
-                  src="assets/logo.png"
+                  src={mainLogo}
                   alt="Bhotekoshi Beach"
                   className="h-20 w-auto sm:h-24"
                 />

@@ -12,6 +12,9 @@ import activities5 from "../assets/activities/5.webp";
 
 import dlx1 from "../assets/rooms/dlx1.webp";
 import tent from "../assets/rooms/tent.webp";
+import suite1 from "../assets/rooms/suite1.webp";
+
+
 
 
 export const rooms = [
@@ -30,10 +33,8 @@ export const rooms = [
     ],
     images: [
       dlx1,
-      'https://images.unsplash.com/photo-1618773959953-b8c7b4f5351a?q=80&w=1470&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1594967389506-8d195663673f?q=80&w=1470&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1618773959555-520e5414e0ae?q=80&w=1470&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1618773959325-a131804b4c7f?q=80&w=1470&auto=format&fit=crop',
+      tent,
+      suite1,
     ],
     amenities: [
       { name: 'Air Conditioning', icon: 'ac_unit' },
@@ -63,9 +64,9 @@ export const rooms = [
       { name: 'View', value: 'River View' },
     ],
     images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDO8FFVfsSv_hvRnjX5ErqP_B1TP0jE7erdAoC2SS78iHmDLQrTdFgPwNDRUynFbISPaljKAQlZFyr0UUd3em6rJ26yX1XAD_cj9Ao04_ffsQAx1b4K1knSHyzS7E1YmQDtRb9FG4qBUNZpAgxISDSvX6tj6pAqs1-t-gn1nrowvee3ybp6eYP2QW9qfVLENcvCulbrSIQWLIw_kHek1mUZ9jHtJ6Js4zXtCkvdHv7B_EJVutctwiFtxuukja2HRl4A2luVOk9L9sL1',
-      'https://images.unsplash.com/photo-1618773959555-520e5414e0ae?q=80&w=1470&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1594967389506-8d195663673f?q=80&w=1470&auto=format&fit=crop',
+      suite1,
+      dlx1,
+      tent,
     ],
     amenities: [
       { name: 'Kitchenette', icon: 'kitchen' },
@@ -80,7 +81,7 @@ export const rooms = [
     title: 'Executive Suite',
     description: 'The pinnacle of luxury, our Executive Suite boasts a separate living room, a dedicated workspace, and exclusive access to premium services for a truly elevated stay.',
     price: '15,000',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBBpuXmTrZnbRD0TfVcb4mBC1AbtY9cQtjpSNXUbTBgG0b4Dfv3F4xm11ONCl_mzq0Ilkm7GOCNLSF61yv0nFpbw6ZMFhjTo_RautDlnDZj1Haj6vhipWvLJff4V7s0p9iE8zo4OPQTr0IczqSzetk2FztsE38rdF5V6nzcF7Dd1CaePzx-tbARrzgOya8E4fBNB4Zy_ykcT484WtaU3gBB0t1AdRBBhaGIRKU55SNCtoxIo2HJ0tVRjH8ERkxAoOyLi32BlSyTL4G6',
+    imageUrl: suite1,
     link: '/rooms/executive-suite',
     features: [
       { name: 'Room Size', value: '600 sq ft' },
@@ -89,9 +90,10 @@ export const rooms = [
       { name: 'View', value: 'Panoramic View' },
     ],
     images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBBpuXmTrZnbRD0TfVcb4mBC1AbtY9cQtjpSNXUbTBgG0b4Dfv3F4xm11ONCl_mzq0Ilkm7GOCNLSF61yv0nFpbw6ZMFhjTo_RautDlnDZj1Haj6vhipWvLJff4V7s0p9iE8zo4OPQTr0IczqSzetk2FztsE38rdF5V6nzcF7Dd1CaePzx-tbARrzgOya8E4fBNB4Zy_ykcT484WtaU3gBB0t1AdRBBhaGIRKU55SNCtoxIo2HJ0tVRjH8ERkxAoOyLi32BlSyTL4G6',
-      'https://images.unsplash.com/photo-1618773959953-b8c7b4f5351a?q=80&w=1470&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1594967389506-8d195663673f?q=80&w=1470&auto=format&fit=crop',
+      suite1,
+      dlx1,
+      suite1,
+      tent,
     ],
     amenities: [
       { name: 'Dedicated Workspace', icon: 'laptop' },
@@ -116,8 +118,9 @@ export const rooms = [
     ],
     images: [
       tent,
-      'https://images.unsplash.com/photo-1594967389506-8d195663673f?q=80&w=1470&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1618773959325-a131804b4c7f?q=80&w=1470&auto=format&fit=crop',
+      dlx1,
+      tent,
+      suite1,
     ],
     amenities: [
       { name: 'Private Balcony', icon: 'balcony' },

@@ -161,9 +161,11 @@ const RoomDetail = () => {
                   ></div>
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
-                  <h3 className="text-xl font-display font-bold text-[var(--secondary-color)] dark:text-light mb-2">
+                  <Link
+                  to={`/rooms/${otherRoom.id}`}
+                  className="text-xl font-display font-bold text-[var(--secondary-color)] dark:text-light mb-2">
                     {otherRoom.title}
-                  </h3>
+                  </Link>
                   <p className="text-dark/70 dark:text-light/70 text-sm font-light flex-grow mb-4">
                     {otherRoom.description.substring(0, 100)}...
                   </p>
@@ -172,8 +174,8 @@ const RoomDetail = () => {
                       NPR {otherRoom.price} / night
                     </span>
                     <Link
-                      className="text-[var(--secondary-color)] font-bold hover:underline text-sm"
                       to={`/rooms/${otherRoom.id}`}
+                      className="text-[var(--secondary-color)] font-bold hover:underline text-sm"
                     >
                       View Details
                     </Link>
