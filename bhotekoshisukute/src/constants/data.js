@@ -10,6 +10,9 @@ import activities3 from "../assets/activities/3.webp";
 import activities4 from "../assets/activities/4.webp";
 import activities5 from "../assets/activities/5.webp";
 
+import dlx1 from "../assets/rooms/dlx1.webp";
+import tent from "../assets/rooms/tent.webp";
+
 
 export const rooms = [
   {
@@ -17,7 +20,7 @@ export const rooms = [
     title: 'Deluxe Room',
     description: 'A spacious haven of elegance, featuring a plush king-size bed, a private balcony with serene views, and state-of-the-art amenities for your utmost comfort.',
     price: '8,000',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlSj-CES0R3WeoTH1dboBGD7UOcC6wLhh3q2zv1vCLOyCoGH4hSk91Dr_Nw294uKvBCTkstAFVmMH_rIoSvgT3AFZbFxC7GlENbZSrHCnGsLGgf0CSuqXA-riXL49uJrOE25H0GmYO2UiQ8kpjp6t4BuXXDGaTPLmXoi_jpthfRcrGqeJWms84VLVp5SQRAE-ola72yBgbcxFlS-w6_TKpVz_ksRvsYEnGeGFUaVTX0UHvSpxAN6zrzONOq7-QjVe6GVXUsjLQ3Pb',
+    imageUrl: dlx1,
     link: '/rooms/deluxe',
     features: [
       { name: 'Room Size', value: '350 sq ft' },
@@ -26,7 +29,7 @@ export const rooms = [
       { name: 'View', value: 'Garden or River' },
     ],
     images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuC42fGgy8fF5ofGepL6-nc9iLHXdUzqGrqjYzYfNLgSsPjk7_gkRhA-HlE8X2GgN1GiZtEAP3DF3QXE6LDU_6U2dtN4EOxlnSHo5pz9k3D__dY9fo45lnzgr2ovrDYbwz1Jb8YyNFBOEF__HdcsYpHYp9S4-b_AIIutUBWLyfe0bK-MUsmdEf4LyOw8EbwcAVWU6r_hGG9JJYnpnbWLjj397GhFH8oK3j6CEop39Nnd5joOXR9ScDFiaiFnlG8bz3HT04FuijBGnnZR',
+      dlx1,
       'https://images.unsplash.com/photo-1618773959953-b8c7b4f5351a?q=80&w=1470&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1594967389506-8d195663673f?q=80&w=1470&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1618773959555-520e5414e0ae?q=80&w=1470&auto=format&fit=crop',
@@ -103,7 +106,7 @@ export const rooms = [
     title: 'River View Cabin',
     description: 'An intimate and cozy cabin offering breathtaking views of the river. The perfect setting for a romantic and unforgettable escape.',
     price: '10,000',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCynMgoyFzNqxoM5zrmqZokmkkbzzOuFCInVHOCkbHFdXhqbnDwAmGGk3d1ZTOVm_GS7QYcQppL9_s7idAQYns5fDJNuwN1BdYSV7X_C8v7_YKsKI1cTZt1IrmjHjDBuiMnZ_6-nd0E34oL1T1jlCXt4SSaDMd6CbJJQs1rADYqXkCJp2szB8NtNrwCGjxB2ZEBAQ66nARfzTMftvvFVoI8vgjaOWnJa2ekCR4deyjb3mF1lsBMkAD3LNn19g2FVIeovy50kgo-jtld',
+    imageUrl: tent,
     link: '/rooms/river-view-cabin',
     features: [
       { name: 'Room Size', value: '250 sq ft' },
@@ -112,7 +115,7 @@ export const rooms = [
       { name: 'View', value: 'River View' },
     ],
     images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCynMgoyFzNqxoM5zrmqZokmkkbzzOuFCInVHOCkbHFdXhqbnDwAmGGk3d1ZTOVm_GS7QYcQppL9_s7idAQYns5fDJNuwN1BdYSV7X_C8v7_YKsKI1cTZt1IrmjHjDBuiMnZ_6-nd0E34oL1T1jlCXt4SSaDMd6CbJJQs1rADYqXkCJp2szB8NtNrwCGjxB2ZEBAQ66nARfzTMftvvFVoI8vgjaOWnJa2ekCR4deyjb3mF1lsBMkAD3LNn19g2FVIeovy50kgo-jtld',
+      tent,
       'https://images.unsplash.com/photo-1594967389506-8d195663673f?q=80&w=1470&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1618773959325-a131804b4c7f?q=80&w=1470&auto=format&fit=crop',
     ],

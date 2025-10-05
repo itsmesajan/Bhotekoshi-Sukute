@@ -22,7 +22,7 @@ const Activities = () => {
         </div>
 
         {/* activities Sections */}
-        <div className="space-y-16">
+        <div className="space-y-16 overflow-hidden">
           {activities.map((activities, index) => (
             <div
               key={activities.id}

@@ -20,7 +20,7 @@ const hallFeatures = [
 
 const HallSection = () => {
     return (
-        <section className="relative w-full h-[600px] md:h-[750px] overflow-hidden flex items-center justify-center text-white bg-gray-900">
+        <section className="relative w-full min-h-[600px] md:min-h-[750px] overflow-hidden flex items-center justify-center text-white bg-gray-900 ">
             <div
                 className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed"
                 style={{
@@ -29,7 +29,7 @@ const HallSection = () => {
                 aria-hidden="true"
             ></div>
 
-            <div className="relative z-10 container mx-auto px-4 sm:px-8 text-center">
+            <div className="relative z-10 container mx-auto p-4 sm:p-8 text-center">
                 <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 drop-shadow-lg">
                     The Grand Events Hall
                 </h2>

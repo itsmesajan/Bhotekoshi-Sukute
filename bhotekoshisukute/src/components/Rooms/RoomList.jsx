@@ -31,9 +31,11 @@ const RoomList = () => {
                 />
               </div>
               <div className="p-8 flex-grow flex flex-col">
-                <h3 className="text-3xl font-display font-bold text-[var(--secondary-color)] dark:text-light mb-3">
+                <Link
+                    to={`/rooms/${room.id}`}
+                    className="text-3xl font-display font-bold text-[var(--secondary-color)] dark:text-light mb-3">
                   {room.title}
-                </h3>
+                </Link>
                 <p className="text-dark/70 dark:text-light/70 text-base font-light flex-grow mb-6">
                   {room.description}
                 </p>
