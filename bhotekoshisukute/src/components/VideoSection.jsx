@@ -1,5 +1,5 @@
 import React from 'react'
-import videoSource from '../assets/rafting.mp4';
+import videoSource from '../assets/sukute.mp4';
 
 const VideoSection = () => {
   return (

@@ -3,7 +3,7 @@ import React from 'react'
 const AboutSection = () => {
   return (
     <section className="py-20 bg-gradient-to-r from-blue-50 via-white to-blue-100">
-            <div className="flex flex-col md:flex-row items-center gap-12 container mx-auto px-4 sm:px-8">
+            <div className="flex flex-col md:flex-row items-center gap-12 container mx-auto px-4 sm:px-6 lg:px-12">
                 <div className="flex-1">
                     <h2 className="text-4xl sm:text-5xl font-bold text-[var(--secondary-color)] mb-6 leading-tight">
                         More than a Resort,<br/>It's an Experience.
@@ -20,7 +20,7 @@ const AboutSection = () => {
                         Learn More
                     </a>
                 </div>
-                <div className="flex-1 flex justify-center">
+                <div className="flex-1 flex justify-end">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4npMURNhlEjgHqG26tmSYmVtU_kVW85ATtTA5NichLd6YA_FUCPK3Yg6Lldgg07wmNEOLZjFo1szeACwuiw4Bm-RwEzWZNkmuFWYq_clssL4LMarb3fbZwRx20_f0TDyalOkCli2-g=s1360-w1360-h1020-rw"
                         alt="Bhotekoshi Beach Staff"
                         className="rounded-3xl shadow-2xl object-cover w-full max-w-md h-72 md:h-80 border-4 border-[var(--primary-color)]" />

@@ -23,17 +23,21 @@ const HomePage = () => {
   return (
       <>
     
-    <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
       <HeroSection />
+    </main>
       <AboutSection />
       <USPSection />
+    <main className="container mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
       <Accommodations />
     </main>
       <VideoSection />
     <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16">
       <PackagesSection />
+      </main>
       <HallSection />
       <PlacesToExploreSection />
+    <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16">
       <Testimonials />
       <div className=" border-t border-slate-300 pt-8"></div>
       <InstagramWall />

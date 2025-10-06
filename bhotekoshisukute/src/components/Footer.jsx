@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import secondaryLogo from "../assets/logo_2.png";
 
 const socialLinks = [
-    { icon: 'fa-facebook-f', href: '#' },
-    { icon: 'fa-instagram', href: '#' },
-    { icon: 'fa-tiktok', href: '#' },
+    { icon: 'fa-facebook-f', href: 'https://www.facebook.com/bhotekoshibeachresort' },
+    { icon: 'fa-instagram', href: 'https://www.instagram.com/bhotekoshi_beach_resort/' },
+    { icon: 'fa-tiktok', href: 'https://www.tiktok.com/@bhotekoshibeachsukute' },
     { icon: 'fa-youtube', href: '#' },
 ];
 
 const quickLinks = [
     { label: 'Virtual Tour', href: '#' },
     { label: 'Activities', href: '#' },
-    { label: 'Accommodations', href: '#' },
+    { label: 'Accommodations', href: '/roomList' },
     { label: 'Booking', href: '#' },
 ];
 
