@@ -14,6 +14,13 @@ import dlx1 from "../assets/rooms/dlx1.webp";
 import tent from "../assets/rooms/tent.webp";
 import suite1 from "../assets/rooms/suite1.webp";
 
+import pkg1 from "../assets/package/1.jpg";
+import pkg2 from "../assets/package/2.jpg";
+import pkg3 from "../assets/package/3.jpg";
+
+
+import hall1 from "../assets/hall/hall1.webp";
+
 
 
 
@@ -168,8 +175,7 @@ export const halls = [
     title: "Bhotekoshi Beach Hall",
     description:
       "Our Conference Hall is a versatile space designed for productivity and collaboration. With modern amenities and a professional ambiance, it's the perfect setting for your next business meeting, seminar, or workshop. The hall can be configured in various layouts to suit your specific needs, from theater-style for presentations to classroom-style for training sessions.",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAlSj-CES0R3WeoTH1dboBGD7UOcC6wLhh3q2zv1vCLOyCoGH4hSk91Dr_Nw294uKvBCTkstAFVmMH_rIoSvgT3AFZbFxC7GlENbZSrHCnGsLGgf0CSuqXA-riXL49uJrOE25H0GmYO2UiQ8kpjp6t4BuXXDGaTPLmXoi_jpthfRcrGqeJWms84VLVp5SQRAE-ola72yBgbcxFlS-w6_TKpVz_ksRvsYEnGeGFUaVTX0UHvSpxAN6zrzONOq7-QjVe6GVXUsjLQ3Pb",
+    imageUrl:hall1,
     link: "/Halls/Bhotekoshi Beach Hall",
     features: [
       { name: "Hall Size", value: "1000 sq ft" },
@@ -179,11 +185,8 @@ export const halls = [
       { name: "Round Table", value: "70" },
     ],
     images: [
+      hall1,
       "https://lh3.googleusercontent.com/aida-public/AB6AXuC42fGgy8fF5ofGepL6-nc9iLHXdUzqGrqjYzYfNLgSsPjk7_gkRhA-HlE8X2GgN1GiZtEAP3DF3QXE6LDU_6U2dtN4EOxlnSHo5pz9k3D__dY9fo45lnzgr2ovrDYbwz1Jb8YyNFBOEF__HdcsYpHYp9S4-b_AIIutUBWLyfe0bK-MUsmdEf4LyOw8EbwcAVWU6r_hGG9JJYnpnbWLjj397GhFH8oK3j6CEop39Nnd5joOXR9ScDFiaiFnlG8bz3HT04FuijBGnnZR",
-      "https://images.unsplash.com/photo-1618773959953-b8c7b4f5351a?q=80&w=1470&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594967389506-8d195663673f?q=80&w=1470&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1618773959555-520e5414e0ae?q=80&w=1470&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1618773959325-a131804b4c7f?q=80&w=1470&auto=format&fit=crop",
     ],
     amenities: [
       { name: "Projector", icon: "display_external_input" },
@@ -240,16 +243,14 @@ export const packages = [
     description:
       "Embrace the festive spirit with our all-inclusive package, perfect for creating lasting memories with family and friends.",
     price: 3500,
-    image:
-      "https://scontent.fktm21-1.fna.fbcdn.net/v/t39.30808-6/550514192_1187137956768066_8721484647119015190_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=9svbnS1bQbAQ7kNvwFFhw_5&_nc_oc=AdkegaKkhE7ipafXA7xTnYlLlODLYGVrI9MSP6hoy-8zSX3O7KnExFCwIDx5bz6YPFbrylCyq8g8TDtqZc2007ue&_nc_zt=23&_nc_ht=scontent.fktm21-1.fna&_nc_gid=rBsoRTGVBATDtcaiQYbKlA&oh=00_AfYMxNMjs4uxyKfFf4-olv6bqBcVjUZT4fKWP4q98gIuaA&oe=68DC553F", // Replace with actual Facebook image link
-  },
+    image: pkg1,  },
   {
     id: 2,
     title: "Family Adventure",
     description:
       "The perfect family getaway filled with fun activities for all ages, ensuring a memorable vacation for everyone.",
     price: 3200,
-    image: "https://scontent.fktm21-1.fna.fbcdn.net/v/t39.30808-6/483527755_1033943795420817_3015723711074660188_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ftEDMeRXpG8Q7kNvwG7LyRp&_nc_oc=Adnnp9MD8MeTLU4yozCJbs6KKT6VwdB5RSIv-PO7UGNKtjgvj3I7LhdPYCy5rl7LCnSR4sNx3jyQZF0qf2eSRlh6&_nc_zt=23&_nc_ht=scontent.fktm21-1.fna&_nc_gid=ViDU81y0ruWqNx5AOZ5jyQ&oh=00_Afb2GENC3eeLvLqAX6T-cn5Ii_d1fZTuylhhpxUa3miVcw&oe=68DC599A",
+    image: pkg2,
   },
   {
     id: 3,
@@ -257,7 +258,7 @@ export const packages = [
     description:
       "Boost team morale and collaboration with our specially curated corporate retreat package, combining work and play.",
     price: 4000,
-    image: "https://scontent.fktm21-2.fna.fbcdn.net/v/t39.30808-6/481359541_1033914635423733_8066791540872794098_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=7sK3340eANYQ7kNvwGDnpzE&_nc_oc=Adn8Hkbu50pNBSWShsigwGCm5dY2cpb9DSyWiwhyu-8MjMRTM3PT8m8b0xCaj9_ktZWMvF1RMqelXZupI0M2qzAa&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=_PjfQWhLpwe7OQzjaaGp2g&oh=00_AfYM6WUS6QvKqNt40-YYXI7f0D3u6RBA6aZza1ZFV9yD_A&oe=68DC2A7D",
+    image: pkg3,
   },
 ];
 

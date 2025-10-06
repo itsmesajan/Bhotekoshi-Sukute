@@ -19,7 +19,7 @@ const Hall = () => {
         <div className="flex items-center gap-2 text-sm">
           <Link
             className="text-gray-500 hover:text-primary dark:hover:text-primary"
-            to="/roomList"
+            to="/"
           >
             Halls
           </Link>
@@ -29,7 +29,6 @@ const Hall = () => {
           </span>
         </div>
 
-        {/* Room Details Grid */}
         <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-5">
           {/* Image Column */}
           <div className="md:col-span-3">
@@ -68,7 +67,7 @@ const Hall = () => {
               {/* Room Features */}
               <div className="mt-6">
                 <h3 className="text-lg font-bold text-[var(--secondary-color)]">
-                  Room Features
+                  Setup & Occupancy
                 </h3>
                 <div className="mt-4 grid grid-cols-2 gap-4 border-t border-gray-200 pt-4 dark:border-gray-700">
                   {hall.features.map((feature, index) => (

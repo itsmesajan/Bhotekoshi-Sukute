@@ -16,55 +16,98 @@ const EnquiryModal = ({ type = "hall" }) => {
       <Dialog
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 sm:p-6"
       >
-        <Dialog.Panel className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-lg dark:bg-background-dark">
-          <Dialog.Title className="text-2xl font-bold text-[var(--secondary-color)] mb-4">
+        <Dialog.Panel className="w-full max-w-lg sm:max-w-xl md:max-w-2xl rounded-lg bg-white p-4 sm:p-6 shadow-lg dark:bg-background-dark overflow-y-auto max-h-[90vh]">
+          <Dialog.Title className="text-xl sm:text-2xl font-bold text-[var(--secondary-color)] mb-4 text-center sm:text-left">
             Enquiry Now
           </Dialog.Title>
 
           <form className="space-y-4">
             {/* Personal Information */}
-            <h3 className="font-semibold">Personal Information</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <h3 className="font-semibold text-base sm:text-lg">
+              Personal Information
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium">Name*</label>
-                <input type="text" className="mt-1 w-full rounded border px-3 py-2" required />
+                <input
+                  type="text"
+                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                  required
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium">Email*</label>
-                <input type="email" className="mt-1 w-full rounded border px-3 py-2" required />
+                <input
+                  type="email"
+                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                  required
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium">Phone*</label>
-                <input type="tel" className="mt-1 w-full rounded border px-3 py-2" required />
+                <input
+                  type="tel"
+                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                  required
+                />
               </div>
-              <div className="md:col-span-2">
+              <div className="sm:col-span-2">
                 <label className="block text-sm font-medium">Address*</label>
-                <input type="text" className="mt-1 w-full rounded border px-3 py-2" required />
+                <input
+                  type="text"
+                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                  required
+                />
               </div>
             </div>
 
             {/* Conditional Fields */}
             {type === "hall" && (
               <>
-                <h3 className="font-semibold mt-4">Event Information</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <h3 className="font-semibold mt-4 text-base sm:text-lg">
+                  Event Information
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="block text-sm font-medium">Nature of Event*</label>
-                    <input type="text" className="mt-1 w-full rounded border px-3 py-2" required />
+                    <label className="block text-sm font-medium">
+                      Nature of Event*
+                    </label>
+                    <input
+                      type="text"
+                      className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                      required
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium">Event Date*</label>
-                    <input type="date" className="mt-1 w-full rounded border px-3 py-2" required />
+                    <label className="block text-sm font-medium">
+                      Event Date*
+                    </label>
+                    <input
+                      type="date"
+                      className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                      required
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium">No. of Pax*</label>
-                    <input type="number" className="mt-1 w-full rounded border px-3 py-2" required />
+                    <label className="block text-sm font-medium">
+                      No. of Pax*
+                    </label>
+                    <input
+                      type="number"
+                      className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                      required
+                    />
                   </div>
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium">Special Request</label>
-                    <textarea className="mt-1 w-full rounded border px-3 py-2" rows={3}></textarea>
+                  <div className="sm:col-span-2">
+                    <label className="block text-sm font-medium">
+                      Special Request
+                    </label>
+                    <textarea
+                      className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                      rows={3}
+                    ></textarea>
                   </div>
                 </div>
               </>
@@ -72,9 +115,11 @@ const EnquiryModal = ({ type = "hall" }) => {
 
             {type === "package" && (
               <div>
-                <label className="block text-sm font-medium">Specific Requirement*</label>
+                <label className="block text-sm font-medium">
+                  Specific Requirement*
+                </label>
                 <textarea
-                  className="mt-1 w-full rounded border px-3 py-2"
+                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
                   rows={3}
                   required
                 ></textarea>
@@ -82,17 +127,17 @@ const EnquiryModal = ({ type = "hall" }) => {
             )}
 
             {/* Buttons */}
-            <div className="mt-6 flex justify-end gap-4">
+            <div className="mt-6 flex flex-col sm:flex-row justify-end gap-3 sm:gap-4">
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="px-4 py-2 rounded border hover:bg-gray-100"
+                className="px-4 py-2 rounded border hover:bg-gray-100 w-full sm:w-auto"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 rounded bg-[var(--primary-color)] text-white hover:bg-[var(--green-color)]"
+                className="px-6 py-2 rounded bg-[var(--primary-color)] text-white hover:bg-[var(--green-color)] w-full sm:w-auto"
               >
                 Submit
               </button>
