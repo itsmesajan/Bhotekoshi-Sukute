@@ -11,7 +11,7 @@ const socialLinks = [
 
 const quickLinks = [
     { label: 'Virtual Tour', href: '#' },
-    { label: 'Activities', href: '#' },
+    { label: 'Activities', href: '/activities' },
     { label: 'Accommodations', href: '/roomList' },
     { label: 'Booking', href: '#' },
 ];
@@ -44,7 +44,7 @@ const Footer = () => {
                         </p>
                         <div className="flex space-x-4">
                             {socialLinks.map((link, index) => (
-                                <a key={index} className="text-slate-200 hover:text-white transition-colors" href={link.href}>
+                                <a key={index} className="text-slate-200 hover:text-white transition-colors" href={link.href} target="_blank">
                                     <i className={`fab ${link.icon} h-6 w-6`}></i>
                                 </a>
                             ))}
@@ -56,9 +56,9 @@ const Footer = () => {
                         <ul className="space-y-2 text-sm">
                             {quickLinks.map((link, index) => (
                                 <li key={index}>
-                                    <a className="hover:text-white transition-colors" href={link.href}>
+                                    <Link className="hover:text-white transition-colors" to={link.href}>
                                         {link.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
