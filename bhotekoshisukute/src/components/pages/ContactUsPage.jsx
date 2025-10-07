@@ -4,14 +4,14 @@ import React from 'react';
 const ContactUsPage = () => {
   return (
     <main className="flex-1">
-      <section className="py-16 sm:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-32 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
           {/* Section header */}
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">
               Get in Touch
             </h2>
-            <p className="mt-6 max-w-3xl mx-auto text-lg text-dark/70 dark:text-light/70 font-light">
+            <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600 ">
               We'd love to hear from you. Here's how you can reach us.
             </p>
           </div>

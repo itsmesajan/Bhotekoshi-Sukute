@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import banner1 from "../assets/banner.webp";
 import banner2 from "../assets/banner2.webp";
 import banner3 from "../assets/banner3.webp";
+import { Link } from "react-router-dom";
 
 const heroSlides = [
   {
@@ -17,7 +18,7 @@ const heroSlides = [
     description:
       "Your perfect getaway for family fun and corporate retreats. Discover adventure and relaxation in the heart of Nepal.",
     buttonText: "Book Your Stay",
-    buttonLink: "#",
+    buttonLink: "/roomList",
     imageUrl: banner1,
   },
   {
@@ -25,7 +26,7 @@ const heroSlides = [
     description:
       "Enjoy rafting, kayaking, canyoning and more with expert guides and safe facilities.",
     buttonText: "Explore Activities",
-    buttonLink: "#",
+    buttonLink: "/activities",
     imageUrl: banner2,
   },
   {
@@ -33,7 +34,7 @@ const heroSlides = [
     description:
       "Unwind in our comfortable accommodations and enjoy delicious meals by the riverside.",
     buttonText: "View Packages",
-    buttonLink: "#",
+    buttonLink: "/packages",
     imageUrl: banner3,
   },
 ];
@@ -79,12 +80,12 @@ const HeroSection = () => {
               <p className="text-slate-100 sm:text-lg lg:text-xl max-w-3xl mx-auto">
                 {slide.description}
               </p>
-              <a
-                href={slide.buttonLink}
+              <Link
+                to={slide.buttonLink}
                 className="bg-[var(--primary-color)] hover:bg-blue-600 hover:text-white transition-all text-[var(--secondary-color)] font-bold py-3 px-8 rounded-full sm:text-lg shadow-lg transform hover:scale-105 inline-block"
               >
                 {slide.buttonText}
-              </a>
+              </Link>
             </div>
           </SwiperSlide>
         ))}

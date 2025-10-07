@@ -16,7 +16,7 @@ const Hall = () => {
     <div className="container mx-auto px-6 pb-16 lg:pb-32">
       <main className="mx-auto w-full container flex-1 px-4 py-8 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm">
+        {/* <div className="flex items-center gap-2 text-sm">
           <Link
             className="text-gray-500 hover:text-primary dark:hover:text-primary"
             to="/"
@@ -27,7 +27,7 @@ const Hall = () => {
           <span className="font-medium text-[var(--secondary-color)]">
             {hall.title}
           </span>
-        </div>
+        </div> */}
 
         <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-5">
           {/* Image Column */}

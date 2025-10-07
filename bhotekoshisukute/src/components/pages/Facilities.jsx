@@ -47,12 +47,12 @@ const Facilities = () => {
 
   return (
     <main className="flex-grow">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-32">
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">
             Inside the Resort
           </h2>
-          <p className="mt-6 max-w-3xl mx-auto text-lg text-dark/70 dark:text-light/70 font-light">
+          <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
             Explore the wide range of amenities we offer to make your stay unforgettable.
           </p>
         </div>

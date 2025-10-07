@@ -8,9 +8,9 @@ const RoomList = () => {
       <div className="container mx-auto px-6 py-16 lg:py-32">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">
-            Our Exquisite Rooms
+            Your Haven of Comfort
           </h2>
-          <p className="mt-6 max-w-3xl mx-auto text-lg text-dark/70 dark:text-light/70 font-light">
+          <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
             Discover a sanctuary of comfort and elegance. Each room is
             meticulously designed to provide an unparalleled experience of
             luxury and tranquility.
@@ -41,7 +41,7 @@ const RoomList = () => {
                 </p>
                 <div className="flex justify-between items-center mt-auto">
                   <span className="text-xl font-display font-bold text-[var(--secondary-color)]">
-                    From NPR {room.price}{" "}
+                    From USD {room.price}{" "}
                     <span className="text-sm font-body font-light text-dark/60 dark:text-light/60">
                       / night
                     </span>

@@ -3,6 +3,7 @@ import video from '../../assets/about/intro.mp4';
 import aboutImg1 from "../../assets/about/about.webp";
 import aboutImg2 from "../../assets/about/about2.webp";
 import aboutImg3 from "../../assets/about/about3.webp";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => (
   <main className="flex-grow">
@@ -11,11 +12,10 @@ const AboutUs = () => (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[var(--secondary-color)]">
-            About Bhotekoshi Beach Resort
+            Bhotekoshi Beach Resort: A Nature Escape
           </h1>
-          <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-600 dark:text-gray-400">
-            Your sanctuary in Sukute, where adventure meets tranquility and
-            memories are made.
+          <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-600 ">
+            The riverside haven combines natural beauty with modern amenities, making it an ideal destination for both relaxation and adventure.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -147,13 +147,13 @@ const AboutUs = () => (
               dedicated services ensure a productive and refreshing experience
               for your team.
             </p>
-            <a
+            <Link
               className="px-6 py-3 bg-[var(--primary-color)] text-[var(--secondary-color)] font-bold rounded-full shadow-lg hover:bg-[var(--primary-color)]/90 transition-all inline-flex items-center gap-2"
-              href="#"
+              to="/contact"
             >
               Plan Your Event{" "}
               <span className="material-symbols-outlined">arrow_forward</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

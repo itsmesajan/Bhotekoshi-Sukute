@@ -1,4 +1,6 @@
 import React from 'react'
+import Thali from '../assets/Gallery/Thali.webp'
+
 const instagramImages = [
     {
         src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrMKtbA-4OU1c_CvRNeqopIeUMAdYo59upRWudnneVVtA2-k2q_vWXc_io-mBgu2-qVBBq1A6BHp9jkvQ1cz2_kexXxJTyQ3wQOSA278mpIEWXyIJPo4X-x8SU1UbPPRU38L-I4nA=s1360-w1360-h1020-rw",
@@ -11,7 +13,7 @@ const instagramImages = [
         link: "https://instagram.com/yourprofile",
     },
     {
-        src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr9BCJVxReJGw-XGxGHHt3s_2pjmbDemdP0tX-IOeiznv_2wh8JLEbW8o6ZwyiaGQ_bhci8vkCGwTrjXW-rwKn-qW7oQlIyfmuU5RzB4DU0iOvwq-7gA-RplNVQbG4CpVils__x=s1360-w1360-h1020-rw",
+        src: Thali,
         alt: "Gallery 3",
         link: "https://instagram.com/yourprofile",
     },

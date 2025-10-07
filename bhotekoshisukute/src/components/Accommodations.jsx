@@ -9,36 +9,38 @@ import 'swiper/css/navigation';
 
 import tree2 from '../assets/tree_2.png';
 import tree1 from '../assets/tree.png';
+import { Link } from 'react-router-dom';
 
 const accommodations = [
     {
         title: 'Deluxe Room',
         description: 'Spacious room with river view, air conditioning, and modern amenities.',
-        price: 'NPR 6,000/night',
+        price: 'USD 35/night',
         imageUrl: 'https://images.unsplash.com/photo-1737527852155-9720a5e2254f?q=80&w=1169&auto=format&fit=crop',
+    },
+    
+    {
+        title: 'Family Suite',
+        description: 'Ideal for families, featuring multiple beds and a private balcony.',
+        price: 'USD 40/night',
+        imageUrl: 'https://images.unsplash.com/photo-1689729771136-46e2ee831b83?q=80&w=1170&auto=format&fit=crop',
     },
     {
         title: 'Deluxe Room',
         description: 'Spacious room with river view, air conditioning, and modern amenities.',
-        price: 'NPR 6,000/night',
+        price: 'USD 35/night',
         imageUrl: 'https://images.unsplash.com/photo-1609602126247-4ab7188b4aa1?q=80&w=1170&auto=format&fit=crop',
     },
     {
-        title: 'Family Cottage',
-        description: 'Ideal for families, featuring multiple beds and a private balcony.',
-        price: 'NPR 8,500/night',
-        imageUrl: 'https://images.unsplash.com/photo-1689729771136-46e2ee831b83?q=80&w=1170&auto=format&fit=crop',
-    },
-    {
-        title: 'Tent Stay',
+        title: 'Safari Tent',
         description: 'Experience nature with our comfortable tent accommodations by the riverside.',
-        price: 'NPR 4,000/night',
+        price: 'USD 40/night',
         imageUrl: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrlDoOAJHQX0KAyF4t8z5KjHC-VmA3Y0WFW-PG9dmx9kNdZsqVZrW6VbV8n0AnvyrDYofpKHZ3wxt9nLXysAVahTaSqdVGuz2Cc6Vof4VsP5bKcogt8kHpBtJZbkSH5HLBgsXySuQ=s1360-w1360-h1020-rw',
     },
     {
-        title: 'Family Cottage',
-        description: 'Ideal for families, featuring multiple beds and a private balcony.',
-        price: 'NPR 8,500/night',
+        title: 'Executive Suite',
+        description: 'The pinnacle of luxury, our Executive Suite boasts a separate living room.',
+        price: 'USD 50/night',
         imageUrl: 'https://images.unsplash.com/photo-1533633310920-cc9bf1e7f9b0?q=80&w=1170&auto=format&fit=crop',
     },
 ];
@@ -91,10 +93,10 @@ const AccommodationsSection = () => {
                     <div className="swiper-pagination"></div>
                 </Swiper>
                 <div className="text-center mt-8">
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-full shadow hover:bg-green-600 transition-all">
+                    <Link to="/roomList" className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-full shadow hover:bg-green-600 transition-all">
                         <i className="fa-regular fa-paper-plane"></i>
                         Explore More
-                    </a>
+                    </Link>
                 </div>
             </section>
         </>

@@ -171,7 +171,7 @@ const RoomDetail = () => {
                   </p>
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-lg font-display font-bold text-[var(--secondary-color)]">
-                      NPR {otherRoom.price} / night
+                      USD {otherRoom.price} / night
                     </span>
                     <Link
                       to={`/rooms/${otherRoom.id}`}

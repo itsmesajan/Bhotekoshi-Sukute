@@ -1,9 +1,10 @@
 import React from 'react';
+import EnquiryModal from './Contact/EnquiryModal';
 
 const hallFeatures = [
     {
         icon: 'aspect_ratio',
-        value: '1000 SQF',
+        value: '1000 Sq. Ft.',
         label: 'Total Area',
     },
     {
@@ -53,11 +54,10 @@ const HallSection = () => {
 
                 <button
                     aria-label="Inquire about booking the Hall"
-                    className="bg-[var(--primary-color)] transition-colors 
-                               text-white font-semibold py-4 px-12 rounded-full shadow-2xl 
-                               transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                    className="py-4 px-12 rounded-full shadow-2xl 
+                               transform hover:scale-105 active:scale-95"
                 >
-                    Inquire Now
+                   <EnquiryModal type="hall" />
                 </button>
             </div>
         </section>
