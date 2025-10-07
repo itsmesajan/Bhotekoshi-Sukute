@@ -14,7 +14,7 @@ const Activities = () => {
         {/* Page Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">
-            Explore Our Activities
+            Discover the Thrill
           </h2>
           <p className="mt-6 max-w-3xl mx-auto text-lg text-dark/70 dark:text-light/70 font-light">
             From thrilling adventures to relaxing pastimes, discover the perfect experience for your gateway. 
