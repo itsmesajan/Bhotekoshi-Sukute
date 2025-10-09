@@ -1,0 +1,41 @@
+[
+    {
+      "type": "socialLinks",
+      "items": [
+        { "icon": "fa-facebook-f", "url": "https://facebook.com" },
+        { "icon": "fa-instagram", "url": "https://instagram.com" },
+        {
+          "icon": "fa-tiktok",
+          "url": "https://www.tiktok.com/@bhotekoshibeachsukute"
+        }
+      ]
+    },
+    {
+      "type": "quickLinks",
+      "items": [
+        { "text": "About Us", "url": "/about" },
+        { "text": "Virtual Tour", "url": "#" },
+        { "text": "Activities", "url": "/activities" },
+        { "text": "Accommodations", "url": "/roomList" },
+        { "text": "Booking", "url": "#" }
+      ]
+    },
+    {
+      "type": "otaLinks",
+      "items": [
+        { "text": "Booking.com", "url": "https://booking.com" },
+        { "text": "expedia", "url": "#" },
+        { "text": "agoda", "url": "#" },
+        { "text": "makemytrip", "url": "#" },
+        { "text": "ctrip", "url": "#" }
+      ]
+    },
+    {
+      "type": "legalLinks",
+      "items": [
+        { "text": "Privacy Policy", "url": "https://booking.com" },
+        { "text": "Terms of Service", "url": "https://booking.com" },
+        { "text": "Contact Us", "url": "/contact" }
+      ]
+    }
+  ]
