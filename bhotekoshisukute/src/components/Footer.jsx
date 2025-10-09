@@ -9,7 +9,7 @@ const Footer = () => {
     data: footerContents,
     loading,
     error,
-  } = useFetchApi("/api_footer.json", "footerContents");
+  } = useFetchApi("/bhotekoshibeach/api_footer.json", "footerContents");
 
 
   if (loading) return <></>;
