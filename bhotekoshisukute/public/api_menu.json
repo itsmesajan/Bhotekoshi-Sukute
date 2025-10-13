@@ -1,0 +1,35 @@
+[
+  { "id": "about", "title": "Resort", "link": "/about" },
+    {
+    "id": "services",
+    "title": "Services",
+    "link": "/",
+    "subLinks": [
+      {
+        "id": "room",
+        "title": "Room",
+        "link": "/roomList"
+      },
+      {
+        "id": "restaurant",
+        "title": "Restaurant",
+        "link": "/restaurant"
+    },
+    {
+        "id": "hall",
+        "title": "Hall",
+        "link": "/hall"
+      }
+    ]
+  },
+  {
+    "id": "activities",
+    "title": "Activities",
+    "link": "/activities"
+  },
+  { "id": "package", "title": "Package & Offers", "link": "/package" },
+  { "id": "facilities", "title": "Facilities", "link": "/facilities" },
+  { "id": "gallery", "title": "Gallery", "link": "/gallery" },
+  { "id": "contact", "title": "Contact Us", "link": "/contact" }
+
+]
