@@ -1,5 +1,6 @@
 import React from 'react';
 import LocationDetails from '../Contact/LocationDetails';
+import Faq from '../ui/Faq';
 
 
 const ContactUsPage = () => {
@@ -136,55 +137,7 @@ const ContactUsPage = () => {
           </div>
 
           {/* FAQs */}
-          <div>
-            <h3 className="text-2xl font-bold mb-6">
-              Frequently Asked Questions
-            </h3>
-            <div className="space-y-4">
-              {[
-                {
-                  question: "What are the check-in and check-out times?",
-                  answer:
-                    "Our standard check-in time is 2:00 PM and check-out is at 12:00 PM. Early check-in or late check-out may be available upon request and subject to availability.",
-                },
-                {
-                  question: "Do you offer packages for corporate events?",
-                  answer:
-                    "Yes, we have tailored packages for corporate retreats, seminars, and team-building activities. Please contact our events team for more details and a custom quote.",
-                },
-                {
-                  question: "What family-friendly activities are available?",
-                  answer:
-                    "We offer a range of activities for the whole family, including swimming, easy hiking trails, a children's play area, and various outdoor games. We also organize special events during holiday seasons.",
-                },
-                {
-                  question: "Is there parking available at the resort?",
-                  answer:
-                    "Yes, we provide ample free parking space for all our guests within the resort premises.",
-                },
-                {
-                  question: "What is your cancellation policy?",
-                  answer:
-                    "You can cancel your booking free of charge up to 72 hours before your scheduled arrival date. For cancellations made within 72 hours, a one-night charge will apply. Please refer to your booking confirmation for specific details.",
-                },
-              ].map((faq, idx) => (
-                <details
-                  key={idx}
-                  className="group rounded-lg border border-border-light dark:border-border-dark bg-transparent p-4 transition-all duration-300 ease-in-out hover:bg-white/50 dark:hover:bg-white/10"
-                >
-                  <summary className="flex cursor-pointer items-center justify-between">
-                    <h4 className="font-medium">{faq.question}</h4>
-                    <span className="material-symbols-outlined plus-icon text-primary">
-                      add
-                    </span>
-                  </summary>
-                  <p className="mt-4 text-subtle-light dark:text-subtle-dark">
-                    {faq.answer}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </div>
+          <Faq />
         </div>
       </section>
     </main>
