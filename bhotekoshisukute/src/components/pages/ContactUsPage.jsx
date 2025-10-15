@@ -1,4 +1,5 @@
 import React from 'react';
+import LocationDetails from '../Contact/LocationDetails';
 
 
 const ContactUsPage = () => {
@@ -113,41 +114,7 @@ const ContactUsPage = () => {
               <div className="bg-white dark:bg-background-dark p-8 rounded-xl shadow-lg border border-border-light dark:border-border-dark">
                 <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
                 <div className="space-y-4">
-                  <div className="flex items-start space-x-4">
-                    <span className="material-symbols-outlined text-primary mt-1">
-                      location_on
-                    </span>
-                    <div>
-                      <h4 className="font-semibold">Our Location</h4>
-                      <p className="text-subtle-light dark:text-subtle-dark">
-                        Sukute Resort, Sukute, Sindhupalchok, Nepal
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <span className="material-symbols-outlined text-primary mt-1">
-                      phone
-                    </span>
-                    <div>
-                      <h4 className="font-semibold">Phone</h4>
-                      <p className="text-subtle-light dark:text-subtle-dark">
-                        +977-9841234567
-                        <br />
-                        +977-9849876543
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <span className="material-symbols-outlined text-primary mt-1">
-                      email
-                    </span>
-                    <div>
-                      <h4 className="font-semibold">Email</h4>
-                      <p className="text-subtle-light dark:text-subtle-dark">
-                        info@sukuteresort.com
-                      </p>
-                    </div>
-                  </div>
+                  <LocationDetails />
                 </div>
               </div>
             </div>

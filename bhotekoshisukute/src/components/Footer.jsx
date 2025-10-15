@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import secondaryLogo from "../assets/logo_2.png";
 import useFetchApi from '../hooks/useFetchApi';
+import Copyright from './ui/Copyright';
 
 const Footer = () => {
 
@@ -111,14 +112,7 @@ const Footer = () => {
           })}
           </div>
 
-          <div className="mt-8 border-t border-slate-300 pt-8 text-center text-sm text-slate-300">
-            <p>
-              © 2025 Bhotekoshi Beach. All rights reserved by{" "}
-              <a href="https://longtail.info/" className="hover:text-white">
-                Longtail e-media
-              </a>
-            </p>
-          </div>
+          <Copyright />
         </div>
       </footer>
     );
