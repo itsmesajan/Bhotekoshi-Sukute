@@ -35,7 +35,7 @@ const Activities = () => {
         <div className="space-y-16 overflow-hidden">
           {Object.entries(activities).map(([key, activities],index) => (
             <div
-              key={activities.id}
+              key={key}
               className={`flex flex-col md:flex-row gap-8 lg:gap-12 items-center ${
                 index % 2 === 1 ? "md:flex-row-reverse" : ""
               }`}
