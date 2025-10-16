@@ -1,6 +1,7 @@
 import React from 'react';
 import LocationDetails from '../Contact/LocationDetails';
 import Faq from '../ui/Faq';
+import ContactForm from '../ui/ContactForm';
 
 
 const ContactUsPage = () => {
@@ -22,92 +23,7 @@ const ContactUsPage = () => {
             {/* Left column - Form & FAQs */}
             <div className="flex flex-col space-y-12">
               {/* Contact Form */}
-              <div>
-                <h3 className="text-2xl font-bold mb-4">Send Us a Message</h3>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        className="block text-sm font-medium text-foreground-light dark:text-foreground-dark"
-                        htmlFor="name"
-                      >
-                        Name
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          className="form-input block w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark py-3 px-4 shadow-sm focus:border-primary focus:ring-primary"
-                          id="name"
-                          name="name"
-                          placeholder="Your Name"
-                          type="text"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label
-                        className="block text-sm font-medium text-foreground-light dark:text-foreground-dark"
-                        htmlFor="email"
-                      >
-                        Email
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          className="form-input block w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark py-3 px-4 shadow-sm focus:border-primary focus:ring-primary"
-                          id="email"
-                          name="email"
-                          placeholder="Your Email"
-                          type="email"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      className="block text-sm font-medium text-foreground-light dark:text-foreground-dark"
-                      htmlFor="subject"
-                    >
-                      Subject
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        className="form-input block w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark py-3 px-4 shadow-sm focus:border-primary focus:ring-primary"
-                        id="subject"
-                        name="subject"
-                        placeholder="Subject"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      className="block text-sm font-medium text-foreground-light dark:text-foreground-dark"
-                      htmlFor="message"
-                    >
-                      Message
-                    </label>
-                    <div className="mt-1">
-                      <textarea
-                        className="form-input block w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark py-3 px-4 shadow-sm focus:border-primary focus:ring-primary"
-                        id="message"
-                        name="message"
-                        placeholder="Your Message"
-                        rows="5"
-                      ></textarea>
-                    </div>
-                  </div>
-
-                  <div>
-                    <button
-                      className="w-full rounded-lg bg-[var(--primary-color)] text-[var(--secondary-color)] py-3 px-4 text-sm font-bold hover:text-white shadow-sm hover:bg-[var(--green-color)] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                      type="submit"
-                    >
-                      Send Message
-                    </button>
-                  </div>
-                </form>
-              </div>
+              <ContactForm />
             </div>
 
             {/* Right column - Image & Contact Info */}
