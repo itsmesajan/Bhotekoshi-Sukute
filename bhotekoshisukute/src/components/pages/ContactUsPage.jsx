@@ -2,9 +2,24 @@ import React from 'react';
 import LocationDetails from '../Contact/LocationDetails';
 import Faq from '../ui/Faq';
 import ContactForm from '../ui/ContactForm';
+import useFetchApi from '../../hooks/useFetchApi';
 
 
 const ContactUsPage = () => {
+  const {
+    data: siteregulars,
+    loading,
+    error,
+  } = useFetchApi(
+    "/bhotekoshibeach/api_siteregulars.json",
+    "siteregulars"
+  );
+
+  const mapUrl = siteregulars?.location_map;
+
+
+  if (loading) return <></>;
+  if (error) return <div>{error}</div>;
   return (
     <main className="flex-1">
       <section className="py-16 lg:py-32 sm:py-24">
@@ -39,16 +54,20 @@ const ContactUsPage = () => {
 
           <div className="h-96 w-full my-16 overflow-hidden rounded-xl shadow-lg">
             <div className="h-full w-full">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.4229841342863!2d85.75782387546727!3d27.70422357618433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ebaf6cc10f0083%3A0x3a706e919ce74d75!2sBhotekoshi%20Beach%20Resort%2C%20Sukute!5e0!3m2!1sen!2snp!4v1759037840066!5m2!1sen!2snp"
-                width="600"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-full w-full"
-              ></iframe>
+              {mapUrl ? (
+                <iframe
+                  src={mapUrl}
+                  width="600"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-full w-full"
+                ></iframe>
+              ) : (
+                <p>Map not available</p>
+              )}
             </div>
           </div>
 
