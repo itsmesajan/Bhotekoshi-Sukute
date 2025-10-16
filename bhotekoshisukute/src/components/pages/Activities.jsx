@@ -4,10 +4,20 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { activities } from "../../constants/data";
+import useFetchApi from "../../hooks/useFetchApi";
+
 
 
 const Activities = () => {
+  const {
+    data: activities,
+    loading,
+    error,
+  } = useFetchApi("/bhotekoshibeach/api_actitvities.json", "activities");
+
+  if (loading) return <></>;
+  if (error) return <div>{error}</div>;
+
   return (
     <main className="flex-grow bg-secondary dark:bg-dark/95">
       <div className="container mx-auto px-6 py-16 lg:py-32">
@@ -23,7 +33,7 @@ const Activities = () => {
 
         {/* activities Sections */}
         <div className="space-y-16 overflow-hidden">
-          {activities.map((activities, index) => (
+          {Object.entries(activities).map(([key, activities],index) => (
             <div
               key={activities.id}
               className={`flex flex-col md:flex-row gap-8 lg:gap-12 items-center ${
