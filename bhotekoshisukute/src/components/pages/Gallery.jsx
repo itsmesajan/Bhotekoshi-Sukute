@@ -1,35 +1,43 @@
-
 import React, { useState } from "react";
-import { images } from "../../constants/data";
-
-const categories = [
-  { label: "All", value: "all" },
-  { label: "Lobby", value: "lobby" },
-  { label: "Room", value: "room" },
-  { label: "Swimming Pool", value: "swimming" },
-  { label: "Hall", value: "hall" },
-  { label: "Dine", value: "dine" },
-];
+import useFetchApi from "../../hooks/useFetchApi";
+import LightGallery from "lightgallery/react";
+import lgZoom from "lightgallery/plugins/zoom";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgVideo from "lightgallery/plugins/video";
+import lgFullscreen from "lightgallery/plugins/fullscreen";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-video.css";
+import "lightgallery/css/lg-thumbnail.css";
+import "lightgallery/css/lg-fullscreen.css";
 
 const Gallery = () => {
-  const [filter, setFilter] = useState("all");
-  const [lightbox, setLightbox] = useState({ open: false, index: 0 });
+    const {
+    data: galleryImages,
+    loading,
+    error,
+  } = useFetchApi("/bhotekoshibeach/api_gallery.json", "galleryImages");
+  
+   const [activeCategory, setActiveCategory] = useState("All");
+   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const filteredImages =
-    filter === "all"
-      ? images
-      : images.filter((img) => img.category === filter);
+  if (loading) return <></>;
+  if (error) return <div>{error}</div>;
+  if (!galleryImages || galleryImages.length === 0) return <p className="text-center py-20">No images available.</p>;
 
-  const openLightbox = (idx) => setLightbox({ open: true, index: idx });
-  const closeLightbox = () => setLightbox({ open: false, index: 0 });
-  const goto = (dir) => {
-    setLightbox((prev) => {
-      let newIdx = prev.index + dir;
-      if (newIdx < 0) newIdx = filteredImages.length - 1;
-      if (newIdx >= filteredImages.length) newIdx = 0;
-      return { ...prev, index: newIdx };
-    });
+  const categories = ["All", ...new Set(galleryImages.map(img => img.category))];
+
+ const filteredImages = activeCategory === "All"
+    ? galleryImages
+    : galleryImages.filter(img => img.category === activeCategory);
+
+  const handleCategoryClick = (category) => {
+    setIsTransitioning(true);
+    setActiveCategory(category);
+    setTimeout(() => setIsTransitioning(false), 200);
   };
+
+  console.log("LightGallery:", LightGallery);
 
   return (
     <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-32">
@@ -38,7 +46,8 @@ const Gallery = () => {
           Live Memories
         </h2>
         <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
-          Explore the beauty and excitement of Sukute Resort through our curated collection of images.
+          Explore the beauty and excitement of Sukute Resort through our curated
+          collection of images.
         </p>
       </div>
 
@@ -46,139 +55,64 @@ const Gallery = () => {
       <div className="flex flex-wrap justify-center gap-4 mb-10">
         {categories.map((cat) => (
           <button
-            key={cat.value}
-            className={`px-5 py-2 rounded-full border font-medium transition-all ${filter === cat.value ? "bg-[var(--primary-color)] text-white" : "bg-white text-[var(--secondary-color)] border-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white"}`}
-            onClick={() => setFilter(cat.value)}
+            key={cat}
+            className={`px-5 py-2 rounded-full border font-medium transition-all ${
+              activeCategory  === cat
+                ? "bg-[var(--primary-color)] text-white"
+                : "bg-white text-[var(--secondary-color)] border-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white"
+            }`}
+            onClick={() => handleCategoryClick(cat)}
           >
-            {cat.label}
+            {cat}
           </button>
         ))}
       </div>
 
-      <div className="collage">
-        {filteredImages.map((img, i) => (
-          <div
-            key={i}
-            className={`collage-item ${img.className} cursor-pointer`}
-            onClick={() => openLightbox(i)}
-          >
-            <img src={img.src} alt={img.alt} />
-          </div>
-        ))}
-      </div>
-
       {/* Lightbox Modal */}
-      {lightbox.open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <button className="absolute top-4 right-4 text-white text-3xl" onClick={closeLightbox}>&times;</button>
-          <button className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl" onClick={() => goto(-1)}>&#8592;</button>
-          <img
-            src={filteredImages[lightbox.index].src}
-            alt={filteredImages[lightbox.index].alt}
-            className="max-h-[80vh] max-w-[90vw] rounded-xl shadow-lg border-4 border-white"
-          />
-          <button className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl" onClick={() => goto(1)}>&#8594;</button>
-        </div>
-      )}
+      <LightGallery
+  plugins={[lgZoom, lgThumbnail, lgVideo, lgFullscreen]}
+  mode="lg-fade"
+  elementClassNames={`grid grid-cols-2 lg:grid-cols-4 gap-4 transition-transform ${isTransitioning ? "scale-95" : "scale-100"}`}
+  options={{
+    thumbnail: true,
+    autoplay: true,
+    appendToBody: true, // <-- This ensures modal is outside normal flow
+  }}
+>
+  {filteredImages.map((img) => (
+    <div
+      key={img.id}
+      className="overflow-hidden rounded-lg cursor-pointer group"
+      data-src={img.url}
+      data-sub-html={img.alt}
+    >
+      <img
+        src={img.url}
+        alt={img.alt}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 shadow-lg"
+        loading="lazy"
+      />
+    </div>
+  ))}
+</LightGallery>
 
-      {/* Collage Styles */}
-      <style jsx>{`
-        .collage {
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          grid-auto-rows: 250px;
-          gap: 1rem;
-        }
+      {/* Collage CSS (Optional: adjust for grid spans) */}
+      {/* <style jsx>{`
         .collage-item {
-          overflow: hidden;
-          border-radius: 0.5rem;
-        }
-        .collage-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-        .collage-item:hover img {
-          transform: scale(1.05);
-        }
-        .item-1 {
-          grid-column: span 4;
-          grid-row: span 2;
-        }
-        .item-2 {
-          grid-column: span 3;
-          grid-row: span 1;
-        }
-        .item-3 {
-          grid-column: span 5;
-          grid-row: span 2;
-        }
-        .item-4 {
-          grid-column: span 3;
-          grid-row: span 1;
-        }
-        .item-5 {
-          grid-column: span 4;
-          grid-row: span 1;
-        }
-        .item-6 {
-          grid-column: span 5;
-          grid-row: span 1;
-        }
-        .item-7 {
-          grid-column: span 3;
-          grid-row: span 2;
-        }
-        .item-8 {
-          grid-column: span 4;
-          grid-row: span 1;
-        }
-        .item-9 {
-          grid-column: span 5;
-          grid-row: span 1;
-        }
-        .item-10 {
-          grid-column: span 4;
-          grid-row: span 1;
-        }
-        .item-11 {
-          grid-column: span 3;
-          grid-row: span 1;
-        }
-        .item-12 {
-          grid-column: span 5;
-          grid-row: span 2;
-        }
-        .item-13 {
-          grid-column: span 4;
-          grid-row: span 1;
-        }
-        .item-14 {
-          grid-column: span 3;
+          grid-column: span 2;
           grid-row: span 1;
         }
         @media (max-width: 1024px) {
-          .collage {
-            grid-template-columns: repeat(6, 1fr);
-            grid-auto-rows: 200px;
-          }
           .collage-item {
             grid-column: span 3 !important;
-            grid-row: span 1 !important;
           }
         }
         @media (max-width: 768px) {
-          .collage {
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 150px;
-          }
           .collage-item {
             grid-column: span 4 !important;
-            grid-row: span 1 !important;
           }
         }
-      `}</style>
+      `}</style> */}
     </main>
   );
 };

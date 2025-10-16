@@ -12,6 +12,11 @@
   "dependencies": {
     "@headlessui/react": "^2.2.9",
     "framer-motion": "^12.23.22",
+    "lg-fullscreen": "^1.2.1",
+    "lg-thumbnail": "^1.2.1",
+    "lg-video": "^1.4.0",
+    "lg-zoom": "^1.3.0",
+    "lightgallery": "^2.9.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-google-recaptcha": "^3.1.0",
