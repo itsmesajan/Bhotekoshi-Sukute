@@ -27,7 +27,7 @@
     "title": "Activities",
     "link": "/activities"
   },
-  { "id": "package", "title": "Package & Offers", "link": "/package" },
+  { "id": "packages", "title": "Package & Offers", "link": "/packages" },
   { "id": "facilities", "title": "Facilities", "link": "/facilities" },
   { "id": "gallery", "title": "Gallery", "link": "/gallery" },
   { "id": "contact", "title": "Contact Us", "link": "/contact" }

@@ -1,49 +1,16 @@
 import React from "react";
 import { FaSwimmingPool, FaUtensils, FaCocktail, FaCoffee, FaBed, FaDoorOpen, FaParking, FaTree } from "react-icons/fa";
+import useFetchApi from "../../hooks/useFetchApi";
 
 const Facilities = () => {
-  const facilities = [
-    {
-      icon: <FaSwimmingPool />,
-      title: "Swimming Pool",
-      description: "Refreshing pool for a relaxing swim or fun with family.",
-    },
-    {
-      icon: <FaUtensils />,
-      title: "Restaurant",
-      description: "Savor delicious cuisines in our elegant restaurant.",
-    },
-    {
-      icon: <FaCocktail />,
-      title: "Bar",
-      description: "Unwind with your favorite drinks in our cozy bar.",
-    },
-    {
-      icon: <FaCoffee />,
-      title: "Coffee Shop",
-      description: "Enjoy fresh coffee and light snacks in our charming cafe.",
-    },
-    {
-      icon: <FaBed />,
-      title: "Rooms",
-      description: "Experience comfort and luxury in our well-appointed rooms.",
-    },
-    {
-      icon: <FaDoorOpen />,
-      title: "Event Hall",
-      description: "Host events in our spacious hall for any occasion.",
-    },
-    {
-      icon: <FaParking />,
-      title: "Parking",
-      description: "Ample and secure parking for your peace of mind.",
-    },
-    {
-      icon: <FaTree />,
-      title: "Lawn Party Area",
-      description: "Celebrate in style in our expansive lawn party area.",
-    },
-  ];
+    const {
+    data: facilities,
+    loading,
+    error,
+  } = useFetchApi("/bhotekoshibeach/api_facilities.json", "facilities");
+
+  if (loading) return <></>;
+  if (error) return <div>{error}</div>;
 
   return (
     <main className="flex-grow">
@@ -64,7 +31,7 @@ const Facilities = () => {
               className="bg-white rounded-xl p-6 text-center flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
               <div className="bg-[#ffcd0012)] text-4xl text-[var(--secondary-color)] p-4 rounded-full mb-4 flex items-center justify-center">
-                {facility.icon}
+                <i className={facility.icon} />
               </div>
               <h3 className="text-lg font-bold text-[var(--secondary-color)]">
                 {facility.title}
