@@ -1,9 +1,18 @@
 import React from "react";
-import { FaSwimmingPool, FaUtensils, FaCocktail, FaCoffee, FaBed, FaDoorOpen, FaParking, FaTree } from "react-icons/fa";
+import {
+  FaSwimmingPool,
+  FaUtensils,
+  FaCocktail,
+  FaCoffee,
+  FaBed,
+  FaDoorOpen,
+  FaParking,
+  FaTree,
+} from "react-icons/fa";
 import useFetchApi from "../../hooks/useFetchApi";
 
 const Facilities = () => {
-    const {
+  const {
     data: facilities,
     loading,
     error,
@@ -20,21 +29,30 @@ const Facilities = () => {
             Inside the Resort
           </h2>
           <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
-            Explore the wide range of amenities we offer to make your stay unforgettable.
+            Explore the wide range of amenities we offer to make your stay
+            unforgettable.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {facilities.map((facility, index) => (
+          {Object.entries(facilities).map(([key, facility]) => (
             <div
-              key={index}
+              key={key}
               className="bg-white rounded-xl p-6 text-center flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
-              <div className="bg-[#ffcd0012)] text-4xl text-[var(--secondary-color)] p-4 rounded-full mb-4 flex items-center justify-center">
-                <i className={facility.icon} />
+              <div className="bg-[#ffcd0012] text-4xl text-[var(--secondary-color)] p-4 rounded-full mb-4 flex items-center justify-center">
+                {facility.image ? (
+                  <img
+                    src={facility.image}
+                    alt={facility.title}
+                    className="w-12 h-12 object-contain"
+                  />
+                ) : (
+                  <i className={facility.icon} />
+                )}
               </div>
               <h3 className="text-lg font-bold text-[var(--secondary-color)]">
-                {facility.title}
+                {facility.title || key}
               </h3>
               <p className="mt-2 text-sm text-slate-600 flex-grow">
                 {facility.description}

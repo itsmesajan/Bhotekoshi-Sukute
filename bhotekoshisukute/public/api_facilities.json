@@ -1,42 +1,50 @@
-[
-    {
-      "icon": "fa-solid fa-water-ladder",
-      "title": "Swimming Pool",
-      "description": "Refreshing pool for a relaxing swim or fun with family."
-    },
-    {
-      "icon": "fa-solid fa-utensils",
-      "title": "Restaurant",
-      "description": "Savor delicious cuisines in our elegant restaurant."
-    },
-    {
-      "icon": "fa-solid fa-cocktail",
-      "title": "Bar",
-      "description": "Unwind with your favorite drinks in our cozy bar."
-    },
-    {
-      "icon": "fa-solid fa-coffee",
-      "title": "Coffee Shop",
-      "description": "Enjoy fresh coffee and light snacks in our charming cafe."
-    },
-    {
-      "icon": "fa-solid fa-bed",
-      "title": "Rooms",
-      "description": "Experience comfort and luxury in our well-appointed rooms."
-    },
-    {
-      "icon": "fa-solid fa-door-open",
-      "title": "Event Hall",
-      "description": "Host events in our spacious hall for any occasion."
-    },
-    {
-      "icon": "fa-solid fa-parking",
-      "title": "Parking",
-      "description": "Ample and secure parking for your peace of mind."
-    },
-    {
-      "icon": "fa-solid fa-tree",
-      "title": "Lawn Party Area",
-      "description": "Celebrate in style in our expansive lawn party area."
-    }
-  ]
+{
+  "Swimming Pool": {
+    "image": "",
+    "icon": "fa-solid fa-water-ladder",
+    "title": "Swimming Pool",
+    "description": "Refreshing pool for a relaxing swim or fun with family."
+  },
+  "Restaurant": {
+    "image": "",
+    "icon": "fa-solid fa-utensils",
+    "title": "Restaurant",
+    "description": "Savor delicious cuisines in our elegant restaurant."
+  },
+  "Bar": {
+    "image": "",
+    "icon": "fa-solid fa-cocktail",
+    "title": "Bar",
+    "description": "Unwind with your favorite drinks in our cozy bar."
+  },
+  "Coffee Shop": {
+    "image": "",
+    "icon": "fa-solid fa-coffee",
+    "title": "Coffee Shop",
+    "description": "Enjoy fresh coffee and light snacks in our charming cafe."
+  },
+  "Rooms": {
+    "image": "",
+    "icon": "fa-solid fa-bed",
+    "title": "Rooms",
+    "description": "Experience comfort and luxury in our well-appointed rooms."
+  },
+  "Event Hall": {
+    "image": "",
+    "icon": "fa-solid fa-door-open",
+    "title": "Event Hall",
+    "description": "Host events in our spacious hall for any occasion."
+  },
+  "Parking": {
+    "image": "",
+    "icon": "fa-solid fa-parking",
+    "title": "Parking",
+    "description": "Ample and secure parking for your peace of mind."
+  },
+  "Lawn Party Area": {
+    "image": "",
+    "icon": "fa-solid fa-tree",
+    "title": "Lawn Party Area",
+    "description": "Celebrate in style in our expansive lawn party area."
+  }
+}
