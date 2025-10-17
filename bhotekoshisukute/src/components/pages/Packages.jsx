@@ -1,10 +1,26 @@
 import React from "react";
-import { packages } from "../../constants/data";
 import EnquiryModal from "../Contact/EnquiryModal";
+import useFetchApi from "../../hooks/useFetchApi";
 
 
 
 const Packages = () => {
+    const {
+    data: packages,
+    loading,
+    error,
+  } = useFetchApi(
+    "/bhotekoshibeach/api_package.json",
+    "packages"
+  );
+
+    if (loading) {
+    return <></>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-32">
@@ -18,9 +34,9 @@ const Packages = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {packages.map((pkg) => (
+        {Object.entries(packages).map(([key,pkg]) => (
           <div
-            key={pkg.id}
+            key={key}
             className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col"
           >
             <img

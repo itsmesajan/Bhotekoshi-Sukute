@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 
-const EnquiryModal = ({ type = "hall" }) => {
+
+const EnquiryModal = ({ type = "hall", selectedItem }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // For displaying hall or package name
+  const itemTitle =
+    selectedItem?.title ||
+    (type === "hall" ? "Hall Enquiry" : "Package Enquiry");
 
   return (
     <div>
@@ -19,11 +25,15 @@ const EnquiryModal = ({ type = "hall" }) => {
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 sm:p-6"
       >
         <Dialog.Panel className="w-full max-w-lg sm:max-w-xl md:max-w-2xl rounded-lg bg-white p-4 sm:p-6 shadow-lg dark:bg-background-dark overflow-y-auto max-h-[90vh]">
+          {/* Title */}
           <Dialog.Title className="text-xl sm:text-2xl font-bold text-[var(--secondary-color)] mb-4 text-center sm:text-left">
-            Enquiry Now
+            Enquiry for {itemTitle}
           </Dialog.Title>
 
           <form className="space-y-4">
+            {/* Hidden field for backend */}
+            <input type="hidden" name="enquiry_for" value={itemTitle} />
+
             {/* Personal Information */}
             <h3 className="font-semibold text-base sm:text-lg">
               Personal Information
@@ -114,16 +124,21 @@ const EnquiryModal = ({ type = "hall" }) => {
             )}
 
             {type === "package" && (
-              <div>
-                <label className="block text-sm font-medium">
-                  Specific Requirement*
-                </label>
-                <textarea
-                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                  rows={3}
-                  required
-                ></textarea>
-              </div>
+              <>
+                <h3 className="font-semibold mt-4 text-base sm:text-lg">
+                  Package Information
+                </h3>
+                <div>
+                  <label className="block text-sm font-medium">
+                    Specific Requirement*
+                  </label>
+                  <textarea
+                    className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
+                    rows={3}
+                    required
+                  ></textarea>
+                </div>
+              </>
             )}
 
             {/* Buttons */}

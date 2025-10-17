@@ -1,0 +1,23 @@
+{
+  "Festive": {
+    "id": 1,
+    "title": "Festive Package",
+    "description": "Embrace the festive spirit with our all-inclusive package, perfect for creating lasting memories with family and friends.",
+    "price": 3500,
+    "image": "https://scontent.fktm21-2.fna.fbcdn.net/v/t39.30808-6/559185765_1204271435054718_6637739253895101292_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=L5d-KvWxH44Q7kNvwGcUS-i&_nc_oc=AdnLHRfcnGNI0EKPcuPa8rEq95PoHuVu1Pk22wR7aOuxbYj14xIHOQJoeF6TxhTmamOqjzEYcdp2SrKqkQejT-pH&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=gj_msoqyETQNtfhYmko2Vw&oh=00_Afex0SzTmS035xrDqWh52bX2OoCTkWjSNKWsWT7zy4qpKQ&oe=68F6A7A6"
+  },
+  "Family": {
+    "id": 2,
+    "title": "Family Adventure",
+    "description": "The perfect family getaway filled with fun activities for all ages, ensuring a memorable vacation for everyone.",
+    "price": 3200,
+    "image": "https://scontent.fktm21-1.fna.fbcdn.net/v/t39.30808-6/485124825_1039953734819823_6862416809318912601_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=btxFbUi78jIQ7kNvwH8ZvqQ&_nc_oc=Adl5yzWPNcMjFnWEzOUE93xy-ZSxHixanJ2AIO0P3e-t_r1_3shVeMFla-_mxVKqd9mmFA4gqHzneXXgNHGhPHbB&_nc_zt=23&_nc_ht=scontent.fktm21-1.fna&_nc_gid=lUt5Vo0zftmH-HJASrXnlA&oh=00_AfeAacFkpEBo8nJcN2daiS1KolhroJBkuAGLLKSoLTedlg&oe=68F6BB92"
+  },
+  "Corporate": {
+    "id": 3,
+    "title": "Corporate Team Builder",
+    "description": "Boost team morale and collaboration with our specially curated corporate retreat package, combining work and play.",
+    "price": 4000,
+    "image": "https://scontent.fktm21-2.fna.fbcdn.net/v/t39.30808-6/474996843_998699022278628_5448065892615335188_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Udw0jrlZ-FkQ7kNvwENiPH4&_nc_oc=AdnEYrp7s9_F5JZCQSUmMS9NAaWAaiExUMtaKNsehda0u6VUXX5ZR3x19kgTqvKlAuZU6G0xSs00oj6fRwW1JegQ&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=G3wkqbRBkZT01zMeWCOKyQ&oh=00_Affx5I3v6LRE_0dzgVVQaj34hK1vCP-2VwIp7bb92CvVRg&oe=68F6BB3B"
+  }
+}
