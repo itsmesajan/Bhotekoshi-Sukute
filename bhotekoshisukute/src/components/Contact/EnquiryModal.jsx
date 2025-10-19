@@ -1,123 +1,147 @@
-import React, { useState } from "react";
+import React from "react";
 import { Dialog } from "@headlessui/react";
-
+import { useForm } from "../../hooks/useForm";
+import ReCaptcha from "../ui/ReCaptcha";
 
 const EnquiryModal = ({ type = "hall", selectedItem }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  // For displaying hall or package name
   const itemTitle =
-    selectedItem?.title ||
-    (type === "hall" ? "Hall Enquiry" : "Package Enquiry");
+    selectedItem?.title || (type === "hall" ? "Hall Enquiry" : "Package Enquiry");
+
+  const initialState = {
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    nature: "",
+    eventDate: "",
+    pax: "",
+    specialRequest: "",
+    specificRequirement: "",
+    // enquiry_for will be set dynamically
+  };
+
+  const validate = (data) => {
+    const errs = {};
+    if (!data.name?.trim()) errs.name = "Name is required.";
+    if (!data.email?.trim()) errs.email = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
+      errs.email = "Enter a valid email.";
+    if (!data.phone?.trim()) errs.phone = "Phone is required.";
+    if (!data.address?.trim()) errs.address = "Address is required.";
+
+    if (type === "hall") {
+      if (!data.nature?.trim()) errs.nature = "Nature of event is required.";
+      if (!data.eventDate) errs.eventDate = "Event date is required.";
+      if (!data.pax) errs.pax = "Number of pax is required.";
+    }
+
+    if (type === "package") {
+      if (!data.specificRequirement?.trim())
+        errs.specificRequirement = "Requirement is required.";
+    }
+    return errs;
+  };
+
+  const { formData, formStatus, formErrors, handleChange, handleSubmit, setFormData, setFormStatus } = useForm(
+    initialState,
+    validate
+  );
+
+  // recaptcha token state
+  const [recaptchaToken, setRecaptchaToken] = React.useState(null);
+
+  // when modal opens set enquiry_for in formData (so it is included in submitted JSON)
+  React.useEffect(() => {
+    if (isOpen) {
+      setFormData(prev => ({ ...prev, enquiry_for: itemTitle }));
+    }
+  }, [isOpen, itemTitle, setFormData]);
+
+  // close modal on successful submit
+  React.useEffect(() => {
+    if (formStatus === "success") {
+      setIsOpen(false);
+      // reset status after closing to clear any messages
+      setTimeout(() => setFormStatus(null), 600);
+    }
+  }, [formStatus, setFormStatus]);
 
   return (
     <div>
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full rounded-lg bg-[var(--primary-color)] px-6 py-3 text-base font-bold text-[var(--secondary-color)] hover:text-white transition-all hover:bg-[var(--green-color)]"
+        className="w-full rounded-lg bg-[var(--primary-color)] px-6 py-3 text-base font-bold text-white hover:bg-[var(--green-color)]"
       >
         Enquiry Now
       </button>
 
-      <Dialog
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 sm:p-6"
-      >
-        <Dialog.Panel className="w-full max-w-lg sm:max-w-xl md:max-w-2xl rounded-lg bg-white p-4 sm:p-6 shadow-lg dark:bg-background-dark overflow-y-auto max-h-[90vh]">
-          {/* Title */}
-          <Dialog.Title className="text-xl sm:text-2xl font-bold text-[var(--secondary-color)] mb-4 text-center sm:text-left">
-            Enquiry for {itemTitle}
-          </Dialog.Title>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+        <Dialog.Panel className="w-full max-w-2xl rounded-lg bg-white p-5 shadow-lg max-h-[90vh] overflow-auto">
+          <Dialog.Title className="text-xl font-bold mb-4">Enquiry for {itemTitle}</Dialog.Title>
 
-          <form className="space-y-4">
-            {/* Hidden field for backend */}
+          <form
+            onSubmit={(e) =>
+              handleSubmit(
+                e,
+                recaptchaToken, // pass the token
+                "https://bhotekoshibeach.com/enquery_mail_react.php",
+                { requireRecaptcha: false }
+              )
+            }
+            className="space-y-4"
+          >
             <input type="hidden" name="enquiry_for" value={itemTitle} />
 
-            {/* Personal Information */}
-            <h3 className="font-semibold text-base sm:text-lg">
-              Personal Information
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-sm font-medium">Name*</label>
-                <input
-                  type="text"
-                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                  required
-                />
+                <input name="name" value={formData.name} onChange={handleChange} className="mt-1 w-full rounded border px-3 py-2" aria-invalid={!!formErrors.name} />
+                {formErrors.name && <p className="text-xs text-red-600 mt-1">{formErrors.name}</p>}
               </div>
+
               <div>
                 <label className="block text-sm font-medium">Email*</label>
-                <input
-                  type="email"
-                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                  required
-                />
+                <input name="email" type="email" value={formData.email} onChange={handleChange} className="mt-1 w-full rounded border px-3 py-2" aria-invalid={!!formErrors.email} />
+                {formErrors.email && <p className="text-xs text-red-600 mt-1">{formErrors.email}</p>}
               </div>
+
               <div>
                 <label className="block text-sm font-medium">Phone*</label>
-                <input
-                  type="tel"
-                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                  required
-                />
+                <input name="phone" type="tel" value={formData.phone} onChange={handleChange} className="mt-1 w-full rounded border px-3 py-2" aria-invalid={!!formErrors.phone} />
+                {formErrors.phone && <p className="text-xs text-red-600 mt-1">{formErrors.phone}</p>}
               </div>
-              <div className="sm:col-span-2">
+
+              <div>
                 <label className="block text-sm font-medium">Address*</label>
-                <input
-                  type="text"
-                  className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                  required
-                />
+                <input name="address" value={formData.address} onChange={handleChange} className="mt-1 w-full rounded border px-3 py-2" aria-invalid={!!formErrors.address} />
+                {formErrors.address && <p className="text-xs text-red-600 mt-1">{formErrors.address}</p>}
               </div>
             </div>
 
-            {/* Conditional Fields */}
             {type === "hall" && (
               <>
-                <h3 className="font-semibold mt-4 text-base sm:text-lg">
-                  Event Information
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <h4 className="font-semibold mt-2">Event Information</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-medium">
-                      Nature of Event*
-                    </label>
-                    <input
-                      type="text"
-                      className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                      required
-                    />
+                    <label className="block text-sm font-medium">Nature of Event*</label>
+                    <input name="nature" value={formData.nature} onChange={handleChange} className="mt-1 w-full rounded border px-3 py-2" />
+                    {formErrors.nature && <p className="text-xs text-red-600 mt-1">{formErrors.nature}</p>}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium">
-                      Event Date*
-                    </label>
-                    <input
-                      type="date"
-                      className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                      required
-                    />
+                    <label className="block text-sm font-medium">Event Date*</label>
+                    <input name="eventDate" value={formData.eventDate} onChange={handleChange} type="date" className="mt-1 w-full rounded border px-3 py-2" />
+                    {formErrors.eventDate && <p className="text-xs text-red-600 mt-1">{formErrors.eventDate}</p>}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium">
-                      No. of Pax*
-                    </label>
-                    <input
-                      type="number"
-                      className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                      required
-                    />
+                    <label className="block text-sm font-medium">No. of Pax*</label>
+                    <input name="pax" value={formData.pax} onChange={handleChange} type="number" className="mt-1 w-full rounded border px-3 py-2" />
+                    {formErrors.pax && <p className="text-xs text-red-600 mt-1">{formErrors.pax}</p>}
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-sm font-medium">
-                      Special Request
-                    </label>
-                    <textarea
-                      className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                      rows={3}
-                    ></textarea>
+                    <label className="block text-sm font-medium">Special Request</label>
+                    <textarea name="specialRequest" value={formData.specialRequest} onChange={handleChange} className="mt-1 w-full rounded border px-3 py-2" rows={3}></textarea>
                   </div>
                 </div>
               </>
@@ -125,37 +149,21 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
 
             {type === "package" && (
               <>
-                <h3 className="font-semibold mt-4 text-base sm:text-lg">
-                  Package Information
-                </h3>
+                <h4 className="font-semibold mt-2">Package Information</h4>
                 <div>
-                  <label className="block text-sm font-medium">
-                    Specific Requirement*
-                  </label>
-                  <textarea
-                    className="mt-1 w-full rounded border px-3 py-2 text-sm sm:text-base"
-                    rows={3}
-                    required
-                  ></textarea>
+                  <label className="block text-sm font-medium">Specific Requirement*</label>
+                  <textarea name="specificRequirement" value={formData.specificRequirement} onChange={handleChange} className="mt-1 w-full rounded border px-3 py-2" rows={3}></textarea>
+                  {formErrors.specificRequirement && <p className="text-xs text-red-600 mt-1">{formErrors.specificRequirement}</p>}
                 </div>
               </>
             )}
 
-            {/* Buttons */}
-            <div className="mt-6 flex flex-col sm:flex-row justify-end gap-3 sm:gap-4">
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2 rounded border hover:bg-gray-100 w-full sm:w-auto"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="px-6 py-2 rounded bg-[var(--primary-color)] text-white hover:bg-[var(--green-color)] w-full sm:w-auto"
-              >
-                Submit
-              </button>
+            {/* ReCaptcha must provide token via onChange prop */}
+            <ReCaptcha onChange={(token) => setRecaptchaToken(token)} />
+
+            <div className="flex justify-end gap-3 mt-4">
+              <button type="button" onClick={() => setIsOpen(false)} className="px-4 py-2 rounded border">Cancel</button>
+              <button type="submit" className="px-5 py-2 rounded bg-[var(--primary-color)] text-white">Submit</button>
             </div>
           </form>
         </Dialog.Panel>

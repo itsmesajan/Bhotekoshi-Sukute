@@ -11,45 +11,34 @@ const initialState = {
 };
 
 const ContactForm = () => {
-  // // Validation
-  // const validate = () => {
-  //   const newErrors = {};
-  //   if (!formData.name.trim()) newErrors.name = "Name is required.";
-  //   if (!formData.email.trim()) newErrors.email = "Email is required.";
-  //   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-  //     newErrors.email = "Enter a valid email.";
-  //   if (!formData.subject.trim()) newErrors.subject = "Subject is required.";
-  //   if (!formData.message.trim()) newErrors.message = "Message is required.";
-  //   return newErrors;
-  // };
+  const validate = (formData) => {
+    const newErrors = {};
+    if (!formData.name?.trim()) newErrors.name = "Name is required.";
+    if (!formData.email?.trim()) newErrors.email = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Enter a valid email.";
+    if (!formData.subject?.trim()) newErrors.subject = "Subject is required.";
+    if (!formData.message?.trim()) newErrors.message = "Message is required.";
+    return newErrors;
+  };
 
-  const { formData, formStatus, handleChange, handleSubmit } = useForm(
-    initialState
+  const { formData, formStatus, formErrors, handleChange, handleSubmit } = useForm(
+    initialState,
+    validate
   );
 
   const [recaptchaToken, setRecaptchaToken] = useState(null);
 
-  const handleRecaptchaChange = (token) => {
-    setRecaptchaToken(token);
-  };
-
   return (
     <section>
-      <h3 className="text-2xl font-bold mb-6 text-gray-900">
-        Send Us a Message
-      </h3>
-
-      {status && (
-        <div
-          className={`p-4 mb-5 text-sm font-medium rounded-lg border-l-4 ${
-            status.type === "success"
-              ? "bg-green-100 border-green-500 text-green-800"
-              : "bg-red-100 border-red-500 text-red-800"
-          }`}
-          role="alert"
-        >
-          {status.message}
-        </div>
+      {formStatus === "success" && (
+        <div className="p-3 mb-4 text-sm text-green-800 bg-green-100 rounded">Message sent successfully.</div>
+      )}
+      {formStatus === "error" && (
+        <div className="p-3 mb-4 text-sm text-red-800 bg-red-100 rounded">Please fix the errors and try again.</div>
+      )}
+      {formStatus === "recaptchaError" && (
+        <div className="p-3 mb-4 text-sm text-red-800 bg-red-100 rounded">Please complete the reCAPTCHA.</div>
       )}
 
       <form
@@ -57,21 +46,20 @@ const ContactForm = () => {
           handleSubmit(
             e,
             recaptchaToken,
-            "https://bhotekoshibeach.com/enquery_mail_react.php"
+            "https://bhotekoshibeach.com/enquery_mail_react.php",
+            { requireRecaptcha: false }
           )
         }
         noValidate
         className="space-y-6"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <FormField
             label="Name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            error={
-              formStatus === "error" ? "Please fill all required fields" : ""
-            }
+            error={formErrors.name}
             placeholder="Your Name"
           />
           <FormField
@@ -80,10 +68,8 @@ const ContactForm = () => {
             type="email"
             value={formData.email}
             onChange={handleChange}
-            error={
-              formStatus === "error" ? "Please fill all required fields" : ""
-            }
-            placeholder="Your Email"
+            error={formErrors.email}
+            placeholder="you@domain.com"
           />
         </div>
 
@@ -92,9 +78,7 @@ const ContactForm = () => {
           name="subject"
           value={formData.subject}
           onChange={handleChange}
-          error={
-            formStatus === "error" ? "Please fill all required fields" : ""
-          }
+          error={formErrors.subject}
           placeholder="Subject"
         />
 
@@ -105,21 +89,17 @@ const ContactForm = () => {
           rows="5"
           value={formData.message}
           onChange={handleChange}
-          error={
-            formStatus === "error" ? "Please fill all required fields" : ""
-          }
-          placeholder="Your Message"
+          error={formErrors.message}
+          placeholder="Your message"
         />
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <ReCaptcha onChange={handleRecaptchaChange} />
+          <ReCaptcha onChange={(token) => setRecaptchaToken(token)} />
           <button
             type="submit"
             disabled={formStatus === "loading"}
-            className={`w-full sm:w-auto px-6 py-3 font-semibold text-white rounded-lg transition-all duration-300 ${
-              formStatus === "loading"
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-[var(--primary-color)] hover:bg-[var(--green-color)]"
+            className={`px-6 py-3 rounded font-semibold text-white ${
+              formStatus === "loading" ? "bg-gray-400 cursor-not-allowed" : "bg-[var(--primary-color)] hover:bg-[var(--green-color)]"
             }`}
           >
             {formStatus === "loading" ? "Sending..." : "Send Message"}

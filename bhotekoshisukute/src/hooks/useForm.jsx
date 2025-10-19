@@ -2,56 +2,78 @@ import { useState } from "react";
 
 export const useForm = (initialState, validate) => {
     const [formData, setFormData] = useState(initialState);
-    const [formStatus, setFormStatus] = useState(null);
-  
+    const [formStatus, setFormStatus] = useState(null); // 'loading' | 'success' | 'error' | 'recaptchaError'
+    const [formErrors, setFormErrors] = useState({});
+
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
     };
   
-    const handleSubmit = async (e, recaptchaToken, url) => {
-      e.preventDefault();
+  const handleSubmit = async (e, recaptchaToken = null, url = "/api/form", opts = {}) => {
+    if (e && e.preventDefault) e.preventDefault();
+
+    const errors = validate ? validate(formData) : {};
+    if (errors && Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      setFormStatus("error");
+      setTimeout(() => setFormStatus(null), 3000);
+      return;
+    } else {
+      setFormErrors({});
+    }
+
+    if (opts.requireRecaptcha && !recaptchaToken) {
+      setFormStatus("recaptchaError");
+      setTimeout(() => setFormStatus(null), 3000);
+      return;
+    }
   
-      if (!validate(formData)) { // <-- use external validate
-        setFormStatus("error");
-        setTimeout(() => setFormStatus(null), 3000);
-        return;
-      }
-  
-      if (!recaptchaToken) {
-        setFormStatus("recaptchaError");
-        setTimeout(() => setFormStatus(null), 3000);
-        return;
-      }
-  
-      try {
-        setFormStatus("loading");
-  
-        const response = await fetch(url, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...formData, "g-recaptcha-response": recaptchaToken }),
-        });
-  
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setFormStatus("success");
-            setFormData(initialState);
-          } else {
-            setFormStatus("error");
-          }
-        } else {
-          setFormStatus("error");
+    try {
+      setFormStatus("loading");
+
+      const body = { ...formData };
+      if (recaptchaToken) body["g-recaptcha-response"] = recaptchaToken;
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (response.ok) {
+        let data = {};
+        try {
+          data = await response.json();
+        } catch {
+          data = {};
         }
-      } catch (err) {
-        console.error(err);
+        if (data.success === false) {
+          setFormStatus("error");
+        } else {
+          setFormStatus("success");
+          setFormData(initialState);
+        }
+      } else {
         setFormStatus("error");
-      } finally {
-        setTimeout(() => setFormStatus(null), 3000);
       }
-    };
-  
-    return { formData, formStatus, handleChange, handleSubmit, setFormStatus };
+    } catch (err) {
+      console.error(err);
+      setFormStatus("error");
+    } finally {
+      setTimeout(() => setFormStatus(null), 3000);
+    }
   };
+  
+  return {
+    formData,
+    formStatus,
+    formErrors,
+    handleChange,
+    handleSubmit,
+    setFormStatus,
+    setFormErrors,
+    setFormData,
+  };
+};
   
