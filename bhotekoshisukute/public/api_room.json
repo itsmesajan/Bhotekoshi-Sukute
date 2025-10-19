@@ -1,0 +1,369 @@
+[{
+    "id": "accommodation",
+    "title": "Accommodation",
+    "subheading": "Your Haven of Comfort",
+    "description": "Discover a sanctuary of comfort and elegance. Each room is meticulously designed to provide an unparalleled experience of luxury and tranquility.",
+    "rojaiLink": "https:\/\/hotelichchha.com\/backend\/result.php?hotel_code=8fE7Jg",
+    "accomodation": [{
+        "id": "deluxe-room",
+        "title": "Deluxe Room",
+        "subtitle": "",
+        "description": "The Deluxe Room offers a comfortable stay with modern amenities and elegant decoration.",
+        "imageUrl": "https:\/\/hotelichchha.com\/backend\/images\/subpackage\/image\/I8KlB-dlx3-CMsmsEgx.webp",
+        "category": "deluxe-room",
+        "router": "\/accommodation\/deluxe-room",
+        "images": [{
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/YWFon-room2-Sri62LWy.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/BL1Ct-room1-Dq4x4xNH.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/pVVgs-room3-CGyEWjdq.webp",
+            "title": "The Homely Ambience"
+        }],
+        "overview": [{
+            "title": "Overview",
+            "content": "\r\n\tStep into the embrace of elegance with Hotel Ichchha Deluxe Rooms. Designed for discerning travelers, these rooms blend exquisite comfort with state-of-the-art facilities. Revel in the sumptuous bedding, soak in the serene ambiance, and let our attentive service elevate your stay to a realm of unparalleled luxury.\r\n"
+        }],
+        "policies": [{
+            "title": "Child Policies",
+            "content": ["Child 0 - 4 yrs. sharing parent's room free of charge on same plan as adults.", "Child age 5 - 10 yrs. sharing parent's room will be charged 50% adult meal rate.", "Breakfast - USD $8\/ INR 500."]
+        }],
+        "amenities": ["Wi-Fi", "Air conditioning", "Coffee and tea set", "Desk", "Hairdryer", "Pillow service", "Safe", "Slippers", "Storage cabinet", "Telephone", "Television", "Toilet", "Towel service", "Twin bed\/double bed"],
+        "roomDetails": {
+            "Starting Price": {
+                "icon": "IoPricetagSharp",
+                "value": "USD70 \/ night"
+            },
+            "Total Rooms": {
+                "icon": "IoBed",
+                "value": "20 rooms"
+            },
+            "Room Size": {
+                "icon": "MdSpaceDashboard",
+                "value": "205 sq. ft."
+            },
+            "Occupancy": {
+                "icon": "MdFamilyRestroom",
+                "value": "1 \/ 2 \/ (2+1) guests"
+            },
+            "Complimentary": {
+                "icon": "FaHandHoldingHeart",
+                "value": "Gym, Swimming Pool, Airport Pickup & Drop"
+            }
+        }
+    }, {
+        "id": "super-deluxe-room",
+        "title": "Super Deluxe Room",
+        "subtitle": "",
+        "description": "Experience luxury and sophistication in our Super Deluxe Room, featuring splendid interiors and top-notch facilities.",
+        "imageUrl": "https:\/\/hotelichchha.com\/backend\/images\/subpackage\/image\/qEkT8-dlx6-Ce-zyPhs.webp",
+        "category": "super-deluxe-room",
+        "router": "\/accommodation\/super-deluxe-room",
+        "images": [{
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/Ptp7G-dlx2-D-uGqwo1.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/gReyU-dlx1-t4hQ5d_e.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/VAtvd-dlx3-CMsmsEgx.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/Bc2Cq-dlx6-Ce-zyPhs (1).webp",
+            "title": "The Homely Ambience"
+        }],
+        "overview": [{
+            "title": "Overview",
+            "content": "\r\n\tDiscover unparalleled opulence in Hotel Ichchha Super Deluxe Rooms, where global standards of luxury meet personalized comfort. Each room is a masterpiece of design, featuring lavish furnishings, cutting-edge technology, and panoramic views that promise to leave you spellbound. Our commitment to excellence ensures every moment is imbued with splendor and sophistication.\r\n"
+        }],
+        "policies": [{
+            "title": "Child Policies",
+            "content": ["Child 0 - 4 yrs. sharing parent's room free of charge on same plan as adults.", "Child age 5 - 10 yrs. sharing parent's room will be charged 50% adult meal rate.", "Breakfast - US$ 8\/ INR 500."]
+        }],
+        "amenities": ["Wi-Fi", "Air conditioning", "Coffee and tea set", "Desk", "Hairdryer", "Pillow service", "Safe", "Slippers", "Storage cabinet", "Telephone", "Television", "Toilet", "Towel service", "Twin bed\/double bed"],
+        "roomDetails": {
+            "Starting Price": {
+                "icon": "IoPricetagSharp",
+                "value": "USD75 \/ night"
+            },
+            "Total Rooms": {
+                "icon": "IoBed",
+                "value": "55 rooms"
+            },
+            "Room Size": {
+                "icon": "MdSpaceDashboard",
+                "value": "215 sq. feet sq. ft."
+            },
+            "Occupancy": {
+                "icon": "MdFamilyRestroom",
+                "value": "1 \/ 2 \/ (2+1) guests"
+            },
+            "Complimentary": {
+                "icon": "FaHandHoldingHeart",
+                "value": "Gym, Swimming Pool, Airport Pickup & Drop"
+            }
+        }
+    }, {
+        "id": "premium-room",
+        "title": "Premium Room",
+        "subtitle": "",
+        "description": "Indulge in luxury and comfort with our Premium Room, designed to offer a lavish experience for our guests.",
+        "imageUrl": "https:\/\/hotelichchha.com\/backend\/images\/subpackage\/image\/0qhVd-dlx5-D21cbKO4.webp",
+        "category": "premium-room",
+        "router": "\/accommodation\/premium-room",
+        "images": [{
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/2beBQ-dlx2-D-uGqwo1.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/9WE9K-dlx4-DofKHPrX.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/28TQm-dlx3-CMsmsEgx.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/2tPnV-dlx5-D21cbKO4.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/aQAnn-dlx6-Ce-zyPhs.webp",
+            "title": "The Homely Ambience"
+        }],
+        "overview": [{
+            "title": "Overview",
+            "content": "\r\n\tImmerse yourself in the epitome of elegance with Hotel Ichchha Premium Rooms. Tailored for the world traveler, these rooms boast an exquisite fusion of comfort and style, complete with luxurious amenities and impeccable service. Surrender to the allure of sophistication and let us redefine your travel experience.\r\n"
+        }],
+        "policies": [{
+            "title": "Child Policies",
+            "content": ["Child 0 - 4 yrs. sharing parent's room free of charge on same plan as adults.", "Child age 5 - 10 yrs. sharing parent's room will be charged 50% adult meal rate.", "Breakfast - US$ 8\/ INR 500."]
+        }],
+        "amenities": ["Fruits Basket", "Minibar", "Wi-Fi", "Air conditioning", "Coffee and tea set", "Desk", "Hairdryer", "Pillow service", "Safe", "Slippers", "Storage cabinet", "Telephone", "Television", "Toilet", "Towel service", "Twin bed\/double bed"],
+        "roomDetails": {
+            "Starting Price": {
+                "icon": "IoPricetagSharp",
+                "value": "USD80 \/ night"
+            },
+            "Total Rooms": {
+                "icon": "IoBed",
+                "value": "16 rooms"
+            },
+            "Room Size": {
+                "icon": "MdSpaceDashboard",
+                "value": "215 sq. feet sq. ft."
+            },
+            "Occupancy": {
+                "icon": "MdFamilyRestroom",
+                "value": "2 \/ (2+1) guests"
+            },
+            "Complimentary": {
+                "icon": "FaHandHoldingHeart",
+                "value": "Gym, Swimming Pool, Airport Pickup & Drop"
+            }
+        }
+    }, {
+        "id": "premium-junior-suite",
+        "title": "Premium Junior Suite",
+        "subtitle": "",
+        "description": "Indulge in luxury and comfort with our Premium Junior Suite, designed to offer a lavish experience for our guests.",
+        "imageUrl": "https:\/\/hotelichchha.com\/backend\/images\/subpackage\/image\/oe7YR-suite2-bSBaXReQ (1).webp",
+        "category": "premium-junior-suite",
+        "router": "\/accommodation\/premium-junior-suite",
+        "images": [{
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/PpvIi-suite2-bSBaXReQ.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/R2CGE-suite5-CGWQ2_2m.webp",
+            "title": "The Homely Ambience"
+        }],
+        "overview": [{
+            "title": "Overview",
+            "content": "\r\n\tImmerse yourself in the epitome of elegance with Hotel Ichchha Premium Junior Suites. Tailored for the world traveler, these rooms boast an exquisite fusion of comfort and style, complete with luxurious amenities and impeccable service. Surrender to the allure of sophistication and let us redefine your travel experience.\r\n"
+        }],
+        "policies": [{
+            "title": "Child Policies",
+            "content": ["Child 0 - 4 yrs. sharing parent's room free of charge on same plan as adults.", "Child age 5 - 10 yrs. sharing parent's room will be charged 50% adult meal rate.", "Breakfast - US$ 8\/ INR 500."]
+        }],
+        "amenities": ["Wi-Fi", "Air conditioning", "Coffee and tea set", "Desk", "Hairdryer", "Pillow service", "Safe", "Slippers", "Storage cabinet", "Telephone", "Television", "Toilet", "Towel service", "Twin bed\/double bed"],
+        "roomDetails": {
+            "Starting Price": {
+                "icon": "IoPricetagSharp",
+                "value": "USD250 \/ night"
+            },
+            "Total Rooms": {
+                "icon": "IoBed",
+                "value": "8 rooms"
+            },
+            "Room Size": {
+                "icon": "MdSpaceDashboard",
+                "value": "215 sq. feet sq. ft."
+            },
+            "Occupancy": {
+                "icon": "MdFamilyRestroom",
+                "value": "2 guests"
+            },
+            "Complimentary": {
+                "icon": "FaHandHoldingHeart",
+                "value": "Gym, Swimming Pool, Airport Pickup & Drop"
+            }
+        }
+    }, {
+        "id": "deluxe-suite",
+        "title": "Deluxe Suite",
+        "subtitle": "",
+        "description": "Our Deluxe Suite is designed to offer a luxurious and comfortable experience for our guests.",
+        "imageUrl": "https:\/\/hotelichchha.com\/backend\/images\/subpackage\/image\/nVpEk-suite6-CGUeyheI.webp",
+        "category": "deluxe-suite",
+        "router": "\/accommodation\/deluxe-suite",
+        "images": [{
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/9SQpw-suite6-CGUeyheI.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/iCdSv-suite2-bSBaXReQ.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/WM4QE-suite5-CGWQ2_2m.webp",
+            "title": "The Homely Ambience"
+        }],
+        "overview": [{
+            "title": "Overview",
+            "content": "\r\n\tIndulge in the epitome of luxury with Hotel Ichchha Deluxe Suites. Designed to offer a lavish experience, these suites feature opulent interiors, modern amenities, and personalized service. Revel in the spacious layout, savor the exquisite decor, and let us craft a dreamy escape for you and your beloved.\r\n"
+        }],
+        "policies": [{
+            "title": "Child Policies",
+            "content": ["Child 0 - 4 yrs. sharing parent's room free of charge on same plan as adults.", "Child age 5 - 10 yrs. sharing parent's room will be charged 50% adult meal rate.", "Breakfast - USD $8\/ INR 500."]
+        }],
+        "amenities": ["Fruits Basket", "Minibar", "Wi-Fi", "Air conditioning", "Coffee and tea set", "Desk", "Hairdryer", "Pillow service", "Safe", "Slippers", "Storage cabinet", "Telephone", "Television", "Toilet", "Towel service", "Twin bed\/double bed"],
+        "roomDetails": {
+            "Starting Price": {
+                "icon": "IoPricetagSharp",
+                "value": "USD250 \/ night"
+            },
+            "Total Rooms": {
+                "icon": "IoBed",
+                "value": "1 rooms"
+            },
+            "Room Size": {
+                "icon": "MdSpaceDashboard",
+                "value": "215 sq. feet sq. ft."
+            },
+            "Occupancy": {
+                "icon": "MdFamilyRestroom",
+                "value": "2 guests"
+            },
+            "Complimentary": {
+                "icon": "FaHandHoldingHeart",
+                "value": "Gym, Swimming Pool, Airport Pickup & Drop"
+            }
+        }
+    }, {
+        "id": "honeymoon-suite",
+        "title": "Honeymoon Suite",
+        "subtitle": "",
+        "description": "Our Honeymoon Suite is designed to offer a romantic and luxurious experience for couples.",
+        "imageUrl": "https:\/\/hotelichchha.com\/backend\/images\/subpackage\/image\/9f2sx-suite4-DYn5QYwU.webp",
+        "category": "honeymoon-suite",
+        "router": "\/accommodation\/honeymoon-suite",
+        "images": [{
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/doPCk-suite6-CGUeyheI.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/6HqXu-suite4-DYn5QYwU.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/Z9RnZ-suite1-0CTC8Mw9.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/FyWTZ-suite3-B4dqhLah.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/VsVV7-suite5-CGWQ2_2m.webp",
+            "title": "The Homely Ambience"
+        }],
+        "overview": [{
+            "title": "Overview",
+            "content": "\r\n\tCelebrate love in the lap of luxury with Hotel Ichchha Honeymoon Suites. Designed to create unforgettable memories, these suites offer an intimate setting with plush furnishings, modern amenities, and personalized service. Revel in the romantic ambiance, savor the exquisite decor, and let us craft a dreamy escape for you and your beloved.\r\n"
+        }],
+        "policies": [{
+            "title": "Child Policies",
+            "content": ["Child 0 - 4 yrs. sharing parent's room free of charge on same plan as adults.", "Child age 5 - 10 yrs. sharing parent's room will be charged 50% adult meal rate.", "Breakfast - US$ 8\/ INR 500."]
+        }],
+        "amenities": ["Fruits Basket", "Minibar", "Wi-Fi", "Air conditioning", "Coffee and tea set", "Desk", "Hairdryer", "Pillow service", "Safe", "Slippers", "Storage cabinet", "Telephone", "Television", "Toilet", "Towel service", "Twin bed\/double bed"],
+        "roomDetails": {
+            "Starting Price": {
+                "icon": "IoPricetagSharp",
+                "value": "USD300 \/ night"
+            },
+            "Total Rooms": {
+                "icon": "IoBed",
+                "value": "1 rooms"
+            },
+            "Room Size": {
+                "icon": "MdSpaceDashboard",
+                "value": "215 sq. feet sq. ft."
+            },
+            "Occupancy": {
+                "icon": "MdFamilyRestroom",
+                "value": "2 guests"
+            },
+            "Complimentary": {
+                "icon": "FaHandHoldingHeart",
+                "value": "Gym, Swimming Pool, Airport Pickup & Drop"
+            }
+        }
+    }, {
+        "id": "executive-room",
+        "title": "Executive Room",
+        "subtitle": "",
+        "description": "Elegance meets comfort in our Executive Suite, featuring a large bedroom and a separate living room for your convenience.",
+        "imageUrl": "https:\/\/hotelichchha.com\/backend\/images\/subpackage\/image\/V7yLC-slider2-f-5VYWdA.webp",
+        "category": "executive-room",
+        "router": "\/accommodation\/executive-room",
+        "images": [{
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/pYWEm-slider2-f-5VYWdA.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/GZFLc-suite4-DYn5QYwU.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/Gejav-suite3-B4dqhLah.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/ql3Os-suite5-CGWQ2_2m.webp",
+            "title": "The Homely Ambience"
+        }, {
+            "src": "https:\/\/hotelichchha.com\/backend\/images\/package\/galleryimages\/w7B9K-suite2-bSBaXReQ.webp",
+            "title": "The Homely Ambience"
+        }],
+        "overview": [{
+            "title": "Overview",
+            "content": "\r\n\tLight, bright and with a smart layout that enhances the feeling of spaciousness, our rooms feature all the world class furniture, air conditioning, amenities, toiletries and technology. Super deluxe rooms are ingeniously designed with splendid interiors. The junior suite rooms are spacious rooms with a cozy living room separated by a partial wall. The executive rooms feature a large bedroom and a living room. Elegantly decorated with opulent interiors and varnished in soft tones, all the rooms are spacious with classy comfortable beds.\r\n"
+        }],
+        "policies": [{
+            "title": "Child Policies",
+            "content": ["Child 0 - 4 yrs. sharing parent's room free of charge on same plan as adults.", "Child age 5 - 10 yrs. sharing parent's room will be charged 50% adult meal rate.", "Breakfast - USD $8\/ INR 500."]
+        }],
+        "amenities": ["Bathtub", "Fruits Basket", "Minibar", "Wi-Fi", "Air conditioning", "Coffee and tea set", "Desk", "Hairdryer", "Pillow service", "Safe", "Slippers", "Storage cabinet", "Telephone", "Television", "Toilet", "Towel service", "Twin bed\/double bed"],
+        "roomDetails": {
+            "Starting Price": {
+                "icon": "IoPricetagSharp",
+                "value": "USD300 \/ night"
+            },
+            "Total Rooms": {
+                "icon": "IoBed",
+                "value": "1 rooms"
+            },
+            "Room Size": {
+                "icon": "MdSpaceDashboard",
+                "value": "215 sq. feet sq. ft."
+            },
+            "Occupancy": {
+                "icon": "MdFamilyRestroom",
+                "value": "2 guests"
+            },
+            "Complimentary": {
+                "icon": "FaHandHoldingHeart",
+                "value": "Gym, Swimming Pool, Airport Pickup & Drop"
+            }
+        }
+    }]
+}]

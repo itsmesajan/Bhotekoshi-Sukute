@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { rooms } from "../../constants/data";
+import useFetchApi from "../../hooks/useFetchApi";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,24 +9,69 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 
 const RoomDetail = () => {
-  const { id } = useParams(); // get room id from URL
+  const { id } = useParams();
+      const {
+    data,
+    loading,
+    error,
+  } = useFetchApi(
+    "/bhotekoshibeach/api_room.json",
+    "packages"
+  );
+
+
   const [room, setRoom] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [localLoading, setLocalLoading] = useState(true);
 
   useEffect(() => {
-    // simulate loading
-    const timeout = setTimeout(() => {
-      const foundRoom = rooms.find((r) => r.id === id);
-      setRoom(foundRoom);
-      setLoading(false);
-    }, 500); // simulate 0.5s delay
+    if (loading) return;
+    setLocalLoading(true);
 
-    return () => clearTimeout(timeout);
-  }, [id]);
+    // Normalize data -> find accomodation array inside json
+    let roomsArray = [];
+    if (Array.isArray(data)) {
+      // some responses wrap accomodation in first element
+      const first = data[0];
+      if (first && Array.isArray(first.accomodation)) {
+        roomsArray = first.accomodation;
+      } else {
+        // try flatten: collect any accomodation arrays
+        data.forEach((d) => {
+          if (d && Array.isArray(d.accomodation)) roomsArray.push(...d.accomodation);
+        });
+      }
+    } else if (data && Array.isArray(data.accomodation)) {
+      roomsArray = data.accomodation;
+    }
 
+    // fallback: if nothing found but data looks like accomodation array itself
+    if (!roomsArray.length && Array.isArray(data)) {
+      roomsArray = data;
+    }
 
-   if (loading) {
-    // Skeleton / Loading Placeholder
+    // find by id
+    const found =
+      roomsArray.find((r) => r.id === id) ||
+      roomsArray.find((r) => (r.router || "").endsWith(id)) ||
+      roomsArray.find((r) => r.title?.toLowerCase().includes((id || "").toLowerCase()));
+
+    if (found) {
+      // normalize images to array of src strings
+      const imgs =
+        (found.images &&
+          Array.isArray(found.images) &&
+          found.images.map((it) => (typeof it === "string" ? it : it.src || it.url)).filter(Boolean)) ||
+        (found.imageUrl ? [found.imageUrl] : []);
+
+      setRoom({ ...found, images: imgs });
+    } else {
+      setRoom(null);
+    }
+
+    setLocalLoading(false);
+  }, [data, loading, id]);
+
+  if (loading || localLoading) {
     return (
       <div className="flex justify-center items-center h-screen bg-background-light dark:bg-background-dark">
         <div className="animate-pulse w-full max-w-5xl px-4 py-8">
@@ -42,27 +87,30 @@ const RoomDetail = () => {
     );
   }
 
+  if (error) {
+    return <div className="text-center py-20 text-red-600">Error: {error}</div>;
+  }
+
   if (!room) {
     return <div className="text-center py-20">Room not found.</div>;
   }
 
-  const otherRooms = rooms.filter((r) => r.id !== room.id);
+  const otherRooms = (() => {
+    const first = Array.isArray(data) ? data[0] : data;
+    const all = (first && Array.isArray(first.accomodation) ? first.accomodation : Array.isArray(data) ? data : []);
+    return all.filter((r) => r.id !== room.id).slice(0, 6);
+  })();
 
   return (
     <div className="container mx-auto px-6 pb-16 lg:pb-32">
       <main className="mx-auto w-full container flex-1 px-4 py-8 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm">
-          <Link
-            className="text-gray-500 hover:text-primary dark:hover:text-primary"
-            to="/roomList"
-          >
+          <Link className="text-gray-500 hover:text-primary" to="/roomList">
             Rooms
           </Link>
           <span className="text-gray-600">/</span>
-          <span className="font-medium text-[var(--secondary-color)]">
-            {room.title}
-          </span>
+          <span className="font-medium text-[var(--secondary-color)]">{room.title}</span>
         </div>
 
         {/* Room Details Grid */}
@@ -73,20 +121,15 @@ const RoomDetail = () => {
               modules={[Navigation, Pagination]}
               navigation
               pagination={{ clickable: true }}
-              loop={true}
+              loop={room.images && room.images.length > 1}
               spaceBetween={10}
-              effect="fade"
               className="h-[500px] w-full rounded-xl overflow-hidden"
             >
-              {room.images.map((img, index) => (
+              {(room.images && room.images.length ? room.images : [room.imageUrl || ""]).map((imgSrc, index) => (
                 <SwiperSlide key={index}>
                   <div className="relative h-full w-full">
-                    <img
-                      alt={`${room.title} ${index + 1}`}
-                      src={img}
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <img alt={`${room.title} ${index + 1}`} src={imgSrc} className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
                 </SwiperSlide>
               ))}
@@ -96,30 +139,29 @@ const RoomDetail = () => {
           {/* Content Column */}
           <div className="flex flex-col md:col-span-2">
             <div className="flex-1">
-              <h2 className="text-3xl font-bold text-[var(--secondary-color)]">
-                {room.title}
-              </h2>
+              <h2 className="text-3xl font-bold text-[var(--secondary-color)]">{room.title}</h2>
               <p className="mt-2 text-gray-600">{room.description}</p>
 
               {/* Room Features */}
               <div className="mt-6">
-                <h3 className="text-lg font-bold text-[var(--secondary-color)]">
-                  Room Features
-                </h3>
+                <h3 className="text-lg font-bold text-[var(--secondary-color)]">Room Features</h3>
                 <div className="mt-4 grid grid-cols-2 gap-4 border-t border-gray-200 pt-4 dark:border-gray-700">
-                  {room.features.map((feature, index) => (
+                  {(room.roomDetails
+                    ? Object.entries(room.roomDetails).map(([k, v]) => ({ name: k, value: v.value }))
+                    : room.overview && room.overview.length
+                    ? [{ name: "Overview", value: (room.overview[0] && room.overview[0].content) || "" }]
+                    : []).map((feature, index) => (
                     <div key={index}>
                       <p className="text-sm text-gray-500">{feature.name}</p>
-                      <p className="text-base font-medium text-gray-800">
-                        {feature.value}
-                      </p>
+                      <p className="text-base font-medium text-gray-800">{feature.value}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
+
             <div className="mt-8">
-              <button className="w-full rounded-lg bg-[var(--primary-color)] px-6 py-3 text-base font-bold text-[var(--secondary-color)] hover:text-white  transition-all hover:bg-[var(--green-color)]">
+              <button className="w-full rounded-lg bg-[var(--primary-color)] px-6 py-3 text-base font-bold text-[var(--secondary-color)] hover:text-white transition-all hover:bg-[var(--green-color)]">
                 Book {room.title}
               </button>
             </div>
@@ -128,16 +170,12 @@ const RoomDetail = () => {
 
         {/* Amenities Section */}
         <div className="mt-12">
-          <h3 className="text-2xl font-bold text-[var(--secondary-color)]">
-            Amenities
-          </h3>
+          <h3 className="text-2xl font-bold text-[var(--secondary-color)]">Amenities</h3>
           <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-3 lg:grid-cols-4">
-            {room.amenities.map((amenity, index) => (
+            {(room.amenities || []).map((amenity, index) => (
               <div key={index} className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-[var(--secondary-color)]">
-                  {amenity.icon}
-                </span>
-                <p className="text-base text-gray-700">{amenity.name}</p>
+                <span className="material-symbols-outlined text-[var(--secondary-color)]">{/* keep icon name from JSON if present */}</span>
+                <p className="text-base text-gray-700">{amenity}</p>
               </div>
             ))}
           </div>
@@ -145,40 +183,21 @@ const RoomDetail = () => {
 
         {/* Other Rooms Section */}
         <div className="mt-20">
-          <h3 className="text-2xl font-bold text-[var(--secondary-color)] text-center">
-            Explore Other Rooms
-          </h3>
+          <h3 className="text-2xl font-bold text-[var(--secondary-color)] text-center">Explore Other Rooms</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {otherRooms.map((otherRoom) => (
-              <div
-                key={otherRoom.id}
-                className="flex flex-col bg-light dark:bg-dark rounded-xl overflow-hidden shadow-md transition-shadow duration-500 hover:shadow-primary/20 group"
-              >
+              <div key={otherRoom.id} className="flex flex-col bg-light rounded-xl overflow-hidden shadow-md transition-shadow duration-500 hover:shadow-primary/20 group">
                 <div className="relative overflow-hidden">
-                  <div
-                    className="w-full h-48 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                    style={{ backgroundImage: `url(${otherRoom.imageUrl})` }}
-                  ></div>
+                  <img src={otherRoom.imageUrl || (otherRoom.images && otherRoom.images[0] && otherRoom.images[0].src)} alt={otherRoom.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
-                  <Link
-                  to={`/rooms/${otherRoom.id}`}
-                  className="text-xl font-display font-bold text-[var(--secondary-color)] dark:text-light mb-2">
+                  <Link to={`/rooms/${otherRoom.id}`} className="text-xl font-display font-bold text-[var(--secondary-color)] mb-2">
                     {otherRoom.title}
                   </Link>
-                  <p className="text-dark/70 dark:text-light/70 text-sm font-light flex-grow mb-4">
-                    {otherRoom.description.substring(0, 100)}...
-                  </p>
+                  <p className="text-dark/70 text-sm font-light flex-grow mb-4">{(otherRoom.description || "").substring(0, 100)}...</p>
                   <div className="flex justify-between items-center mt-auto">
-                    <span className="text-lg font-display font-bold text-[var(--secondary-color)]">
-                      USD {otherRoom.price} / night
-                    </span>
-                    <Link
-                      to={`/rooms/${otherRoom.id}`}
-                      className="text-[var(--secondary-color)] font-bold hover:underline text-sm"
-                    >
-                      View Details
-                    </Link>
+                    <span className="text-lg font-display font-bold text-[var(--secondary-color)]">{otherRoom.roomDetails?.["Starting Price"]?.value || otherRoom.price || "N/A"}</span>
+                    <Link to={`/rooms/${otherRoom.id}`} className="text-[var(--secondary-color)] font-bold hover:underline text-sm">View Details</Link>
                   </div>
                 </div>
               </div>
