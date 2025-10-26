@@ -98,9 +98,6 @@ const RoomList = () => {
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-xl font-display font-bold text-[var(--secondary-color)]">
                       From USD {price}{" "}
-                      <span className="text-sm font-body font-light text-dark/60 dark:text-light/60">
-                        / night
-                      </span>
                     </span>
                     <Link
                       to={`/rooms/${room.id}`}

@@ -174,8 +174,8 @@ const RoomDetail = () => {
           <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-3 lg:grid-cols-4">
             {(room.amenities || []).map((amenity, index) => (
               <div key={index} className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-[var(--secondary-color)]">{/* keep icon name from JSON if present */}</span>
-                <p className="text-base text-gray-700">{amenity}</p>
+                <span className="material-symbols-outlined text-[var(--secondary-color)]">{amenity.icon}</span>
+                <p className="text-base text-gray-700">{amenity.title}</p>
               </div>
             ))}
           </div>

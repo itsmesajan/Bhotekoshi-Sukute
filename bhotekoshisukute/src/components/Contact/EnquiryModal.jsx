@@ -72,7 +72,7 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
     <div>
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full rounded-lg bg-[var(--primary-color)] px-6 py-3 text-base font-bold text-white hover:bg-[var(--green-color)]"
+        className="w-full rounded-lg bg-[var(--primary-color)] px-6 py-3 text-base font-bold text-[var(--secondary-color)] hover:text-white hover:bg-[var(--green-color)]"
       >
         Enquiry Now
       </button>
