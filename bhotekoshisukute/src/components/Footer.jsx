@@ -62,6 +62,8 @@ const Footer = () => {
                     <Link
                       className="hover:text-white transition-colors"
                       to={link.url}
+                      target={link.external ? "_blank" : "_self"}
+                      rel="noopener noreferrer"
                     >
                       {link.text}
                     </Link>
@@ -80,6 +82,8 @@ const Footer = () => {
                     <a
                       className="hover:text-white transition-colors"
                       href={link.url}
+                      target={link.external ? "_blank" : "_self"}
+                      rel="noopener noreferrer"
                     >
                       {link.text}
                     </a>
@@ -99,6 +103,8 @@ const Footer = () => {
                     <a
                       className="hover:text-white transition-colors"
                       href={link.url}
+                      target={link.external ? "_blank" : "_self"}
+                      rel="noopener noreferrer"
                     >
                       {link.text}
                     </a>

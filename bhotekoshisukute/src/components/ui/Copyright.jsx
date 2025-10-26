@@ -31,6 +31,7 @@ const Copyright = () => {
               <Link
             to="https://longtail.info/"
             target="_blank"
+            rel="noopener noreferrer"
             className="hover:text-white"
           >
             Longtail e-Media

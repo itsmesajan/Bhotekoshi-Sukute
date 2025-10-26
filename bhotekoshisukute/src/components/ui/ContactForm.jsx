@@ -40,7 +40,7 @@ const ContactForm = () => {
       {formStatus === "recaptchaError" && (
         <div className="p-3 mb-4 text-sm text-red-800 bg-red-100 rounded">Please complete the reCAPTCHA.</div>
       )}
-
+  <h3 class="text-2xl font-bold mb-4">Send Us a Message</h3>
       <form
         onSubmit={(e) =>
           handleSubmit(
