@@ -33,7 +33,7 @@ const AboutTop = () => {
   if (!aboutContent) {
     return <div className="text-center py-12">About Us not found.</div>;
   }
-  const { html } = aboutContent
+  // const { description  } = aboutContent
   return (
     <>
       <section className="py-20 sm:py-32">
@@ -47,7 +47,10 @@ const AboutTop = () => {
             </p>
           </div>
 
-          <div dangerouslySetInnerHTML={{ __html: html }}></div>
+          <main
+  dangerouslySetInnerHTML={{ __html: aboutContent.description }}
+  className="grid md:grid-cols-2 gap-16 items-center"
+/>
           {/* <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-[var(--secondary-color)] font-semibold uppercase tracking-wider">

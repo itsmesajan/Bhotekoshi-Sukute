@@ -7,39 +7,44 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import banner1 from "../assets/banner.webp";
-import banner2 from "../assets/banner2.webp";
-import banner3 from "../assets/banner3.webp";
+// import banner1 from "../assets/banner.webp";
+// import banner2 from "../assets/banner2.webp";
+// import banner3 from "../assets/banner3.webp";
 import { Link } from "react-router-dom";
+import useFetchApi from "../hooks/useFetchApi";
 
-const heroSlides = [
-  {
-    title: "Experience the Best of Sukute",
-    description:
-      "Your perfect getaway for family fun and corporate retreats. Discover adventure and relaxation in the heart of Nepal.",
-    buttonText: "Book Your Stay",
-    buttonLink: "/roomList",
-    imageUrl: banner1,
-  },
-  {
-    title: "Adventure Awaits",
-    description:
-      "Enjoy rafting, kayaking, canyoning and more with expert guides and safe facilities.",
-    buttonText: "Explore Activities",
-    buttonLink: "/activities",
-    imageUrl: banner2,
-  },
-  {
-    title: "Relax & Rejuvenate",
-    description:
-      "Unwind in our comfortable accommodations and enjoy delicious meals by the riverside.",
-    buttonText: "View Packages",
-    buttonLink: "/packages",
-    imageUrl: banner3,
-  },
-];
 
 const HeroSection = () => {
+
+    const {
+    data: sliderImages,
+    loading,
+    error,
+  } = useFetchApi(
+    "/bhotekoshibeach/api_slider.json",
+    "sliderImages"
+  );
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div>Loading…</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-12 text-red-600">
+        Error loading sliderImages: {error}
+      </div>
+    );
+  }
+
+  if (!sliderImages) {
+    return <div className="text-center py-12">sliderImages Us not found.</div>;
+  }
+
   return (
     <section className="relative min-h-[500px] sm:min-h-[700px] flex items-center rounded-2xl overflow-hidden bg-cover bg-center">
       <Swiper
@@ -55,7 +60,7 @@ const HeroSection = () => {
         pagination={{ clickable: true }}
         navigation={true} // automatically adds prev/next buttons
       >
-        {heroSlides.map((slide, index) => (
+        {sliderImages.map((slide, index) => (
           <SwiperSlide
             key={index}
             className="flex flex-col items-center justify-center gap-6 px-4 h-full relative"
@@ -64,7 +69,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 w-full h-full z-0">
               <div
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url("${slide.imageUrl}")`,
+                  backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url("${slide.src}")`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}

@@ -7,7 +7,7 @@ const LocationDetails = () => {
     data: locationDetail,
     loading,
     error,
-  } = useFetchApi("/bhotekoshibeach/api_location.json", "locationDetail");
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_location.php", "locationDetail");
 
 
   if (loading) return <></>;

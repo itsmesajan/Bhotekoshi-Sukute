@@ -19,6 +19,7 @@ import Packages from './components/pages/Packages';
 import Facilities from './components/pages/Facilities';
 import Gallery from './components/pages/Gallery';
 import NotFound from './components/ui/NotFound';
+import VirtualTourSection from './components/pages/VirtualTourSection';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<ContactUsPage />} />
+          <Route path="/virtual-tour" element={<VirtualTourSection />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       <FloatingButtons />

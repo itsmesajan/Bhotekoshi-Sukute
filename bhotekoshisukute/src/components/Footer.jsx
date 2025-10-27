@@ -10,7 +10,7 @@ const Footer = () => {
     data: footerContents,
     loading,
     error,
-  } = useFetchApi("/bhotekoshibeach/api_footer.json", "footerContents");
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_footer.php", "footerContents");
 
 
   if (loading) return <></>;

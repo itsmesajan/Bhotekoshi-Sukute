@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const FloatingButtons = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -42,13 +43,13 @@ const FloatingButtons = () => {
             </button>
 
             {/* Virtual Tour Floating Button */}
-            <a
-                href="#"
+            <Link
+                to="/virtual-tour"
                 className="fixed sm:bottom-6 bottom-20 left-6 z-[60] bg-white border border-[var(--primary-color)] text-[var(--secondary-color)] rounded-full px-5 py-3 shadow-lg flex items-center gap-2 hover:bg-[var(--primary-color)] hover:text-white transition-all"
             >
                 <span className="material-symbols-outlined text-xl">travel_explore</span>
                 <span className="font-bold text-sm">Virtual Tour</span>
-            </a>
+            </Link>
 
             {/* WhatsApp Floating Button */}
             <a

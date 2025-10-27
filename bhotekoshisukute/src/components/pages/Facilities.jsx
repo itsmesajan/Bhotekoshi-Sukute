@@ -1,14 +1,4 @@
 import React from "react";
-import {
-  FaSwimmingPool,
-  FaUtensils,
-  FaCocktail,
-  FaCoffee,
-  FaBed,
-  FaDoorOpen,
-  FaParking,
-  FaTree,
-} from "react-icons/fa";
 import useFetchApi from "../../hooks/useFetchApi";
 
 const Facilities = () => {
