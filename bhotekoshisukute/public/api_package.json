@@ -3,8 +3,11 @@
     "id": 1,
     "title": "Festive Package",
     "description": "Embrace the festive spirit with our all-inclusive package, perfect for creating lasting memories with family and friends.",
+    "image": "https://scontent.fktm21-2.fna.fbcdn.net/v/t39.30808-6/559185765_1204271435054718_6637739253895101292_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=L5d-KvWxH44Q7kNvwGcUS-i&_nc_oc=AdnLHRfcnGNI0EKPcuPa8rEq95PoHuVu1Pk22wR7aOuxbYj14xIHOQJoeF6TxhTmamOqjzEYcdp2SrKqkQejT-pH&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=gj_msoqyETQNtfhYmko2Vw&oh=00_Afex0SzTmS035xrDqWh52bX2OoCTkWjSNKWsWT7zy4qpKQ&oe=68F6A7A6",
+    "type":1,
     "price": 3500,
-    "image": "https://scontent.fktm21-2.fna.fbcdn.net/v/t39.30808-6/559185765_1204271435054718_6637739253895101292_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=L5d-KvWxH44Q7kNvwGcUS-i&_nc_oc=AdnLHRfcnGNI0EKPcuPa8rEq95PoHuVu1Pk22wR7aOuxbYj14xIHOQJoeF6TxhTmamOqjzEYcdp2SrKqkQejT-pH&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=gj_msoqyETQNtfhYmko2Vw&oh=00_Afex0SzTmS035xrDqWh52bX2OoCTkWjSNKWsWT7zy4qpKQ&oe=68F6A7A6"
+    "discount": 20,
+    "pax": 20
   },
   "Family": {
     "id": 2,

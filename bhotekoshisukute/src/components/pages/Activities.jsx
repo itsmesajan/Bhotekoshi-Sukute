@@ -13,7 +13,7 @@ const Activities = () => {
     data: activities,
     loading,
     error,
-  } = useFetchApi("/bhotekoshibeach/api_actitvities.json", "activities");
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_recreation.php", "activities");
 
   if (loading) return <></>;
   if (error) return <div>{error}</div>;
@@ -53,7 +53,7 @@ const Activities = () => {
                   className="h-48 sm:h-64 md:h-96 bg-transparent"
                   style={{ background: "transparent" }}
                 >
-                  {activities.images.map((img, i) => (
+                  {activities.image.map((img, i) => (
                     <SwiperSlide key={i} className="flex items-center justify-center bg-transparent">
                       <img
                         src={img}

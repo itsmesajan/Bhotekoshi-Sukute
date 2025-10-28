@@ -1,0 +1,28 @@
+[
+  {
+    "id": "img1",
+    "title": "First Image",
+    "hfov": 100,
+    "pitch": 0,
+    "yaw": 0,
+    "type": "equirectangular",
+    "panorama": "https://mayurstay.com/bhotekoshi/backend/images/360/7teMs-1MB.jpg",
+    "draggable": true,
+    "hotSpots": [
+      {"pitch": 0, "yaw": 0, "type": "info", "text": "First Hotspot", "sceneId": ""}
+    ]
+  },
+  {
+    "id": "img2",
+    "title": "Second Image",
+    "hfov": 100,
+    "pitch": 0,
+    "yaw": 0,
+    "type": "equirectangular",
+    "panorama": "https://mayurstay.com/bhotekoshi/backend/images/360/I1wTN-jimbu_parking.jpg",
+    "draggable": true,
+    "hotSpots": [
+      {"pitch": 0, "yaw": 0, "type": "scene", "text": "Go to first image", "sceneId": "img1"}
+    ]
+  }
+]

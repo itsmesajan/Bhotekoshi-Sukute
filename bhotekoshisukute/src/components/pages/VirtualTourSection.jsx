@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import "pannellum/build/pannellum.css";
 import "pannellum/build/pannellum.js";
+import useFetchApi from "../../hooks/useFetchApi";
 
 const Icon = ({ name, className = "" }) => (
   <span className={`material-symbols-outlined ${className}`}>{name}</span>
@@ -12,172 +13,159 @@ const VirtualTourSection = () => {
   const [ready, setReady] = useState(false);
   const [currentScene, setCurrentScene] = useState("lobby");
 
-  // Scenes configuration
-  const scenes = {
-    lobby: {
-      title: "Lobby & Reception",
-      pitch: 0,
-      yaw: 0,
-      type: "equirectangular",
-      draggable: false, 
-      panorama:
-        "https://www.suitehomes.com.np/images/360/NXHEB-Main Entrance.jpg",
-      hotSpots: [
-        {
-          pitch: -4,
-          yaw: -3,
-          type: "scene",
-          text: "Lobby Area",
-          sceneId: "deluxe",
+  const { data: scenes, loading, error } = useFetchApi(
+    "https://mayurstay.com/bhotekoshi/api/api_virtual_tour.php",
+    "scenes"
+  );
 
-          targetPitch: 0,
-        },
-      ],
-    },
-    deluxe: {
-      title: "Deluxe Room",
-      panorama: "https://www.suitehomes.com.np/images/360/0xnMX-Lhotse.jpg",
-      hfov: 100,
-      hotSpots: [
-        {
-          pitch: -4,
-          yaw: 160,
-          type: "scene",
-          text: "Back to Lobby",
-          sceneId: "lobby",
-        },
-        {
-          pitch: -6,
-          yaw: 40,
-          type: "info",
-          text: "Deluxe room with king bed and mountain view.",
-        },
-      ],
-    },
-    family: {
-      title: "Family Cottage",
-      panorama:
-        "https://www.suitehomes.com.np/images/360/NXHEB-Main Entrance.jpg",
-      hfov: 100,
-      hotSpots: [
-        {
-          pitch: -3,
-          yaw: 170,
-          type: "scene",
-          text: "Back to Lobby",
-          sceneId: "lobby",
-        },
-        {
-          pitch: 0,
-          yaw: -30,
-          type: "info",
-          text: "Spacious cottage for families.",
-        },
-      ],
-    },
-    restaurant: {
-      title: "Restaurant & Bar",
-      panorama: "/assets/virtual/restaurant.jpg",
-      hfov: 110,
-      hotSpots: [
-        {
-          pitch: -2,
-          yaw: -170,
-          type: "scene",
-          text: "Back to Lobby",
-          sceneId: "lobby",
-        },
-        { pitch: 5, yaw: 60, type: "info", text: "Open daily: 7am - 10pm." },
-      ],
-    },
-    pool: {
-      title: "Swimming Pool",
-      panorama: "/assets/virtual/pool.jpg",
-      hfov: 110,
-      hotSpots: [
-        {
-          pitch: -1,
-          yaw: 140,
-          type: "scene",
-          text: "Back to Lobby",
-          sceneId: "lobby",
-        },
-        { pitch: 3, yaw: -50, type: "info", text: "Heated outdoor pool." },
-      ],
-    },
-  };
+  // NORMALIZE scenes: API may return [{ img1:..., img2:... }] or an object { img1: {...} }
+  const normalizedScenes = useMemo(() => {
+    if (!scenes) return null;
 
+    // case: [ { img1:..., img2:... } ]  -> return that inner object
+    if (Array.isArray(scenes) && scenes.length === 1 && scenes[0] && typeof scenes[0] === "object" && !Array.isArray(scenes[0])) {
+      return scenes[0];
+    }
 
-    const navLinks = Object.keys(scenes).map((key, i) => ({
-    name: scenes[key].title,
-    icon: ["meeting_room", "bed", "cottage", "restaurant", "pool"][i] || "room",
-    key,
-  }));
+    // case: array of scene objects with `id` -> convert to keyed object
+    if (Array.isArray(scenes)) {
+      const byId = {};
+      scenes.forEach((it) => {
+        if (it && it.id) byId[it.id] = it;
+      });
+      if (Object.keys(byId).length) return byId;
 
+      // fallback: index keys
+      return scenes.reduce((acc, it, i) => {
+        acc[`scene-${i}`] = it;
+        return acc;
+      }, {});
+    }
+
+    // already an object keyed by scene ids
+    return scenes;
+  }, [scenes]);
+
+  // ensure currentScene is valid after scenes load
+  useEffect(() => {
+    if (!normalizedScenes) return;
+    if (normalizedScenes[currentScene]) return; // keep current if valid
+    const keys = Object.keys(normalizedScenes);
+    if (keys.length) setCurrentScene(keys[0]);
+  }, [normalizedScenes]);
+  
+  // use normalizedScenes everywhere below instead of `scenes`
+  // update navLinks -> use normalizedScenes
+  const navLinks = useMemo(() => {
+    if (!normalizedScenes || typeof normalizedScenes !== "object") return [];
+    return Object.keys(normalizedScenes).map((key, i) => ({
+      name: normalizedScenes[key].title || `Scene ${i + 1}`,
+      icon: ["meeting_room", "bed", "cottage", "restaurant", "pool"][i] || "room",
+      key,
+    }));
+  }, [normalizedScenes]);
+  
   const goToScene = (key) => {
-    if (viewerRef.current && currentScene !== key) {
+    if (!viewerRef.current || currentScene === key) return;
+    try {
       viewerRef.current.loadScene(key);
       setCurrentScene(key);
+    } catch (e) {
+      console.warn("Failed to load scene:", e);
     }
   };
 
+  // initialize / re-init viewer when scenes change
   useEffect(() => {
-    if (!containerRef.current || !window.pannellum) return;
+    if (!containerRef.current || !window.pannellum || !scenes) return;
 
-    // Cleanup previous instance
-    if (viewerRef.current?.destroy) {
-      viewerRef.current.destroy();
-      viewerRef.current = null;
+    // destroy previous viewer if any
+    try {
+      if (viewerRef.current?.destroy) {
+        viewerRef.current.destroy();
+        viewerRef.current = null;
+      }
+    } catch (err) {
+      console.warn("pannellum destroy error:", err);
     }
-    containerRef.current.innerHTML = "";
 
-    // Build scenes config for Pannellum
+    // ensure container empty
+    try {
+      containerRef.current.innerHTML = "";
+    } catch (e) {}
+
     const configScenes = {};
     Object.entries(scenes).forEach(([id, sc]) => {
       configScenes[id] = {
         title: sc.title,
         type: "equirectangular",
-        panorama: sc.panorama,
+        // support multiple possible field names for image
+        panorama:
+          sc.panorama || sc.image || sc.imageUrl || (Array.isArray(sc.imageUrls) && sc.imageUrls[0]) || "",
         autoLoad: true,
         showZoomCtrl: true,
-        dragPan: sc.draggable ?? true,
         initialViewParameters: {
           yaw: sc.yaw ?? 0,
           pitch: sc.pitch ?? 0,
           hfov: sc.hfov ?? 100,
         },
-        hotSpots: sc.hotSpots || [],
+        hotSpots: Array.isArray(sc.hotSpots) ? sc.hotSpots : [],
       };
     });
 
-    // Initialize Pannellum
-    viewerRef.current = window.pannellum.viewer(containerRef.current, {
-      default: {
-        firstScene: currentScene,
-        sceneFadeDuration: 1000,
-        autorotate: -2,
-      },
-      scenes: configScenes,
-    });
+    // pick first scene key if currentScene not in config
+    const firstKey = Object.keys(configScenes)[0];
+    const firstScene = currentScene && configScenes[currentScene] ? currentScene : firstKey;
 
-    // Update currentScene and drag behavior on scene change
-    viewerRef.current.on("scenechange", (sceneId) => {
-      setCurrentScene(sceneId);
-      const sc = scenes[sceneId];
-      viewerRef.current.setYaw(sc.yaw ?? 0);
-      viewerRef.current.setPitch(sc.pitch ?? 0);
-      viewerRef.current.setHfov(sc.hfov ?? 100);
+    try {
+      viewerRef.current = window.pannellum.viewer(containerRef.current, {
+        default: {
+          firstScene: firstScene,
+          sceneFadeDuration: 800,
+          autorotate: -2,
+        },
+        scenes: configScenes,
+      });
+    } catch (err) {
+      console.error("Failed to initialize pannellum viewer:", err);
+      return;
+    }
 
-    });
+    // update state on scene change (guard .on)
+    try {
+      if (typeof viewerRef.current.on === "function") {
+        viewerRef.current.on("scenechange", (sceneId) => {
+          setCurrentScene(sceneId);
+          const sc = scenes[sceneId];
+          if (sc) {
+            try {
+              if (typeof viewerRef.current.setYaw === "function") viewerRef.current.setYaw(sc.yaw ?? 0);
+              if (typeof viewerRef.current.setPitch === "function") viewerRef.current.setPitch(sc.pitch ?? 0);
+              if (typeof viewerRef.current.setHfov === "function") viewerRef.current.setHfov(sc.hfov ?? 100);
+            } catch (e) {}
+          }
+        });
+      }
+    } catch (e) {
+      // ignore if event API not available
+    }
 
     setReady(true);
 
     return () => {
-      viewerRef.current?.destroy();
+      try {
+        viewerRef.current?.destroy();
+      } catch (e) {}
       viewerRef.current = null;
+      try {
+        if (containerRef.current) containerRef.current.innerHTML = "";
+      } catch (e) {}
+      setReady(false);
     };
-  }, []);
+    // re-run when scenes change
+  }, [scenes, currentScene]);
 
+  // block dragging moves only (keep clicks & wheel) — stays as you had
   useEffect(() => {
     let isDown = false;
     let activePointerId = null;
@@ -202,10 +190,11 @@ const VirtualTourSection = () => {
 
     const onMove = (e) => {
       if (!isDown) return;
-      const allowDrag = (scenes[currentScene]?.draggable ?? true) === true;
+      const allowDrag = (scenes?.[currentScene]?.draggable ?? true) === true;
       if (!allowDrag) {
-        // block the move so pannellum won't drag, but keep pointerdown/up and wheel working
-        try { e.preventDefault?.(); } catch {}
+        try {
+          if (e.cancelable) e.preventDefault();
+        } catch (err) {}
         if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
         if (typeof e.stopPropagation === "function") e.stopPropagation();
       }
@@ -235,7 +224,27 @@ const VirtualTourSection = () => {
       window.removeEventListener("touchmove", onMove, { capture: true });
     };
   }, [currentScene, scenes]);
-  
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div>Loading…</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-12 text-red-600">
+        Error loading scenes: {error}
+      </div>
+    );
+  }
+
+  if (!scenes) {
+    return <div className="text-center py-12">scenes not found.</div>;
+  }
+
   return (
     <main className="flex-1">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
@@ -265,12 +274,12 @@ const VirtualTourSection = () => {
             )}
           </div>
 
-          <aside className="w-full md:w-72 lg:w-80 flex-shrink-0 bg-white p-6 rounded-2xl shadow-lg">
+          <aside className="w-full md:w-72 lg:w-80 flex-shrink-0 bg-white p-6  h-[calc(100vh-14rem)] overflow-y-auto  rounded-2xl shadow-lg scrollbar-thin">
             <div className="flex items-center justify-between pb-4 border-b border-slate-200">
               <h3 className="text-lg font-bold text-slate-800">Explore Areas</h3>
             </div>
 
-            <nav className="mt-4 space-y-2">
+            <nav className="mt-4 space-y-2 ">
               {navLinks.map((link) => (
                 <button
                   key={link.key}
@@ -281,7 +290,7 @@ const VirtualTourSection = () => {
                       : "hover:bg-slate-100 text-slate-600 font-medium"
                   }`}
                 >
-                  <Icon name={link.icon} />
+                  {/* <Icon name={link.icon} /> */}
                   <span>{link.name}</span>
                 </button>
               ))}

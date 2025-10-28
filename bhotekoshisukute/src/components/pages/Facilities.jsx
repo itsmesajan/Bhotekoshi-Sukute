@@ -6,7 +6,7 @@ const Facilities = () => {
     data: facilities,
     loading,
     error,
-  } = useFetchApi("/bhotekoshibeach/api_facilities.json", "facilities");
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_facilities.php", "facilities");
 
   if (loading) return <></>;
   if (error) return <div>{error}</div>;

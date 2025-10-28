@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useFetchApi from "../../hooks/useFetchApi";
 
 const RoomList = () => {
-  const { data, loading, error } = useFetchApi("/bhotekoshibeach/api_room.json");
+  const { data, loading, error } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_room.php");
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {

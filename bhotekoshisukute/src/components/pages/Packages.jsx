@@ -10,7 +10,7 @@ const Packages = () => {
     loading,
     error,
   } = useFetchApi(
-    "/bhotekoshibeach/api_package.json",
+    "https://mayurstay.com/bhotekoshi/api/api_offers.php",
     "packages"
   );
 
@@ -52,14 +52,6 @@ const Packages = () => {
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">
                 {pkg.description}
               </p>
-              <div className="mb-4">
-                <p className="text-2xl font-extrabold text-[var(--secondary-color)]">
-                  NPR {pkg.price}
-                </p>
-                <p className="text-sm text-[var(--secondary-color)]">
-                  per person / night
-                </p>
-              </div>
               <EnquiryModal type="package" />
             </div>
           </div>

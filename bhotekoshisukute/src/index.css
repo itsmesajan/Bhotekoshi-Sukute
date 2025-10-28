@@ -66,3 +66,11 @@
 .lg-outer {
     z-index: 9999 !important; /* Use a very high number */
 }
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+}

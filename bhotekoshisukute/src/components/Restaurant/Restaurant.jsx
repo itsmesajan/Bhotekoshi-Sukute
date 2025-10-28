@@ -11,7 +11,7 @@ const RestaurantPage = () => {
     data: restaurants,
     loading,
     error,
-  } = useFetchApi("/bhotekoshibeach/api_dine.json", "restaurants");
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_dine.php", "restaurants");
 
   if (loading) return <></>;
   if (error) return <div>{error}</div>;
