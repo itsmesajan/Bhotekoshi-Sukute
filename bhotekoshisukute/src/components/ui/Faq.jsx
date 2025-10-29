@@ -8,7 +8,7 @@ const {
   data: faqDetail,
   loading,
   error,
-} = useFetchApi("/bhotekoshibeach/api_faq.json", "faqDetail");
+} = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_faq.php", "faqDetail");
 
   if (loading) return <></>;
   if (error) return <div>{error}</div>;

@@ -1,65 +1,19 @@
 import React from 'react';
-import Sailung from '../assets/Sailungg.jpg';
-import Bhairab from '../assets/Bhairab.jpg';
-import Tatopani from '../assets/Tatopani.jpg';
-import Kalinchok from '../assets/Kalinchok.jpg';
-import Jugal from '../assets/Jugal.jpg';
-import Hiking from '../assets/Hiking.jpg';
-import Gaurati from '../assets/Gaurati.jpg';
-import Bunzy from '../assets/Bunzy.jpg';
-
-const places = [
-    {
-        title: "Bhairab Kunda",
-        description: "A sacred lake and pilgrimage site surrounded by stunning Himalayan views.",
-        imageUrl: Bhairab,
-        mapUrl: "https://goo.gl/maps/4r8xwKj8n8v1QwKc9",
-    },
-    {
-        title: "Tatopani",
-        description: "Famous for its natural hot springs, perfect for relaxation and wellness.",
-        imageUrl: Tatopani,
-        mapUrl: "https://goo.gl/maps/2Qw2FQh8v9v1QwKc9",
-    },
-    {
-        title: "Sailung",
-        description: "Known for panoramic hilltop views and rolling green meadows.",
-        imageUrl: Sailung,
-        mapUrl: "https://goo.gl/maps/3r8xwKj8n8v1QwKc9",
-    },
-    {
-        title: "Kalinchok",
-        description: "A popular pilgrimage and trekking destination with breathtaking scenery.",
-        imageUrl: Kalinchok,
-        mapUrl: "https://goo.gl/maps/5r8xwKj8n8v1QwKc9",
-    },
-    {
-        title: "Jugal Basecamp",
-        description: "Gateway to the Jugal Himal range, ideal for trekkers and nature lovers.",
-        imageUrl: Jugal,
-        mapUrl: "https://goo.gl/maps/6r8xwKj8n8v1QwKc9",
-    },
-    {
-        title: "Hiking MAJHI Village",
-        description: "Experience local culture and scenic trails in the Majhi community village.",
-        imageUrl: Hiking,
-        mapUrl: "https://goo.gl/maps/7r8xwKj8n8v1QwKc9",
-    },
-    {
-        title: "Gaurati Temple",
-        description: "A revered temple offering spiritual ambiance and cultural heritage.",
-        imageUrl: Gaurati,
-        mapUrl: "https://goo.gl/maps/8r8xwKj8n8v1QwKc9",
-    },
-    {
-        title: "Bunzy & More",
-        description: "Enjoy thrilling bunzy jumping and other adventure activities nearby.",
-        imageUrl: Bunzy,
-        mapUrl: "https://goo.gl/maps/9r8xwKj8n8v1QwKc9",
-    },
-];
+import useFetchApi from '../hooks/useFetchApi';
 
 const PlacesToExploreSection = () => {
+
+    const {
+      data: places,
+      loading,
+      error,
+    } = useFetchApi(
+      "https://mayurstay.com/bhotekoshi/api/api_nearby.php",
+      "places"
+    );
+      if (loading) return <></>;
+  if (error) return <div>{error}</div>;
+
     return (
         <section className="py-16 sm:py-24 bg-[#ffcd0012]">
             <div className='container mx-auto px-4 sm:px-6 lg:px-8'>

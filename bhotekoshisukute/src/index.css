@@ -74,3 +74,52 @@
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 9999px;
 }
+
+
+.pnlm-custom-hotspot-btn-vertical {
+    /* Use flex column to stack arrow and text */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    
+    /* Overall Appearance (Adjusted for vertical look) */
+    padding: 4px 10px 8px 10px; /* More padding at bottom for text */
+    border-radius: 12px; /* Smoother edges */
+    border: none;
+    background-color: rgba(30, 41, 59); /* Darker background for contrast */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* 2. ARROW ICON (Upper Section) */
+.pnlm-hotspot-arrow-icon {
+    /* Arrow style (e.g., triangle icon) */
+    color: #fff; /* White arrow */
+    font-size: 20px;
+    line-height: 1; /* Tightly pack the arrow */
+    padding: 4px 0;
+    margin-bottom: 2px;
+}
+
+/* 3. TEXT LABEL (Lower, Full-Width Section) */
+.pnlm-hotspot-text-label {
+    /* Ensures text takes up the full width of the padding */
+    width: 100%;
+    /* Align text */
+    text-align: center; 
+    
+    /* Text Style */
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap; /* Prevents text from wrapping */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    padding: 0 2px; /* Small horizontal padding if needed */
+}
+
+/* 4. HOVER STATE */
+.pnlm-custom-hotspot-btn-vertical:hover {
+    background-color: rgba(4, 117, 186); /* Change background on hover */
+    transform: scale(1.05);
+}

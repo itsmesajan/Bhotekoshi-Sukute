@@ -30,7 +30,7 @@ const Facilities = () => {
               key={key}
               className="bg-white rounded-xl p-6 text-center flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
-              <div className="bg-[#ffcd0012] text-4xl text-[var(--secondary-color)] p-4 rounded-full mb-4 flex items-center justify-center">
+              <div className="bg-[#ffcd0012] text-4xl text-[var(--green-color)] p-4 rounded-full mb-4 flex items-center justify-center">
                 {facility.image ? (
                   <img
                     src={facility.image}
@@ -41,7 +41,7 @@ const Facilities = () => {
                   <i className={facility.icon} />
                 )}
               </div>
-              <h3 className="text-lg font-bold text-[var(--secondary-color)]">
+              <h3 className="text-lg font-bold text-slate-800">
                 {facility.title || key}
               </h3>
               <p className="mt-2 text-sm text-slate-600 flex-grow">

@@ -10,61 +10,32 @@ const Icon = ({ name, className = "" }) => (
 const VirtualTourSection = () => {
   const viewerRef = useRef(null);
   const containerRef = useRef(null);
+  const pendingTargetRef = useRef(null); // <-- NEW: store requested target view
   const [ready, setReady] = useState(false);
-  const [currentScene, setCurrentScene] = useState("lobby");
+  const [currentScene, setCurrentScene] = useState(null);
 
   const { data: scenes, loading, error } = useFetchApi(
     "https://mayurstay.com/bhotekoshi/api/api_virtual_tour.php",
     "scenes"
   );
 
-  // NORMALIZE scenes: API may return [{ img1:..., img2:... }] or an object { img1: {...} }
-  const normalizedScenes = useMemo(() => {
-    if (!scenes) return null;
-
-    // case: [ { img1:..., img2:... } ]  -> return that inner object
-    if (Array.isArray(scenes) && scenes.length === 1 && scenes[0] && typeof scenes[0] === "object" && !Array.isArray(scenes[0])) {
-      return scenes[0];
-    }
-
-    // case: array of scene objects with `id` -> convert to keyed object
-    if (Array.isArray(scenes)) {
-      const byId = {};
-      scenes.forEach((it) => {
-        if (it && it.id) byId[it.id] = it;
-      });
-      if (Object.keys(byId).length) return byId;
-
-      // fallback: index keys
-      return scenes.reduce((acc, it, i) => {
-        acc[`scene-${i}`] = it;
-        return acc;
-      }, {});
-    }
-
-    // already an object keyed by scene ids
-    return scenes;
+  // Compute navigation links from scenes
+  const navLinks = useMemo(() => {
+    if (!scenes) return [];
+    return Object.entries(scenes).map(([key, sc]) => ({
+      key,
+      name: sc.title || key,
+    }));
   }, [scenes]);
 
-  // ensure currentScene is valid after scenes load
+  // Ensure currentScene is valid after scenes load
   useEffect(() => {
-    if (!normalizedScenes) return;
-    if (normalizedScenes[currentScene]) return; // keep current if valid
-    const keys = Object.keys(normalizedScenes);
-    if (keys.length) setCurrentScene(keys[0]);
-  }, [normalizedScenes]);
-  
-  // use normalizedScenes everywhere below instead of `scenes`
-  // update navLinks -> use normalizedScenes
-  const navLinks = useMemo(() => {
-    if (!normalizedScenes || typeof normalizedScenes !== "object") return [];
-    return Object.keys(normalizedScenes).map((key, i) => ({
-      name: normalizedScenes[key].title || `Scene ${i + 1}`,
-      icon: ["meeting_room", "bed", "cottage", "restaurant", "pool"][i] || "room",
-      key,
-    }));
-  }, [normalizedScenes]);
-  
+    if (!scenes) return;
+    if (currentScene && scenes[currentScene]) return;
+    const firstKey = Object.keys(scenes)[0];
+    setCurrentScene(firstKey);
+  }, [scenes, currentScene]);
+
   const goToScene = (key) => {
     if (!viewerRef.current || currentScene === key) return;
     try {
@@ -75,128 +46,173 @@ const VirtualTourSection = () => {
     }
   };
 
-  // initialize / re-init viewer when scenes change
+  // Initialize / re-init Pannellum viewer
   useEffect(() => {
-    if (!containerRef.current || !window.pannellum || !scenes) return;
+    if (!containerRef.current || !window.pannellum || !scenes || !currentScene) return;
 
-    // destroy previous viewer if any
-    try {
-      if (viewerRef.current?.destroy) {
-        viewerRef.current.destroy();
-        viewerRef.current = null;
-      }
-    } catch (err) {
-      console.warn("pannellum destroy error:", err);
-    }
+    // destroy previous viewer
+    try { viewerRef.current?.destroy(); viewerRef.current = null; containerRef.current.innerHTML = ""; } catch (e) {}
 
-    // ensure container empty
-    try {
-      containerRef.current.innerHTML = "";
-    } catch (e) {}
-
+    // build configScenes
     const configScenes = {};
     Object.entries(scenes).forEach(([id, sc]) => {
+      // map hotspots and attach custom click handler for scene-type hotspots that include targets
+      const mappedHotspots = (Array.isArray(sc.hotSpots) ? sc.hotSpots : []).map((h) => {
+        // ensure numeric targets (if present)
+        const targetYaw = h.targetYaw != null ? Number(h.targetYaw) : null;
+        const targetPitch = h.targetPitch != null ? Number(h.targetPitch) : null;
+        const targetHfov = h.targetHfov != null ? Number(h.targetHfov) : null;
+
+        if (h.type === "scene" && (targetYaw !== null || targetPitch !== null || targetHfov !== null)) {
+          // create a custom hotspot that overrides default click behavior
+          return {
+            ...h,
+            // createTooltipFunc runs when hotspot DOM is created; we use it to attach our click
+            createTooltipFunc: (hotSpotDiv, args) => {
+              hotSpotDiv.style.cursor = "pointer";
+              
+             const btn = document.createElement("button");
+               btn.type = "button";
+               // Use 'pnlm-custom-hotspot-btn-vertical' for the new layout
+               btn.className = "pnlm-custom-hotspot-btn-vertical"; 
+              
+            // 1. Create the Arrow container (Upper section)
+            const arrowSpan = document.createElement("span");
+            arrowSpan.className = "pnlm-hotspot-arrow-icon";
+            // Using a downward-pointing arrow (or upward, depending on preference)
+            // Using a triangle pointer icon for a classic look: &#9650; (up) or &#9660; (down)
+            arrowSpan.innerHTML = "&#9650;"; // Upward triangle
+            
+            // 2. Create a span for the text (Lower, full-width section)
+            const textSpan = document.createElement("span");
+            textSpan.className = "pnlm-hotspot-text-label";
+            textSpan.textContent = h.text || "Go";
+
+            // 3. Assemble the button in a column layout
+            btn.appendChild(arrowSpan); // Arrow on top
+            btn.appendChild(textSpan);  // Text on bottom
+
+               hotSpotDiv.appendChild(btn);
+
+               btn.addEventListener("click", (evt) => {
+                evt.stopPropagation();
+                // store requested target and perform scene change manually
+                pendingTargetRef.current = {
+                  yaw: Number.isFinite(targetYaw) ? targetYaw : undefined,
+                  pitch: Number.isFinite(targetPitch) ? targetPitch : undefined,
+                  hfov: Number.isFinite(targetHfov) ? targetHfov : undefined,
+                };
+                // load the scene programmatically
+                try {
+                  if (viewerRef.current && typeof viewerRef.current.loadScene === "function") {
+                    viewerRef.current.loadScene(h.sceneId);
+                  } else {
+                    // fallback: dispatch event for default hotspot behaviour
+                    window.location.hash = `#${h.sceneId}`;
+                  }
+                } catch (err) {
+                  console.warn("Failed to load scene via hotspot handler:", err);
+                }
+              });
+            },
+            // createTooltipArgs keeps original hotspot data available if needed
+            createTooltipArgs: h,
+          };
+        }
+
+        // no special handling needed
+        return h;
+      });
+
       configScenes[id] = {
         title: sc.title,
-        type: "equirectangular",
-        // support multiple possible field names for image
-        panorama:
-          sc.panorama || sc.image || sc.imageUrl || (Array.isArray(sc.imageUrls) && sc.imageUrls[0]) || "",
+        type: sc.type || "equirectangular",
+        panorama: sc.panorama ? encodeURI(sc.panorama.trim()) : "",
         autoLoad: true,
         showZoomCtrl: true,
         initialViewParameters: {
-          yaw: sc.yaw ?? 0,
-          pitch: sc.pitch ?? 0,
-          hfov: sc.hfov ?? 100,
+          yaw: Number(sc.yaw ?? 0),
+          pitch: Number(sc.pitch ?? 0),
+          hfov: Number(sc.hfov ?? 110),
         },
-        hotSpots: Array.isArray(sc.hotSpots) ? sc.hotSpots : [],
+        hotSpots: mappedHotspots,
       };
     });
 
-    // pick first scene key if currentScene not in config
-    const firstKey = Object.keys(configScenes)[0];
-    const firstScene = currentScene && configScenes[currentScene] ? currentScene : firstKey;
-
+    // initialize viewer
     try {
       viewerRef.current = window.pannellum.viewer(containerRef.current, {
         default: {
-          firstScene: firstScene,
+          firstScene: currentScene,
           sceneFadeDuration: 800,
           autorotate: -2,
         },
         scenes: configScenes,
       });
     } catch (err) {
-      console.error("Failed to initialize pannellum viewer:", err);
+      console.error("Failed to initialize Pannellum viewer:", err);
       return;
     }
 
-    // update state on scene change (guard .on)
+    // on scene change: apply pending target if present (fallback)
     try {
       if (typeof viewerRef.current.on === "function") {
         viewerRef.current.on("scenechange", (sceneId) => {
           setCurrentScene(sceneId);
-          const sc = scenes[sceneId];
-          if (sc) {
-            try {
-              if (typeof viewerRef.current.setYaw === "function") viewerRef.current.setYaw(sc.yaw ?? 0);
-              if (typeof viewerRef.current.setPitch === "function") viewerRef.current.setPitch(sc.pitch ?? 0);
-              if (typeof viewerRef.current.setHfov === "function") viewerRef.current.setHfov(sc.hfov ?? 100);
-            } catch (e) {}
+          // small timeout to wait for scene load/transition to finish, then apply view
+          if (pendingTargetRef.current) {
+            const t = pendingTargetRef.current;
+            pendingTargetRef.current = null;
+            // apply after a short delay so the scene is ready
+            setTimeout(() => {
+              try {
+                if (typeof viewerRef.current.setYaw === "function" && t.yaw !== undefined) viewerRef.current.setYaw(t.yaw);
+                if (typeof viewerRef.current.setPitch === "function" && t.pitch !== undefined) viewerRef.current.setPitch(t.pitch);
+                if (typeof viewerRef.current.setHfov === "function" && t.hfov !== undefined) viewerRef.current.setHfov(t.hfov);
+              } catch (e) {
+                console.warn("Failed to apply hotspot target view:", e);
+              }
+            }, 250); // adjust delay if needed
           }
         });
       }
-    } catch (e) {
-      // ignore if event API not available
-    }
+    } catch (e) {}
 
     setReady(true);
 
     return () => {
-      try {
-        viewerRef.current?.destroy();
-      } catch (e) {}
+      try { viewerRef.current?.destroy(); } catch (e) {}
       viewerRef.current = null;
-      try {
-        if (containerRef.current) containerRef.current.innerHTML = "";
-      } catch (e) {}
+      try { if (containerRef.current) containerRef.current.innerHTML = ""; } catch (e) {}
       setReady(false);
     };
-    // re-run when scenes change
   }, [scenes, currentScene]);
 
-  // block dragging moves only (keep clicks & wheel) — stays as you had
+
+
+  // Block dragging if draggable=false
   useEffect(() => {
     let isDown = false;
     let activePointerId = null;
 
     const onDown = (e) => {
-      if (e.pointerId !== undefined) {
-        activePointerId = e.pointerId;
-        isDown = true;
-      } else if (e.type === "mousedown") {
-        if (e.button !== 0) return;
-        isDown = true;
-      } else if (e.type === "touchstart") {
-        isDown = true;
-      }
+      if (e.pointerId !== undefined) activePointerId = e.pointerId;
+      isDown = true;
     };
-
     const onUp = (e) => {
-      if (e.pointerId !== undefined && activePointerId !== null && e.pointerId !== activePointerId) return;
+      if (e.pointerId !== undefined && activePointerId !== e.pointerId) return;
       isDown = false;
       activePointerId = null;
     };
-
     const onMove = (e) => {
       if (!isDown) return;
-      const allowDrag = (scenes?.[currentScene]?.draggable ?? true) === true;
+      const allowDrag = scenes?.[currentScene]?.draggable ?? true;
       if (!allowDrag) {
         try {
           if (e.cancelable) e.preventDefault();
-        } catch (err) {}
-        if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
-        if (typeof e.stopPropagation === "function") e.stopPropagation();
+        } catch {}
+        e.stopPropagation?.();
+        e.stopImmediatePropagation?.();
       }
     };
 
@@ -245,6 +261,8 @@ const VirtualTourSection = () => {
     return <div className="text-center py-12">scenes not found.</div>;
   }
 
+
+
   return (
     <main className="flex-1">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
@@ -262,7 +280,7 @@ const VirtualTourSection = () => {
             <div
               ref={containerRef}
               id="panorama"
-              style={{ width: "100%", height: 520, backgroundColor: "#000" }}
+              style={{ width: "100%", height: 600, backgroundColor: "#000" }}
             />
             {!ready && (
               <div className="absolute inset-0 flex items-center justify-center text-white/80 z-10 bg-black/50">
@@ -273,13 +291,14 @@ const VirtualTourSection = () => {
               </div>
             )}
           </div>
+          
 
-          <aside className="w-full md:w-72 lg:w-80 flex-shrink-0 bg-white p-6  h-[calc(100vh-14rem)] overflow-y-auto  rounded-2xl shadow-lg scrollbar-thin">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-200">
+          <aside className="w-full md:w-72 lg:w-80 flex-shrink-0 bg-white px-6 pb-6 h-[600px] overflow-y-auto rounded-2xl shadow-lg scrollbar-thin">
+            <div className="flex items-center justify-between pb-4 pt-6 border-b border-slate-200 sticky top-0 bg-white">
               <h3 className="text-lg font-bold text-slate-800">Explore Areas</h3>
             </div>
 
-            <nav className="mt-4 space-y-2 ">
+            <nav className="mt-4 space-y-2">
               {navLinks.map((link) => (
                 <button
                   key={link.key}
@@ -290,7 +309,6 @@ const VirtualTourSection = () => {
                       : "hover:bg-slate-100 text-slate-600 font-medium"
                   }`}
                 >
-                  {/* <Icon name={link.icon} /> */}
                   <span>{link.name}</span>
                 </button>
               ))}

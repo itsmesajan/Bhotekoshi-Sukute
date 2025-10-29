@@ -1,28 +1,46 @@
-[
-  {
-    "id": "img1",
-    "title": "First Image",
-    "hfov": 100,
+{
+
+  "img33": {
+    "title": "Exterior 3",
+    "hfov": 120,
     "pitch": 0,
     "yaw": 0,
     "type": "equirectangular",
-    "panorama": "https://mayurstay.com/bhotekoshi/backend/images/360/7teMs-1MB.jpg",
+    "panorama": "https://mayurstay.com/bhotekoshi/backend/images/360/NPoF5-Exterior 3.jpg",
     "draggable": true,
     "hotSpots": [
-      {"pitch": 0, "yaw": 0, "type": "info", "text": "First Hotspot", "sceneId": ""}
+      {
+        "pitch": 0,
+        "yaw": 150,
+        "type": "scene",
+        "text": "Exterior 3 - Swimming Pool",
+        "sceneId": "img4",
+        "targetPitch": 111,
+        "targetYaw": 111
+      }
     ]
   },
-  {
-    "id": "img2",
-    "title": "Second Image",
-    "hfov": 100,
+
+
+  "img4": {
+    "title": "Swimming pool",
+    "hfov": 130,
     "pitch": 0,
     "yaw": 0,
     "type": "equirectangular",
-    "panorama": "https://mayurstay.com/bhotekoshi/backend/images/360/I1wTN-jimbu_parking.jpg",
+    "panorama": "https://mayurstay.com/bhotekoshi/backend/images/360/x8VUT-Swimming pool.jpg",
     "draggable": true,
     "hotSpots": [
-      {"pitch": 0, "yaw": 0, "type": "scene", "text": "Go to first image", "sceneId": "img1"}
+    
+      {
+        "pitch": 0,
+        "yaw": -60,
+        "type": "scene",
+        "text": "Swimming Pool - Exterior 3",
+        "sceneId": "img33",
+        "targetPitch": 0,
+        "targetYaw": 111
+      }
     ]
   }
-]
+}
