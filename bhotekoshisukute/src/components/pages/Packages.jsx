@@ -43,7 +43,7 @@ const Packages = () => {
               alt={pkg.title}
               src={pkg.image}
               className="w-full object-cover"
-              style={{ height: "400px" }} // Adjust for Facebook-like post preview
+              style={{ height: "400px" }}
             />
             <div className="p-6 flex flex-col flex-grow">
               <h3 className="text-xl font-bold text-[var(--secondary-color)] mb-2">
@@ -52,7 +52,10 @@ const Packages = () => {
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">
                 {pkg.description}
               </p>
-              <EnquiryModal type="package" />
+              <EnquiryModal
+                type="package"
+                selectedItem={{ id: key, title: pkg.title }}
+              />
             </div>
           </div>
         ))}

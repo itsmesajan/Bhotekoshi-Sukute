@@ -21,7 +21,7 @@ const HeroSection = () => {
     loading,
     error,
   } = useFetchApi(
-    "/bhotekoshibeach/api_slider.json",
+    "https://mayurstay.com/bhotekoshi/api/api_slideshow.php",
     "sliderImages"
   );
 

@@ -46,7 +46,7 @@ const ContactForm = () => {
           handleSubmit(
             e,
             recaptchaToken,
-            "https://bhotekoshibeach.com/enquery_mail_react.php",
+            "https://mayurstay.com/bhotekoshi/enquiry_mail_react.php",
             { requireRecaptcha: false }
           )
         }

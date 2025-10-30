@@ -106,7 +106,7 @@ const RoomDetail = () => {
       <main className="mx-auto w-full container flex-1 px-4 py-8 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm">
-          <Link className="text-gray-500 hover:text-primary" to="/roomList">
+          <Link className="text-gray-500 hover:text-primary" to="/accommodation">
             Rooms
           </Link>
           <span className="text-gray-600">/</span>

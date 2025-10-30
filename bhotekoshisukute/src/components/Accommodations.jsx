@@ -100,7 +100,7 @@ const AccommodationsSection = () => {
         </Swiper>
         <div className="text-center mt-8">
           <Link
-            to="/roomList"
+            to="/accommodation"
             className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-full shadow hover:bg-green-600 transition-all"
           >
             <i className="fa-regular fa-paper-plane"></i>

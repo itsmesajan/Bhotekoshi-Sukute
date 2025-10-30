@@ -32,10 +32,10 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUsPage />} />
-          <Route path="/roomList" element={<RoomList />} />
-          <Route path="/rooms/:id" element={<RoomDetail />} />
-          <Route path="/restaurant" element={<Restaurant />} />
-          <Route path="/hall/:id?" element={<Hall />} />
+          <Route path="/accommodation" element={<RoomList />} />
+          <Route path="/accommodation/:id" element={<RoomDetail />} />
+          <Route path="/restaurant-bar" element={<Restaurant />} />
+          <Route path="/conference-events/:id?" element={<Hall />} />
           <Route path="/activities" element={<Activities />} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/facilities" element={<Facilities />} />

@@ -27,7 +27,7 @@ const Header = () => {
     data: navLinks,
     loading,
     error,
-  } = useFetchApi("/bhotekoshibeach/api_menu.json",'navLinks'); // no need for second param
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_menu.php",'navLinks'); // no need for second param
 
   if (loading) return <></>;
   if (error) return <div>{error}</div>;

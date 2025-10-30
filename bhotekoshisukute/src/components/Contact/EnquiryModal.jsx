@@ -55,9 +55,13 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
   // when modal opens set enquiry_for in formData (so it is included in submitted JSON)
   React.useEffect(() => {
     if (isOpen) {
-      setFormData(prev => ({ ...prev, enquiry_for: itemTitle }));
+      setFormData(prev => ({
+        ...prev,
+        enquiry_for: itemTitle,
+        enquiry_for_id: selectedItem?.id ?? "",
+      }));
     }
-  }, [isOpen, itemTitle, setFormData]);
+  }, [isOpen, itemTitle, setFormData, selectedItem?.id]);
 
   // close modal on successful submit
   React.useEffect(() => {
@@ -82,17 +86,17 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
           <Dialog.Title className="text-xl font-bold mb-4">Enquiry for {itemTitle}</Dialog.Title>
 
           <form
-            onSubmit={(e) =>
-              handleSubmit(
-                e,
-                recaptchaToken, // pass the token
-                "https://bhotekoshibeach.com/enquery_mail_react.php",
-                { requireRecaptcha: false }
-              )
-            }
+            onSubmit={(e) => {
+              const endpoint =
+                type === "package"
+                  ? "https://mayurstay.com/bhotekoshi/enquiry_mail_offer.php"
+                  : "https://mayurstay.com/bhotekoshi/enquiry_mail_hall_react.php";
+              handleSubmit(e, recaptchaToken, endpoint, { requireRecaptcha: false });
+            }}
             className="space-y-4"
           >
             <input type="hidden" name="enquiry_for" value={itemTitle} />
+            <input type="hidden" name="enquiry_for_id" value={selectedItem?.id ?? ""} />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>

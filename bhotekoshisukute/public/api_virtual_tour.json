@@ -2,7 +2,7 @@
 
   "img33": {
     "title": "Exterior 3",
-    "hfov": 120,
+    "hfov": 45,
     "pitch": 0,
     "yaw": 0,
     "type": "equirectangular",
@@ -24,7 +24,7 @@
 
   "img4": {
     "title": "Swimming pool",
-    "hfov": 130,
+    "hfov": 50,
     "pitch": 0,
     "yaw": 0,
     "type": "equirectangular",

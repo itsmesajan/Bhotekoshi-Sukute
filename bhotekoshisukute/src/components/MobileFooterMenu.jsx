@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 
 const mobileMenuItems = [
     {
-        href: '/roomList',
+        href: '/accommodation',
         icon: 'hotel',
         label: 'Room',
     },
     {
-        href: '/restaurant',
+        href: '/restaurant-bar',
         icon: 'restaurant',
         label: 'Dining',
     },
     {
-        href: '/hall',
+        href: '/conference-events',
         icon: 'meeting_room',
         label: 'Hall',
     },
