@@ -11,7 +11,7 @@ const HallSection = () => {
     data: raw,
     loading,
     error,
-  } = useFetchApi("/bhotekoshibeach/api_hall.json", "hallFeatures");
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_hall.php", "hallFeatures");
 
   // Normalize API shape:
   // API can be: [ { title, hallCategories: [ { id, title, ... } ] } ]
