@@ -123,3 +123,45 @@
     background-color: rgba(4, 117, 186); /* Change background on hover */
     transform: scale(1.05);
 }
+
+/* Default (minimal) hotspot style used by our custom createTooltipFunc */
+.pnlm-hotspot-default {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+}
+.pnlm-hotspot-default:hover {
+  transform: scale(1.15);
+}
+
+/* Make sure pannellum's hotspot container doesn't block native tooltips */
+.pnlm-hotspot-default[title] {
+}
+
+/* Custom tooltip label for hotspots (used when native title isn't visible) */
+.pnlm-hotspot-tooltip-label {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease, transform 120ms ease;
+  z-index: 50;
+}
+.pnlm-hotspot-tooltip-label.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

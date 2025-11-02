@@ -59,68 +59,88 @@ const VirtualTourSection = () => {
       // map hotspots and attach custom click handler for scene-type hotspots that include targets
       const mappedHotspots = (Array.isArray(sc.hotSpots) ? sc.hotSpots : []).map((h) => {
         // ensure numeric targets (if present)
-        const targetYaw = h.targetYaw != null ? Number(h.targetYaw) : null;
-        const targetPitch = h.targetPitch != null ? Number(h.targetPitch) : null;
-        const targetHfov = h.targetHfov != null ? Number(h.targetHfov) : null;
+        const targetYaw = h.targetYaw != null ? Number(h.targetYaw) : undefined;
+        const targetPitch = h.targetPitch != null ? Number(h.targetPitch) : undefined;
+        const targetHfov = h.targetHfov != null ? Number(h.targetHfov) : undefined;
 
-        if (h.type === "scene" && (targetYaw !== null || targetPitch !== null || targetHfov !== null)) {
-          // create a custom hotspot that overrides default click behavior
+        // For scene-type hotspots, always use a custom tooltip element so we can intercept clicks
+        // and apply pending target yaw/pitch/hfov reliably after the scene change.
+        if (h.type === "scene") {
           return {
             ...h,
-            // createTooltipFunc runs when hotspot DOM is created; we use it to attach our click
             createTooltipFunc: (hotSpotDiv, args) => {
               hotSpotDiv.style.cursor = "pointer";
-              
-             const btn = document.createElement("button");
-               btn.type = "button";
-               // Use 'pnlm-custom-hotspot-btn-vertical' for the new layout
-               btn.className = "pnlm-custom-hotspot-btn-vertical"; 
-              
-            // 1. Create the Arrow container (Upper section)
-            const arrowSpan = document.createElement("span");
-            arrowSpan.className = "pnlm-hotspot-arrow-icon";
-            // Using a downward-pointing arrow (or upward, depending on preference)
-            // Using a triangle pointer icon for a classic look: &#9650; (up) or &#9660; (down)
-            arrowSpan.innerHTML = "&#9650;"; // Upward triangle
-            
-            // 2. Create a span for the text (Lower, full-width section)
-            const textSpan = document.createElement("span");
-            textSpan.className = "pnlm-hotspot-text-label";
-            textSpan.textContent = h.text || "Go";
+              const btn = document.createElement("button");
+              btn.type = "button";
+              btn.className = "pnlm-hotspot-default";
+              // btn.title = h.text || "Go";
+              btn.setAttribute("aria-label", h.text || "Go");
+              // visible marker via CSS; keep inner empty so CSS dot shows
+              btn.innerText = "";
 
-            // 3. Assemble the button in a column layout
-            btn.appendChild(arrowSpan); // Arrow on top
-            btn.appendChild(textSpan);  // Text on bottom
+              hotSpotDiv.appendChild(btn);
 
-               hotSpotDiv.appendChild(btn);
+              // create a small custom tooltip element because native title tooltips are sometimes suppressed
+              const tip = document.createElement("span");
+              tip.className = "pnlm-hotspot-tooltip-label";
+              tip.textContent = h.text || "Go";
+              hotSpotDiv.appendChild(tip);
 
-               btn.addEventListener("click", (evt) => {
+              const showTip = () => tip.classList.add("show");
+              const hideTip = () => tip.classList.remove("show");
+
+              btn.addEventListener("mouseenter", showTip);
+              btn.addEventListener("focus", showTip);
+              btn.addEventListener("mouseleave", hideTip);
+              btn.addEventListener("blur", hideTip);
+
+              btn.addEventListener("click", (evt) => {
                 evt.stopPropagation();
-                // store requested target and perform scene change manually
-                pendingTargetRef.current = {
-                  yaw: Number.isFinite(targetYaw) ? targetYaw : undefined,
-                  pitch: Number.isFinite(targetPitch) ? targetPitch : undefined,
-                  hfov: Number.isFinite(targetHfov) ? targetHfov : undefined,
-                };
-                // load the scene programmatically
+                const targetSceneId = h.sceneId || h.scene || h.targetScene || h.sceneId;
+
+                // prepare pending target (kept as fallback)
+                const yawArg = Number.isFinite(targetYaw) ? targetYaw : undefined;
+                const pitchArg = Number.isFinite(targetPitch) ? targetPitch : undefined;
+                const hfovArg = Number.isFinite(targetHfov) ? targetHfov : undefined;
+
+                pendingTargetRef.current = { yaw: yawArg, pitch: pitchArg, hfov: hfovArg };
+
+                // Try to call loadScene with explicit view params to avoid any panning animation.
                 try {
                   if (viewerRef.current && typeof viewerRef.current.loadScene === "function") {
-                    viewerRef.current.loadScene(h.sceneId);
-                  } else {
-                    // fallback: dispatch event for default hotspot behaviour
-                    window.location.hash = `#${h.sceneId}`;
+                    // Some pannellum builds accept (sceneId, yaw, pitch, hfov) to jump directly.
+                    try {
+                      // attempt direct jump
+                      viewerRef.current.loadScene(targetSceneId, yawArg, pitchArg, hfovArg);
+                    } catch (innerErr) {
+                      // fallback: set initialViewParameters on the scene config and then load
+                      if (targetSceneId && configScenes && configScenes[targetSceneId]) {
+                        const sceneCfg = configScenes[targetSceneId];
+                        sceneCfg.initialViewParameters = sceneCfg.initialViewParameters || {};
+                        if (yawArg !== undefined) sceneCfg.initialViewParameters.yaw = yawArg;
+                        if (pitchArg !== undefined) sceneCfg.initialViewParameters.pitch = pitchArg;
+                        if (hfovArg !== undefined) sceneCfg.initialViewParameters.hfov = hfovArg;
+                      }
+                      // try again without passing view params (some builds may not accept them)
+                      try {
+                        viewerRef.current.loadScene(targetSceneId);
+                      } catch (e) {
+                        // if even this fails, log and fallback will be handled by scenechange handler
+                        console.warn("loadScene fallback also failed", e);
+                      }
+                    }
+                  } else if (targetSceneId) {
+                    window.location.hash = `#${targetSceneId}`;
                   }
                 } catch (err) {
                   console.warn("Failed to load scene via hotspot handler:", err);
                 }
               });
             },
-            // createTooltipArgs keeps original hotspot data available if needed
             createTooltipArgs: h,
           };
         }
 
-        // no special handling needed
         return h;
       });
 
@@ -133,7 +153,7 @@ const VirtualTourSection = () => {
         initialViewParameters: {
           yaw: Number(sc.yaw ?? 0),
           pitch: Number(sc.pitch ?? 0),
-          hfov: Number(sc.hfov ?? 110),
+          hfov: Number(sc.hfov ?? 120),
         },
         hotSpots: mappedHotspots,
       };
@@ -159,31 +179,52 @@ const VirtualTourSection = () => {
       if (typeof viewerRef.current.on === "function") {
         viewerRef.current.on("scenechange", (sceneId) => {
           setCurrentScene(sceneId);
+
           // small timeout to wait for scene load/transition to finish, then apply view
-          if (pendingTargetRef.current) {
-            const t = pendingTargetRef.current;
-            pendingTargetRef.current = null;
-            // apply after a short delay so the scene is ready
-            setTimeout(() => {
-              try {
-                if (typeof viewerRef.current.setYaw === "function" && t.yaw !== undefined) viewerRef.current.setYaw(t.yaw);
-                if (typeof viewerRef.current.setPitch === "function" && t.pitch !== undefined) viewerRef.current.setPitch(t.pitch);
-                if (typeof viewerRef.current.setHfov === "function" && t.hfov !== undefined) viewerRef.current.setHfov(t.hfov);
-              } catch (e) {
-                console.warn("Failed to apply hotspot target view:", e);
+          const t = pendingTargetRef.current;
+          pendingTargetRef.current = null;
+          setTimeout(() => {
+            try {
+              // If the hotspot provided a specific hfov, use it; otherwise fall back to the scene's configured hfov
+              const sceneDefaultHfov = configScenes?.[sceneId]?.initialViewParameters?.hfov;
+
+              if (t && typeof viewerRef.current.setYaw === "function" && t.yaw !== undefined) viewerRef.current.setYaw(t.yaw);
+              if (t && typeof viewerRef.current.setPitch === "function" && t.pitch !== undefined) viewerRef.current.setPitch(t.pitch);
+
+              if (typeof viewerRef.current.setHfov === "function") {
+                if (t && t.hfov !== undefined) {
+                  viewerRef.current.setHfov(t.hfov);
+                } else if (sceneDefaultHfov !== undefined) {
+                  viewerRef.current.setHfov(sceneDefaultHfov);
+                }
               }
-            }, 250); // adjust delay if needed
-          }
+            } catch (e) {
+              console.warn("Failed to apply hotspot/scene target view:", e);
+            }
+          }, 250); // adjust delay if needed
         });
       }
-    } catch (e) {}
+    } catch (e) {
+      console.warn("Failed to attach scenechange handler", e);
+    }
 
     setReady(true);
 
+    // capture container element for safe cleanup
+    const containerEl = containerRef.current;
+
     return () => {
-      try { viewerRef.current?.destroy(); } catch (e) {}
+      try {
+        if (viewerRef.current && typeof viewerRef.current.destroy === "function") viewerRef.current.destroy();
+      } catch (err) {
+        console.warn("Error destroying pannellum viewer during cleanup", err);
+      }
       viewerRef.current = null;
-      try { if (containerRef.current) containerRef.current.innerHTML = ""; } catch (e) {}
+      try {
+        if (containerEl) containerEl.innerHTML = "";
+      } catch (err) {
+        console.warn("Failed to clear panorama container during cleanup", err);
+      }
       setReady(false);
     };
   }, [scenes, currentScene]);
@@ -210,7 +251,9 @@ const VirtualTourSection = () => {
       if (!allowDrag) {
         try {
           if (e.cancelable) e.preventDefault();
-        } catch {}
+        } catch (err) {
+          console.warn("preventDefault failed", err);
+        }
         e.stopPropagation?.();
         e.stopImmediatePropagation?.();
       }
