@@ -55,7 +55,7 @@ const RestaurantPage = () => {
                   {restaurant.imageUrls?.map((img, i) => (
                     <SwiperSlide key={i}>
                       <div
-                        className="w-full h-96 bg-cover bg-center"
+                        className="w-full h-96 object-cover bg-center bg-transparent"
                         style={{ backgroundImage: `url(${img.src})` }}
                         alt={img.alt}
                       ></div>
