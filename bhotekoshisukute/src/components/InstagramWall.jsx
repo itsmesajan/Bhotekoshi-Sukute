@@ -53,7 +53,7 @@ const InstagramWall = () => {
 
       <div className="text-center mt-8">
         <a
-          href="https://www.instagram.com/bhotekoshiheliresort/"
+          href="https://www.instagram.com/bhotekoshi_beach_resort/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-pink-500 text-white font-bold px-6 py-3 rounded-full shadow hover:bg-pink-600 transition-all"

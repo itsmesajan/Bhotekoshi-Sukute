@@ -11,6 +11,7 @@ import tree2 from "../assets/tree_2.png";
 import tree1 from "../assets/tree.png";
 import { Link } from "react-router-dom";
 import useFetchApi from "../hooks/useFetchApi";
+import RoomBooking from "./Rooms/RoomBooking";
 
 const AccommodationsSection = () => {
   const {
@@ -25,6 +26,26 @@ const AccommodationsSection = () => {
   if (loading) return <></>;
   if (error) return <div>{error}</div>;
 
+  let rooms = [];
+    if (Array.isArray(accommodations) && accommodations.length > 0) {
+        // Accessing the nested array: accommodations[0]?.accomodation
+        rooms = accommodations[0]?.accomodation || [];
+    } else if (accommodations && accommodations.accomodation) {
+        // Fallback for non-array top-level data
+        rooms = accommodations.accomodation;
+    }
+
+  if (!Array.isArray(rooms) || rooms.length === 0) {
+    return (
+        <section className="py-16 sm:py-24 relative text-center">
+            <p className="text-xl text-red-500">No accommodations found or failed to load data.</p>
+        </section>
+    );
+}
+
+if (accommodations.length < 7) {
+    rooms = [...rooms, ...rooms];
+}
   return (
     <>
       {/* Decorative images */}
@@ -72,9 +93,9 @@ const AccommodationsSection = () => {
           }}
           pagination={{ clickable: true }}
         >
-          {accommodations[0]?.accomodation?.map((room, index) => (
+          {rooms.map((room, index) => (
             <SwiperSlide
-              key={index}
+              key={`${room.title}-${index}`}
               className="flex flex-col items-center bg-white rounded-2xl shadow-md p-8 transition-transform duration-300"
             >
               <img
@@ -91,9 +112,7 @@ const AccommodationsSection = () => {
               <div className="text-lg font-extrabold text-[var(--secondary-color)] mb-2">
                 {room.roomDetails?.["Starting Price"]?.value}
               </div>
-              <button className="bg-[var(--primary-color)] hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition-all">
-                Book Now
-              </button>
+              <RoomBooking />
             </SwiperSlide>
           ))}
           <div className="swiper-pagination"></div>

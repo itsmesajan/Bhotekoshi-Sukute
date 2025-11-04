@@ -1,14 +1,20 @@
 import React from 'react'
-import videoSource from '../assets/sukute.mp4';
+import useFetchApi from '../hooks/useFetchApi';
 
 const VideoSection = () => {
+    const {data: about, loading, error} = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_homepageArticle.php", "aboutSection");
+
+    if (loading) return <></>;
+    if (error) return <div>{error}</div>;
+    if (!about) return <></>;
+
   return (
     <section className="">
             <div className="flex justify-center">
                 <div className="w-full overflow-hidden shadow-lg">
                     <video className="w-full h-auto" autoPlay muted loop playsInline controls>
                         {/* Use the imported variable as the src */}
-                        <source src={videoSource} type="video/mp4" />
+                        <source src={about.video} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>

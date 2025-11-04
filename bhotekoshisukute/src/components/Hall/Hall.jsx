@@ -196,20 +196,41 @@ const Hall = () => {
             </h3>
             <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-3 lg:grid-cols-4">
               {/* Amenities section remains as is, assuming 'hall.amenities' is an array of {name, icon} */}
-              {hall.amenities.map((amenity, index) => (
+              {(hall.amenities || []).map((amenity, index) => {
+              // 1. Determine if the amenity uses a Font Awesome icon or a Material Symbol
+              // We check if the 'icon' property exists and starts with 'fa-'
+              const isFontAwesome =
+                amenity.icon && amenity.icon.startsWith("fa-");
+
+              // 2. Check if the amenity uses a direct image URL
+              const hasImage = amenity.imageUrl;
+
+              return (
                 <div key={index} className="flex items-center gap-3">
-                  {amenity.type === "fa" ? (
+                  {hasImage ? (
+                    // --- RENDER IMAGE ---
+                    <img
+                      src={amenity.imageUrl}
+                      alt={amenity.title}
+                      // Apply appropriate sizing/styling for the amenity icon slot
+                      className="w-5 h-5 object-contain"
+                    />
+                  ) : isFontAwesome ? (
+                    // --- RENDER FONT AWESOME ICON ---
                     <i
                       className={`${amenity.icon} text-[var(--secondary-color)] text-xl`}
                     ></i>
                   ) : (
+                    // --- RENDER MATERIAL SYMBOL ICON (Default/Fallback) ---
                     <span className="material-symbols-outlined text-[var(--secondary-color)] text-xl">
-                      {amenity.icon || ""}
+                      {/* Use the icon name, or a generic placeholder if the name is empty */}
+                      {amenity.icon || "info"}
                     </span>
                   )}
-                  <p className="text-base text-gray-700">{amenity.name}</p>
+                  <p className="text-base text-gray-700">{amenity.title}</p>
                 </div>
-              ))}
+              );
+            })}
             </div>
           </div>
         </main>
