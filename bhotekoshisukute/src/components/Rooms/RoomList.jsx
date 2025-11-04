@@ -87,7 +87,7 @@ const RoomList = () => {
                 </div>
                 <div className="p-8 flex-grow flex flex-col">
                   <Link
-                    to={`/rooms/${room.id}`}
+                    to={`/accommodation/${room.id}`}
                     className="text-3xl font-display font-bold text-[var(--secondary-color)] dark:text-light mb-3"
                   >
                     {room.title}
@@ -97,10 +97,10 @@ const RoomList = () => {
                   </p>
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-xl font-display font-bold text-[var(--secondary-color)]">
-                      From USD {price}{" "}
+                      From {price}{" "}
                     </span>
                     <Link
-                      to={`/rooms/${room.id}`}
+                      to={`/accommodation/${room.id}`}
                       className="text-[var(--secondary-color)] font-bold hover:underline"
                     >
                       View Details

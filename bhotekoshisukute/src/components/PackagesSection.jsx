@@ -42,7 +42,7 @@ const PackagesSection = () => {
               alt={pkg.title}
               src={pkg.image}
               className="w-full object-cover"
-              style={{ height: "400px" }}
+              style={{ height: "550px" }}
             />
             <div className="p-6 flex flex-col flex-grow">
               <h3 className="text-xl font-bold text-[var(--secondary-color)] mb-2">

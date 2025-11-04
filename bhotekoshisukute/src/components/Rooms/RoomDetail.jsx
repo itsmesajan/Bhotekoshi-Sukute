@@ -173,11 +173,17 @@ const RoomDetail = () => {
           <h3 className="text-2xl font-bold text-[var(--secondary-color)]">Amenities</h3>
           <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-3 lg:grid-cols-4">
             {(room.amenities || []).map((amenity, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-[var(--secondary-color)]">{amenity.icon}</span>
-                <p className="text-base text-gray-700">{amenity.title}</p>
-              </div>
-            ))}
+  <div key={index} className="flex items-center gap-3">
+    {amenity.type === "fa" ? (
+      <i className={`${amenity.icon} text-[var(--secondary-color)] text-xl`}></i>
+    ) : (
+      <span className="material-symbols-outlined text-[var(--secondary-color)] text-xl">
+        {amenity.icon || ""}
+      </span>
+    )}
+    <p className="text-base text-gray-700">{amenity.title}</p>
+  </div>
+))}
           </div>
         </div>
 
