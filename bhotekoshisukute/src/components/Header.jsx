@@ -25,13 +25,21 @@ const Header = () => {
   // Fetch menu data
   const {
     data: navLinks,
-    loading,
-    error,
-  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_menu.php",'navLinks'); // no need for second param
+    loading : loadingNav,
+    error : errorNav,
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_menu.php",'navLinks'); 
 
-  if (loading) return <></>;
-  if (error) return <div>{error}</div>;
+  const {
+    data: siteregulars,
+    loading : loadingSite,
+    error : errorSite,
+  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_siteregulars.php",'siteregulars'); 
+
+  if (loadingNav || loadingSite) return <></>;
+  if (errorNav || errorSite) return <div>Error loading header data.</div>;
   if (!navLinks) return <></>;
+
+   const { logo_upload, booking_code } = siteregulars;
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm">
@@ -42,7 +50,7 @@ const Header = () => {
           <div className="flex items-center gap-3 text-slate-800">
             <Link to="/home">
               <img
-                src={mainLogo}
+                src={logo_upload}
                 alt="Bhotekoshi Beach"
                 className="h-20 w-auto sm:h-24"
               />
@@ -93,6 +101,7 @@ const Header = () => {
                   <Link
                     to={item.link}
                     className="text-slate-600 hover:text-[var(--secondary-color)] transition-colors text-sm font-medium"
+                    rel="noopener noreferrer"
                   >
                     {item.title}
                   </Link>
@@ -103,11 +112,15 @@ const Header = () => {
 
           {/* Book Now + Mobile Menu Toggle */}
           <div className="flex items-center gap-2">
-            <a className="flex min-w-[84px] max-w-[480px] cursor-pointer hover:bg-blue-600 hover:text-white items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[var(--primary-color)] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-all">
-              <span className="truncate text-[var(--secondary-color)] hover:text-white">
+            <Link
+            to={booking_code}
+             target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-w-[84px] max-w-[480px] cursor-pointer hover:bg-blue-600 text-[var(--secondary-color)] hover:text-white items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[var(--primary-color)]  text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-all">
                 Book Now
-              </span>
-            </a>
+              {/* <span className="truncate text-[var(--secondary-color)] hover:text-white">
+              </span> */}
+            </Link>
 
             <button
               className="lg:hidden flex items-center justify-center"
