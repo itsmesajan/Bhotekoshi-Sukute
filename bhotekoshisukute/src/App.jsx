@@ -21,9 +21,11 @@ import Gallery from './components/pages/Gallery';
 import NotFound from './components/ui/NotFound';
 import VirtualTourSection from './components/pages/VirtualTourSection';
 import ArticlePage from './components/Article/ArticlePage';
+import ScrollToTopWithLenis from './components/ui/ScrollToTopWithLenis';
 
 
 function App() {
+  <ScrollToTopWithLenis />
   return (
 
     < >
