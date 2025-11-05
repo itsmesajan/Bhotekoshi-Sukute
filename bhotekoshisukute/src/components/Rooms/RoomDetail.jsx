@@ -7,6 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
+import ScrollToTopWithLenis from "../ui/ScrollToTopWithLenis";
+import useLenisScroll from "../../hooks/useLenisScroll";
 
 const RoomDetail = () => {
   const { id } = useParams();
@@ -22,6 +24,14 @@ const RoomDetail = () => {
 
   const [room, setRoom] = useState(null);
   const [localLoading, setLocalLoading] = useState(true);
+
+  const lenis = useLenisScroll();
+
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
+  }, [id, lenis]);
 
   useEffect(() => {
     if (loading) return;
@@ -55,6 +65,8 @@ const RoomDetail = () => {
       roomsArray.find((r) => (r.router || "").endsWith(id)) ||
       roomsArray.find((r) => r.title?.toLowerCase().includes((id || "").toLowerCase()));
 
+
+
     if (found) {
       // normalize images to array of src strings
       const imgs =
@@ -72,6 +84,7 @@ const RoomDetail = () => {
   }, [data, loading, id]);
 
   if (loading || localLoading) {
+    <ScrollToTopWithLenis />
     return (
       <div className="flex justify-center items-center h-screen bg-background-light dark:bg-background-dark">
         <div className="animate-pulse w-full max-w-5xl px-4 py-8">
@@ -282,7 +295,7 @@ const RoomDetail = () => {
                     {otherRoom.title}
                   </Link>
                   <p className="text-dark/70 text-sm font-light flex-grow mb-4">
-                    {(otherRoom.description || "").substring(0, 100)}...
+                    {(otherRoom.subtitle || "").substring(0, 100)}...
                   </p>
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-lg font-display font-bold text-[var(--secondary-color)]">
