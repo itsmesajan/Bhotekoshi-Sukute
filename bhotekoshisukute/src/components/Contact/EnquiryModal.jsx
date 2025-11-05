@@ -48,6 +48,10 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
       errs.specificRequirement = "Requirement is required.";
     }
 
+    if (!recaptchaToken) {
+    errs.recaptcha = "Please complete the reCAPTCHA verification.";
+  }
+
     return errs;
   };
 
@@ -106,14 +110,18 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
                   ? "https://mayurstay.com/bhotekoshi/enquiry_mail_offer.php"
                   : "https://mayurstay.com/bhotekoshi/enquiry_mail_hall_react.php";
               handleSubmit(e, recaptchaToken, endpoint, {
-                requireRecaptcha: false,
+                requireRecaptcha: true,
               });
             }}
             className="space-y-4"
           >
             {/* Hidden Fields */}
             <input type="hidden" name="enquiry_for" value={itemTitle} />
-            <input type="hidden" name="enquiry_for_id" value={selectedItem?.id ?? ""} />
+            <input
+              type="hidden"
+              name="enquiry_for_id"
+              value={selectedItem?.id ?? ""}
+            />
 
             {/* 🧍 Personal Info */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -124,7 +132,9 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
                 { label: "Address*", name: "address" },
               ].map((field, i) => (
                 <div key={i}>
-                  <label className="block text-sm font-medium">{field.label}</label>
+                  <label className="block text-sm font-medium">
+                    {field.label}
+                  </label>
                   <input
                     {...field}
                     value={formData[field.name]}
@@ -133,7 +143,9 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
                     aria-invalid={!!formErrors[field.name]}
                   />
                   {formErrors[field.name] && (
-                    <p className="text-xs text-red-600 mt-1">{formErrors[field.name]}</p>
+                    <p className="text-xs text-red-600 mt-1">
+                      {formErrors[field.name]}
+                    </p>
                   )}
                 </div>
               ))}
@@ -145,7 +157,9 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
                 <h4 className="font-semibold mt-3">Event Information</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-medium">Nature of Event*</label>
+                    <label className="block text-sm font-medium">
+                      Nature of Event*
+                    </label>
                     <input
                       name="nature"
                       value={formData.nature}
@@ -153,15 +167,21 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
                       className="mt-1 w-full rounded border px-3 py-2 text-sm"
                     />
                     {formErrors.nature && (
-                      <p className="text-xs text-red-600 mt-1">{formErrors.nature}</p>
+                      <p className="text-xs text-red-600 mt-1">
+                        {formErrors.nature}
+                      </p>
                     )}
                   </div>
 
                   {/* 📅 Calendar */}
                   <div>
-                    <label className="block text-sm font-medium">Event Date*</label>
+                    <label className="block text-sm font-medium">
+                      Event Date*
+                    </label>
                     <Calendar
-                      value={formData.eventDate ? new Date(formData.eventDate) : null}
+                      value={
+                        formData.eventDate ? new Date(formData.eventDate) : null
+                      }
                       onChange={(e) => {
                         const selectedDate = e.value;
                         if (selectedDate) {
@@ -171,12 +191,16 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
                             alert("You cannot select a past date.");
                             return;
                           }
-                          const isoDate = selectedDate.toISOString().split("T")[0];
+                          const isoDate = selectedDate
+                            .toISOString()
+                            .split("T")[0];
                           handleChange({
                             target: { name: "eventDate", value: isoDate },
                           });
                         } else {
-                          handleChange({ target: { name: "eventDate", value: "" } });
+                          handleChange({
+                            target: { name: "eventDate", value: "" },
+                          });
                         }
                       }}
                       showIcon
@@ -188,12 +212,16 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
                       popupClassName="rounded shadow-lg"
                     />
                     {formErrors.eventDate && (
-                      <p className="text-xs text-red-600 mt-1">{formErrors.eventDate}</p>
+                      <p className="text-xs text-red-600 mt-1">
+                        {formErrors.eventDate}
+                      </p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium">No. of Pax*</label>
+                    <label className="block text-sm font-medium">
+                      No. of Pax*
+                    </label>
                     <input
                       name="pax"
                       value={formData.pax}
@@ -202,12 +230,16 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
                       className="mt-1 w-full rounded border px-3 py-2 text-sm"
                     />
                     {formErrors.pax && (
-                      <p className="text-xs text-red-600 mt-1">{formErrors.pax}</p>
+                      <p className="text-xs text-red-600 mt-1">
+                        {formErrors.pax}
+                      </p>
                     )}
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-sm font-medium">Special Request</label>
+                    <label className="block text-sm font-medium">
+                      Special Request
+                    </label>
                     <textarea
                       name="specialRequest"
                       value={formData.specialRequest}
@@ -225,7 +257,9 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
               <>
                 <h4 className="font-semibold mt-3">Package Information</h4>
                 <div>
-                  <label className="block text-sm font-medium">Specific Requirement*</label>
+                  <label className="block text-sm font-medium">
+                    Specific Requirement*
+                  </label>
                   <textarea
                     name="specificRequirement"
                     value={formData.specificRequirement}
@@ -244,6 +278,11 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
 
             {/* 🔒 ReCaptcha */}
             <ReCaptcha onChange={(token) => setRecaptchaToken(token)} />
+            {formErrors.recaptcha && (
+              <p className="text-xs text-red-600 mt-1">
+                {formErrors.recaptcha}
+              </p>
+            )}
 
             {/* 🟢 Buttons */}
             <div className="flex flex-col sm:flex-row justify-end gap-3 mt-4">
@@ -256,9 +295,24 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded bg-[var(--primary-color)] text-white text-sm w-full sm:w-auto"
+                // Disable if loading or successful (to prevent double-submitting)
+                disabled={formStatus === "loading" || formStatus === "success"}
+                className={`px-5 py-2 rounded text-white text-sm w-full sm:w-auto font-bold transition-all ${
+                  formStatus === "loading"
+                    ? "bg-gray-500 cursor-wait" // Gray/wait cursor when sending
+                    : formStatus === "success"
+                    ? "bg-green-600 cursor-default" // Green when successful
+                    : formStatus === "error"
+                    ? "bg-red-600 hover:bg-red-700" // Red when error
+                    : "bg-[var(--primary-color)] hover:bg-[var(--green-color)]" // Default color
+                }`}
               >
-                Submit
+                {/* 💡 Dynamic Button Text based on Status */}
+                {formStatus === "loading" && "Sending..."}
+                {formStatus === "success" && "Message Sent! 🎉"}
+                {formStatus === "error" && "Failed. Try Again."}
+                {!formStatus && "Send Message"}{" "}
+                {/* Default state is null/undefined */}
               </button>
             </div>
           </form>

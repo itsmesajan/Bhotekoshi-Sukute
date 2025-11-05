@@ -37,7 +37,7 @@ const Footer = () => {
                 {footerContents
                   .find((s) => s.type === "socialLinks")
                   ?.items.map((link, index) => (
-                    <a
+                    <Link
                       key={index}
                       href={link.url}
                       target="_blank"
@@ -45,7 +45,7 @@ const Footer = () => {
                       className="text-slate-200 hover:text-white transition-colors"
                     >
                       <i className={`fab ${link.icon} h-6 w-6`}></i>
-                    </a>
+                    </Link>
                   ))}
               </div>
             </div>
@@ -61,7 +61,7 @@ const Footer = () => {
                   <li key={index}>
                     <Link
                       className="hover:text-white transition-colors"
-                      to={link.url}
+                      to={link.router}
                       target={link.external ? "_blank" : "_self"}
                       rel="noopener noreferrer"
                     >
@@ -79,14 +79,14 @@ const Footer = () => {
               <ul className="space-y-2 text-sm">
                 {section.items.map((link, index) => (
                   <li key={index}>
-                    <a
+                    <Link
                       className="hover:text-white transition-colors"
-                      href={link.url}
+                      to={link.router}
                       target={link.external ? "_blank" : "_self"}
                       rel="noopener noreferrer"
                     >
                       {link.text}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -100,14 +100,14 @@ const Footer = () => {
               <ul className="space-y-2 text-sm">
                 {section.items.map((link, index) => (
                   <li key={index}>
-                    <a
+                    <Link
                       className="hover:text-white transition-colors"
-                      href={link.url}
+                      to={link.url}
                       target={link.external ? "_blank" : "_self"}
                       rel="noopener noreferrer"
                     >
                       {link.text}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

@@ -47,7 +47,7 @@ const ContactForm = () => {
             e,
             recaptchaToken,
             "https://mayurstay.com/bhotekoshi/enquiry_mail_react.php",
-            { requireRecaptcha: false }
+            { requireRecaptcha: true }
           )
         }
         noValidate

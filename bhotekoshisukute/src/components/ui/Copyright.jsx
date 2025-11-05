@@ -8,7 +8,7 @@ const Copyright = () => {
     loading,
     error,
   } = useFetchApi(
-    "/bhotekoshibeach/api_siteregulars.json",
+    "https://mayurstay.com/bhotekoshi/api/api_siteregulars.php",
     "siteregulars"
   );
 

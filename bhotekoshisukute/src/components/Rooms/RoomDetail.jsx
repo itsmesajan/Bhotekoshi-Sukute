@@ -7,7 +7,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
-import RoomBooking from "./RoomBooking";
 
 const RoomDetail = () => {
   const { id } = useParams();
@@ -157,9 +156,10 @@ const RoomDetail = () => {
               <h2 className="text-3xl font-bold text-[var(--secondary-color)]">
                 {room.title}
               </h2>
-              <p className="mt-2 text-gray-600" dangerouslySetInnerHTML={{ __html: room.description }}>
-                
-              </p>
+              <p
+                className="mt-2 text-gray-600"
+                dangerouslySetInnerHTML={{ __html: room.description }}
+              ></p>
 
               {/* Room Features */}
               <div className="mt-6">
@@ -195,7 +195,14 @@ const RoomDetail = () => {
             </div>
 
             <div className="mt-8">
-              <RoomBooking />
+              <Link
+                to={room.roomrojai}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full block rounded-lg bg-[var(--primary-color)] px-6 py-3 text-base text-center font-bold text-[var(--secondary-color)] hover:text-white transition-all hover:bg-[var(--green-color)]"
+              >
+                Book Now
+              </Link>
             </div>
           </div>
         </div>

@@ -11,7 +11,6 @@ import tree2 from "../assets/tree_2.png";
 import tree1 from "../assets/tree.png";
 import { Link } from "react-router-dom";
 import useFetchApi from "../hooks/useFetchApi";
-import RoomBooking from "./Rooms/RoomBooking";
 
 const AccommodationsSection = () => {
   const {
@@ -107,12 +106,19 @@ if (accommodations.length < 7) {
                 {room.title}
               </h3>
               <p className="text-slate-600 text-sm mb-4 text-center">
-                {room.description}
+                {room.subtitle}
               </p>
               <div className="text-lg font-extrabold text-[var(--secondary-color)] mb-2">
                 {room.roomDetails?.["Starting Price"]?.value}
               </div>
-              <RoomBooking />
+              <Link
+                to={room.roomrojai}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full block rounded-lg bg-[var(--primary-color)] px-6 py-3 text-base text-center font-bold text-[var(--secondary-color)] hover:text-white transition-all hover:bg-[var(--green-color)]"
+              >
+                Book Now
+              </Link>
             </SwiperSlide>
           ))}
           <div className="swiper-pagination"></div>
