@@ -9,6 +9,7 @@ import { Navigation, Pagination } from "swiper/modules";
 // Assuming these are local imports
 import EnquiryModal from "../Contact/EnquiryModal";
 import useFetchApi from "../../hooks/useFetchApi"; 
+import ScrollToTopWithLenis from "../ui/ScrollToTopWithLenis";
 
 const Hall = () => {
     const { id } = useParams();
@@ -117,6 +118,7 @@ const Hall = () => {
         return <div className="text-center py-12">Hall not found.</div>;
     }
 
+    <ScrollToTopWithLenis />
     return (
       <div className="container mx-auto px-6 pb-16 lg:pb-32">
         <main className="mx-auto w-full container flex-1 px-4 py-8 sm:px-6 lg:px-8">

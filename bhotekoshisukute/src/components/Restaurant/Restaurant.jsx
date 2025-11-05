@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import useFetchApi from "../../hooks/useFetchApi";
+import ScrollToTopWithLenis from "../ui/ScrollToTopWithLenis";
 
 const RestaurantPage = () => {
   const {
@@ -16,6 +17,7 @@ const RestaurantPage = () => {
   if (loading) return <></>;
   if (error) return <div>{error}</div>;
 
+  <ScrollToTopWithLenis />
   return (
     <main className="flex-grow bg-secondary dark:bg-dark/95">
       <div className="container mx-auto px-6 py-16 lg:py-32">
