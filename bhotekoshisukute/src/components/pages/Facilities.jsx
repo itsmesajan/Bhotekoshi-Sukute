@@ -44,8 +44,7 @@ const Facilities = () => {
               <h3 className="text-lg font-bold text-slate-800">
                 {facility.title || key}
               </h3>
-              <p className="mt-2 text-sm text-slate-600 flex-grow">
-                {facility.description}
+              <p className="mt-2 text-sm text-slate-600 flex-grow" dangerouslySetInnerHTML={{ __html: facility.description}}>
               </p>
             </div>
           ))}

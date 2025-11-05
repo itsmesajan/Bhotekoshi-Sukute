@@ -93,7 +93,7 @@ const RoomList = () => {
                     {room.title}
                   </Link>
                   <p className="text-dark/70 dark:text-light/70 text-base font-light flex-grow mb-6">
-                    {room.description}
+                    {room.subtitle}
                   </p>
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-xl font-display font-bold text-[var(--secondary-color)]">

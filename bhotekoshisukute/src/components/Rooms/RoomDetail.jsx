@@ -157,8 +157,8 @@ const RoomDetail = () => {
               <h2 className="text-3xl font-bold text-[var(--secondary-color)]">
                 {room.title}
               </h2>
-              <p className="mt-2 text-gray-600">
-                {room.overview[0] && room.overview[0].content}
+              <p className="mt-2 text-gray-600" dangerouslySetInnerHTML={{ __html: room.description }}>
+                
               </p>
 
               {/* Room Features */}
@@ -269,7 +269,7 @@ const RoomDetail = () => {
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
                   <Link
-                    to={`/rooms/${otherRoom.id}`}
+                    to={`/accommodation/${otherRoom.id}`}
                     className="text-xl font-display font-bold text-[var(--secondary-color)] mb-2"
                   >
                     {otherRoom.title}
@@ -284,7 +284,7 @@ const RoomDetail = () => {
                         "N/A"}
                     </span>
                     <Link
-                      to={`/rooms/${otherRoom.id}`}
+                      to={`/accommodation/${otherRoom.id}`}
                       className="text-[var(--secondary-color)] font-bold hover:underline text-sm"
                     >
                       View Details
