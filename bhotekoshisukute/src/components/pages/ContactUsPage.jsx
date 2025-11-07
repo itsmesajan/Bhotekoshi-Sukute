@@ -30,7 +30,7 @@ const ContactUsPage = () => {
               Get in Touch
             </h2>
             <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600 ">
-              We'd love to hear from you. Here's how you can reach us.
+              We’d be delighted to hear from you. Please find our contact details below.
             </p>
           </div>
 
@@ -44,8 +44,8 @@ const ContactUsPage = () => {
             {/* Right column - Image & Contact Info */}
             <div className="flex flex-col space-y-8">
               <div className="bg-white dark:bg-background-dark p-8 rounded-xl shadow-lg border border-border-light dark:border-border-dark">
-                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                <div className="space-y-4">
+                <h3 className="text-2xl font-bold mb-6">Contact Address</h3>
+                <div className="space-y-8">
                   <LocationDetails />
                 </div>
               </div>

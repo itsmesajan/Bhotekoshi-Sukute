@@ -14,10 +14,8 @@ const {
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
-            <h3 className="text-2xl font-bold mb-6">
-              Frequently Asked Questions
-            </h3>
+    <div className='py-16 lg:py-16 sm:py-32'>
+      <h2 class="text-4xl text-center mb-12 lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">FAQ</h2>
             <div className="space-y-4">
               {faqDetail.map((faq, idx) => (
                 <details

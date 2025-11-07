@@ -35,7 +35,7 @@ const FloatingButtons = () => {
             <button
                 id="scrollUpBtn"
                 onClick={scrollToTop}
-                className={`fixed sm:bottom-24 bottom-36 right-6 z-[60] bg-[var(--primary-color)] text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition-all ${
+                className={`fixed sm:bottom-24 bottom-36 right-6 z-[60] bg-[var(--primary-color)] text-white rounded-full px-3 py-2 shadow-lg hover:bg-blue-600 transition-all ${
                     isVisible ? '' : 'hidden'
                 }`}
             >

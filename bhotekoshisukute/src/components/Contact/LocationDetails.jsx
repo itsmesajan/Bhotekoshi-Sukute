@@ -22,7 +22,7 @@ const LocationDetails = () => {
         <span className="material-symbols-outlined text-primary mt-1">
           {item.icon}
         </span>
-        <div>
+        <div className="space-y-2">
           <h4 className="font-semibold">          
             {item.id === "location" ? "Our Location" : item.id === "phoneNumbers" ? "Phone" : "Email"}
         </h4>

@@ -99,7 +99,7 @@ const ContactForm = () => {
             type="submit"
             disabled={formStatus === "loading"}
             className={`px-6 py-3 rounded font-semibold text-white ${
-              formStatus === "loading" ? "bg-gray-400 cursor-not-allowed" : "bg-[var(--primary-color)] hover:bg-[var(--green-color)]"
+              formStatus === "loading" ? "bg-gray-400 cursor-not-allowed" : "bg-[var(--primary-color)] hover:bg-[var(--water-color)]"
             }`}
           >
             {formStatus === "loading" ? "Sending..." : "Send Message"}
