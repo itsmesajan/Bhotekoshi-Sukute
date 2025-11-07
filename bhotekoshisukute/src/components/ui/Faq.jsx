@@ -14,7 +14,7 @@ const {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className='py-16 lg:py-16 sm:py-32'>
+    <div className='pt-16 lg:pt-16 sm:pt-32'>
       <h2 class="text-4xl text-center mb-12 lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">FAQ</h2>
             <div className="space-y-4">
               {faqDetail.map((faq, idx) => (
@@ -28,8 +28,8 @@ const {
                       add
                     </span>
                   </summary>
-                  <p className="mt-4 text-subtle-light dark:text-subtle-dark">
-                    {faq.answer}
+                  <p className="mt-4 text-subtle-light dark:text-subtle-dark"
+                   dangerouslySetInnerHTML={{ __html: faq.answer}}>
                   </p>
                 </details>
               ))}
