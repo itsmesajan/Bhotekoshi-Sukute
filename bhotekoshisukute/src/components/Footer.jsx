@@ -30,8 +30,7 @@ const Footer = () => {
                 />
               </Link>
               <p className="text-sm mb-4">
-                Your adventure in Nepal begins here. Experience comfort and
-                thrills in one place.
+                Your adventure in Nepal begins here. Experience comfort and thrills in one place. Create lasting memories with riverside stays, cultural experiences, and adventure activities.
               </p>
               <div className="flex space-x-4">
                 {footerContents
