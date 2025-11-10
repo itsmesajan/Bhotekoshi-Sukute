@@ -15,7 +15,7 @@ const {
 
   return (
     <div className='pt-16 lg:pt-16 sm:pt-32'>
-      <h2 class="text-4xl text-center mb-12 lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">FAQ</h2>
+      <h2 class="text-4xl text-center mb-12 lg:text-5xl font-display font-bold text-[var(--secondary-color)] dark:text-light tracking-tight">FAQ's</h2>
             <div className="space-y-4">
               {faqDetail.map((faq, idx) => (
                 <details

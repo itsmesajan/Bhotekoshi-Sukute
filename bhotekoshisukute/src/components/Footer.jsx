@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-wrap gap-8 justify-between items-start">
             <div className="flex-1 min-w-[220px] max-w-[340px]">
-              <Link to="/home">
+              <Link to="/">
                 <img
                   src={secondaryLogo}
                   alt="Bhotekoshi Beach"

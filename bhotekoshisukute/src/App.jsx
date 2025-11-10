@@ -31,8 +31,7 @@ function App() {
     < >
       <Header />
         <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/accommodation" element={<RoomList />} />

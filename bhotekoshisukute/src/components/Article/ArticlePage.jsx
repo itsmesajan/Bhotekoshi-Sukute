@@ -41,19 +41,21 @@ const ArticlePage = () => {
 
   return (
     <>
-      <section>
-        <div className="mx-auto mb-8 mt-16 flex max-w-2xl flex-col items-center justify-center gap-4 text-center md:mb-20 md:mt-0">
-          <h1 className="text-3xl capitalize leading-snug sm:text-3xl md:text-4xl lg:text-7xl lg:leading-snug">
-            {title}
-          </h1>
-          <p className="text-text-navy text-sm text-justify md:text-lg md:text-center">
-            {description}
-          </p>
+      <section className="py-20 sm:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[var(--secondary-color)]">
+              {title}
+            </h1>
+            <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-600 ">
+              {description}
+            </p>
+          </div>
+          <div
+            className="container mt-8 space-y-8 text-pretty text-justify md:mt-16"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
         </div>
-        <div
-          className="container mt-8 space-y-8 text-pretty text-justify md:mt-16"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
       </section>
     </>
   );

@@ -47,7 +47,7 @@ const Header = () => {
         <div className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-slate-200 py-3">
           {/* Logo */}
           <div className="flex items-center gap-3 text-slate-800">
-            <Link to="/home">
+            <Link to="/">
               <img
                 src={logo_upload}
                 alt="Bhotekoshi Beach"
