@@ -10,7 +10,7 @@ const Packages = () => {
     loading,
     error,
   } = useFetchApi(
-    "https://mayurstay.com/bhotekoshi/api/api_offers.php",
+    "https://www.bhotekoshibeachresort.com/api/api_offers.php",
     "packages"
   );
 

@@ -9,7 +9,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const Testimonials = () => {
   const { data: testimonials = [], loading, error } = useFetchApi(
-    "https://mayurstay.com/bhotekoshi/api/api_testimonial.php",
+    "https://www.bhotekoshibeachresort.com/api/api_testimonial.php",
     "testimonials"
   );
 

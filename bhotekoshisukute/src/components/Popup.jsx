@@ -49,7 +49,7 @@ const Popup = () => {
     data: popup = [],
     loading,
     error,
-  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_popup.php", "popup");
+  } = useFetchApi("https://www.bhotekoshibeachresort.com/api/api_popup.php", "popup");
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);

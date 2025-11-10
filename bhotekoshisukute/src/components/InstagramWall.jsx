@@ -3,7 +3,7 @@ import useFetchApi from "../hooks/useFetchApi";
 
 const InstagramWall = () => {
   const { data: instagramData, loading, error } = useFetchApi(
-    "https://mayurstay.com/bhotekoshi/api/api_instagram.php",
+    "https://www.bhotekoshibeachresort.com/api/api_instagram.php",
     "instagramImages"
   );
 

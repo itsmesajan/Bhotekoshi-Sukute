@@ -3,7 +3,7 @@ import useFetchApi from '../hooks/useFetchApi';
 
 const AboutSection = () => {
 
-    const {data: about, loading, error} = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_homepageArticle.php", "aboutSection");
+    const {data: about, loading, error} = useFetchApi("https://www.bhotekoshibeachresort.com/api/api_homepageArticle.php", "aboutSection");
 
     if (loading) return <></>;
     if (error) return <div>{error}</div>;

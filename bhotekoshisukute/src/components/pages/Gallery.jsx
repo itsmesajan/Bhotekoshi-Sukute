@@ -16,7 +16,7 @@ const Gallery = () => {
     data: galleryImages,
     loading,
     error,
-  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_gallery.php", "galleryImages");
+  } = useFetchApi("https://www.bhotekoshibeachresort.com/api/api_gallery.php", "galleryImages");
   
    const [activeCategory, setActiveCategory] = useState("All");
    const [isTransitioning, setIsTransitioning] = useState(false);

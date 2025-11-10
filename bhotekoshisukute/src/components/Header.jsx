@@ -26,13 +26,13 @@ const Header = () => {
     data: navLinks,
     loading : loadingNav,
     error : errorNav,
-  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_menu.php",'navLinks'); 
+  } = useFetchApi("https://www.bhotekoshibeachresort.com/api/api_menu.php",'navLinks'); 
 
   const {
     data: siteregulars,
     loading : loadingSite,
     error : errorSite,
-  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_siteregulars.php",'siteregulars'); 
+  } = useFetchApi("https://www.bhotekoshibeachresort.com/api/api_siteregulars.php",'siteregulars'); 
 
   if (loadingNav || loadingSite) return <></>;
   if (errorNav || errorSite) return <div>Error loading header data.</div>;

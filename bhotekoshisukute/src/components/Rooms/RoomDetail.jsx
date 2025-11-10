@@ -17,7 +17,7 @@ const RoomDetail = () => {
     loading,
     error,
   } = useFetchApi(
-    "https://mayurstay.com/bhotekoshi/api/api_room.php",
+    "https://www.bhotekoshibeachresort.com/api/api_room.php",
     "packages"
   );
 

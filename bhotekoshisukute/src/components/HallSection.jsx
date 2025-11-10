@@ -12,7 +12,7 @@ const HallSection = () => {
      data: raw,
      loading,
      error,
-   } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_hall.php", "hallFeatures");
+   } = useFetchApi("https://www.bhotekoshibeachresort.com/api/api_hall.php", "hallFeatures");
 
    // 🛠️ CORRECTION 1: Normalize API shape based on the 'accommodationContents' pattern.
    const hall = useMemo(() => {

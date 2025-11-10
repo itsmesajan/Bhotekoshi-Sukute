@@ -11,7 +11,7 @@ const ContactUsPage = () => {
     loading,
     error,
   } = useFetchApi(
-    "https://mayurstay.com/bhotekoshi/api/api_siteregulars.php",
+    "https://www.bhotekoshibeachresort.com/api/api_siteregulars.php",
     "siteregulars"
   );
 

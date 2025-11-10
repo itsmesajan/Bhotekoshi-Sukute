@@ -8,7 +8,7 @@ const PlacesToExploreSection = () => {
       loading,
       error,
     } = useFetchApi(
-      "https://mayurstay.com/bhotekoshi/api/api_nearby.php",
+      "https://www.bhotekoshibeachresort.com/api/api_nearby.php",
       "places"
     );
       if (loading) return <></>;

@@ -15,7 +15,7 @@ const VirtualTourSection = () => {
   const [currentScene, setCurrentScene] = useState(null);
 
   const { data: scenes, loading, error } = useFetchApi(
-    "https://mayurstay.com/bhotekoshi/api/api_virtual_tour.php",
+    "https://www.bhotekoshibeachresort.com/api/api_virtual_tour.php",
     "scenes"
   );
 

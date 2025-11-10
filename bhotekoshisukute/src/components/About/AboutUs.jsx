@@ -8,7 +8,7 @@ const AboutUs = () => {
     loading,
     error,
   } = useFetchApi(
-    "https://mayurstay.com/bhotekoshi/api/api_aboutTeam.php",
+    "https://www.bhotekoshibeachresort.com/api/api_aboutTeam.php",
     "aboutTeam"
   );
 

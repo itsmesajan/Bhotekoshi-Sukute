@@ -16,7 +16,7 @@ const Hall = () => {
 
     // 1. Fetching the data using the custom hook
     const { data: apiResponse, loading, error } = useFetchApi(
-        "https://mayurstay.com/bhotekoshi/api/api_hall.php"
+        "https://www.bhotekoshibeachresort.com/api/api_hall.php"
     );
 
     // Local state to hold the normalized hall data

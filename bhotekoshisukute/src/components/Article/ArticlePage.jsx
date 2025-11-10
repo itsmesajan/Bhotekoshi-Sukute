@@ -11,7 +11,7 @@ const ArticlePage = () => {
     loading,
     error,
   } = useFetchApi(
-    "https://mayurstay.com/bhotekoshi/api/api_article.php",
+    "https://www.bhotekoshibeachresort.com/api/api_article.php",
     "articlePageContents"
   );
 

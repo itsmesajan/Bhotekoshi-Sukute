@@ -13,7 +13,7 @@ const Activities = () => {
     data: activities,
     loading,
     error,
-  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_recreation.php", "activities");
+  } = useFetchApi("https://www.bhotekoshibeachresort.com/api/api_recreation.php", "activities");
 
   if (loading) return <></>;
   if (error) return <div>{error}</div>;

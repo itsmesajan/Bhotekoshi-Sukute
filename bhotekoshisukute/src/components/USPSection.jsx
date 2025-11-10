@@ -7,7 +7,7 @@ const USPSection = () => {
     data: facilities,
     loading,
     error,
-  } = useFetchApi("https://mayurstay.com/bhotekoshi/api/api_homeFacilities.php", "facilities");
+  } = useFetchApi("https://www.bhotekoshibeachresort.com/api/api_homeFacilities.php", "facilities");
 
   if (loading) return <></>;
   if (error) return <div>{error}</div>;
