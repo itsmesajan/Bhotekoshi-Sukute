@@ -11,6 +11,13 @@
         --secondary-color: #8a6b2d;
         --green-color: #0f8301;
         --water-color: #2288c2;
+
+ @font-face {
+      font-family: 'Candy Script';
+      src: url('./fonts/CandyScript.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
       
 @layer base {
     body {
@@ -164,4 +171,8 @@
 .pnlm-hotspot-tooltip-label.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+.candy-script {
+  font-family: 'Candy Script', cursive; /* Include a fallback font */
 }
