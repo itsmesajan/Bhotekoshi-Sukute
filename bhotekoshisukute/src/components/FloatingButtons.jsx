@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useFetchApi from '../hooks/useFetchApi';
 
 const FloatingButtons = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -29,6 +30,20 @@ const FloatingButtons = () => {
         };
     }, []);
 
+      const {
+        data: siteregulars,
+        loading,
+        error,
+      } = useFetchApi(
+        "https://www.bhotekoshibeachresort.com/api/api_siteregulars.php",
+        "siteregulars"
+      );
+
+      const whatsapp = siteregulars?.whatsapp_a;
+
+      if (loading) return <></>;
+      if (error) return <div>{error}</div>;
+
     return (
         <>
             {/* Scroll Up Button */}
@@ -53,7 +68,7 @@ const FloatingButtons = () => {
 
             {/* WhatsApp Floating Button */}
             <a
-                href="https://wa.me/9779748266260"
+                href={`https://wa.me/${whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="fixed sm:bottom-6 bottom-20 right-6 z-[60] bg-green-500 text-white rounded-full p-6 w-8 h-8 shadow-lg flex items-center justify-center hover:bg-green-600 transition-all"

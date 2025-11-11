@@ -102,9 +102,11 @@ if (accommodations.length < 7) {
                 alt={room.title}
                 className="rounded-xl mb-6 w-full h-64 object-cover shadow-lg"
               />
-              <h3 className="text-xl font-bold text-slate-800 mb-2">
+              <Link
+                to={`/accommodation/${room.id}`}
+              className="text-xl font-bold text-slate-800 mb-2">
                 {room.title}
-              </h3>
+              </Link>
               <p className="text-slate-600 text-sm mb-4 text-center">
                 {room.subtitle}
               </p>

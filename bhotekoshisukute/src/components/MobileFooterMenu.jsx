@@ -1,35 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useFetchApi from '../hooks/useFetchApi';
 
-const mobileMenuItems = [
-    {
-        href: '/accommodation',
-        icon: 'hotel',
-        label: 'Room',
-    },
-    {
-        href: '/restaurant-bar',
-        icon: 'restaurant',
-        label: 'Dining',
-    },
-    {
-        href: '/conference-events',
-        icon: 'meeting_room',
-        label: 'Hall',
-    },
-    {
-        href: '/book',
-        icon: 'event_available',
-        label: 'Book Now',
-    },
-    {
-        href: '/contact',
-        icon: 'call',
-        label: 'Contact',
-    },
-];
+
 
 const MobileFooterMenu = () => {
+    const {
+      data: siteregulars,
+      loading,
+      error,
+    } = useFetchApi(
+      "https://www.bhotekoshibeachresort.com/api/api_siteregulars.php",
+      "siteregulars"
+    );
+    
+    const booking_code = siteregulars?.booking_code;
+    
+    if (loading) return <></>;
+    if (error) return <div>{error}</div>;
+
+      const mobileMenuItems = [
+    { href: '/accommodation', icon: 'hotel', label: 'Room' },
+    { href: '/restaurant-bar', icon: 'restaurant', label: 'Dining' },
+    { href: '/conference-events', icon: 'meeting_room', label: 'Hall' },
+    {
+      href: booking_code ? booking_code : '/booking_code',
+      icon: 'event_available',
+      label: 'Book Now',
+    },
+    { href: '/contact', icon: 'call', label: 'Contact' },
+  ];
+
+  
     return (
         <div className="fixed bottom-0 left-0 w-full z-50 bg-white border-t border-slate-200 shadow-lg flex justify-between items-center px-2 py-2 lg:hidden">
             {mobileMenuItems.map((item, index) => (
