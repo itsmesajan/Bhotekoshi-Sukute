@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import secondaryLogo from "../assets/logo_2.png";
 import useFetchApi from '../hooks/useFetchApi';
 import Copyright from './ui/Copyright';
+import ScrollToTopWithLenis from './ui/ScrollToTopWithLenis';
 
 const Footer = () => {
 
@@ -16,9 +17,10 @@ const Footer = () => {
   if (loading) return <></>;
   if (error) return <div>{error}</div>;
 
-
     return (
-      <footer className="bg-[var(--water-color)] text-slate-200 pb-[80px] md:pb-0">
+      <>
+<ScrollToTopWithLenis />
+      <footer className="bg-[var(--water-color)] text-slate-200 pb-[130px] md:pb-0">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-wrap gap-8 justify-between items-start">
             <div className="flex-1 min-w-[220px] max-w-[340px]">
@@ -120,6 +122,7 @@ const Footer = () => {
           <Copyright />
         </div>
       </footer>
+      </>
     );
 };
 

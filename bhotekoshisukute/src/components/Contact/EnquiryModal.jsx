@@ -96,7 +96,7 @@ const EnquiryModal = ({ type = "hall", selectedItem }) => {
       <Dialog
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+        className="fixed inset-0 z-[101] flex items-center justify-center bg-black/50 p-4"
       >
         <Dialog.Panel className="w-full max-w-2xl rounded-lg bg-white p-5 shadow-lg max-h-[90vh] overflow-auto">
           <Dialog.Title className="text-xl font-bold mb-4 text-center sm:text-left">

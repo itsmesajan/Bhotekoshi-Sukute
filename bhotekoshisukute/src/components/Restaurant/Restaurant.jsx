@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import useFetchApi from "../../hooks/useFetchApi";
 import ScrollToTopWithLenis from "../ui/ScrollToTopWithLenis";
+import ReserveBtn from "./ReserveBtn";
 
 const RestaurantPage = () => {
   const {
@@ -95,14 +96,15 @@ const RestaurantPage = () => {
                     <span>Cuisine: {restaurant.type}</span>
                   </div>
                 </div>
+                <ReserveBtn />
 
-                <a
+                {/* <a
                   className="inline-block bg-[var(--primary-color)] text-[var(--secondary-color)] hover:text-white font-bold text-sm px-8 py-3 rounded-full hover:bg-[var(--green-color)] transition-all duration-300 shadow-lg hover:shadow-xl w-fit"
                   href="tel:+9779858060122"
                 >
                   <i class="fas fa-phone mr-2"></i>
                    Make a Reservation
-                </a>
+                </a> */}
               </div>
             </div>
           ))}
