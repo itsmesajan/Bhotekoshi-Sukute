@@ -79,9 +79,9 @@ const HeroSection = () => {
 
             {/* Text content */}
             <div className="relative mx-auto text-center z-10 space-y-6">
-              <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+              <p className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
                 {slide.title}
-              </h1>
+              </p>
               <p className="text-slate-100 sm:text-lg lg:text-xl max-w-3xl mx-auto">
                 {slide.description}
               </p>
